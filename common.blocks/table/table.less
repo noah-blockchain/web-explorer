@@ -1,0 +1,96 @@
+@import '../imports/media';
+
+.table_theme_simple {
+  padding: 2.5em 2em;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 22px 27px rgba(0, 0, 0, 0.1);
+
+  .table__table--desktop {
+    @media @under-md {
+      display: none;
+    }
+  }
+
+  .table__table--mobile {
+    @media @after-md {
+      display: none;
+    }
+  }
+
+  .table__title {
+    margin-bottom: 0.4rem;
+    padding-left: 1rem;
+    font-size: 2.2em;
+    line-height: 1.2;
+  }
+
+  .table__cell {
+    padding: 2.1rem 1rem;
+    text-align: left;
+
+    &-item {
+      display: block;
+
+      &:not(:last-child) {
+        margin-bottom: 0.5em;
+      }
+    }
+
+    &:last-child {
+      text-align: right;
+    }
+  }
+
+  .table__table {
+    width: 100%;
+  }
+
+  .table__row {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+
+    &:nth-child(2n + 1) {
+      background: rgba(196, 196, 196, 0.05);
+    }
+  }
+
+  .table__header .table__cell {
+    display: table-cell;
+    font-weight: 600;
+    line-height: 1.2;
+
+    @media @after-md {
+      font-size: 1.7em;
+    }
+
+    @media @under-md {
+      vertical-align: middle;
+      font-size: 1.4em;
+    }
+  }
+
+  .table__body .table__cell {
+    font-weight: 500;
+    font-size: 1.3em;
+    line-height: 1.7;
+    letter-spacing: 0.02rem;
+
+    &:not(.table__link) {
+      color: #555555;
+    }
+  }
+
+  .table__link {
+    color: #6978ff;
+  }
+
+  .table__more {
+    display: block;
+    margin-top: 2.6rem;
+    text-align: right;
+    font-size: 1.4em;
+    color: #6978ff;
+    text-decoration: none;
+  }
+}

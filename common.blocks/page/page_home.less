@@ -1,0 +1,42 @@
+@import (css)
+  url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap');
+@import '../imports/media';
+
+.page_home {
+  position: relative;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: #1d1d1d;
+  margin-bottom: 0.9em;
+
+  .section_preface {
+    margin-bottom: 3.5em;
+  }
+
+  .section_updates {
+    margin-bottom: 2.5rem;
+  }
+
+  .page__tables {
+    display: flex;
+    width: 100%;
+
+    @media @under-sm {
+      flex-direction: column;
+    }
+
+    .blocks {
+      margin-bottom: 2.5rem;
+      flex: 3;
+
+      @media @after-sm {
+        margin-right: 1em;
+      }
+    }
+
+    .transactions {
+      margin-bottom: 2.5rem;
+      flex: 7;
+    }
+  }
+}

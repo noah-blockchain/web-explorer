@@ -1,0 +1,19 @@
+[tooltip]:before {
+  content: attr(tooltip);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  padding: 1em;
+  font-size: 1.3em;
+  min-width: 8em;
+  text-align: center;
+  color: #fff;
+  visibility: hidden;
+  border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.8);
+  transform: translate(-50%, 100%);
+}
+
+[tooltip]:hover:before {
+  visibility: visible;
+}

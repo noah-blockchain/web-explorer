@@ -1,0 +1,80 @@
+@import '../../../../common.blocks/imports/media';
+
+.section_navbar-middle {
+  background: #ffffff;
+
+  .section__links {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    &--full {
+      padding-top: 2.3rem;
+
+      @media @under-xs {
+        display: none;
+      }
+    }
+
+    &--shrink {
+      justify-content: flex-end;
+
+      @media @after-xs {
+        display: none;
+      }
+    }
+  }
+
+  .section__link {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+
+    @media @after-xs {
+      margin-right: 4.5em;
+      margin-bottom: 2.3em;
+    }
+
+    @media @under-xs {
+      padding: 2.25em;
+    }
+
+    &--inactive {
+      @media @after-xs {
+        opacity: 0.5;
+      }
+
+      @media @under-xs {
+        opacity: 0.8;
+      }
+
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .section__link-text {
+    padding-left: 1.5rem;
+    font-size: 1.6em;
+    line-height: 1.2;
+    text-transform: uppercase;
+    color: #1d1d1d;
+  }
+
+  .section__links--shrink {
+    .menu-surface__arrow path {
+      fill: #000;
+    }
+
+    .menu-surface__body {
+      background: #fafafa;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .section__link--inactive {
+      opacity: 0.8;
+    }
+  }
+}
