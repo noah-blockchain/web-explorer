@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "postinstall": "nuxt build",
+    "postinstall": "next build",
     "start": "next start -p $PORT"
   },
   "dependencies": {
