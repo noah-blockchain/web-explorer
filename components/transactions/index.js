@@ -9,7 +9,7 @@ const Desktop = ({ data, modificataion = '' }) => (
     <thead className="table__header">
       <tr>
         <th className="table__cell">TxHash</th>
-        <th className="table__cell">Address In</th>
+        <th className="table__cell">Address In 1</th>
         <th className="table__cell">Address Out</th>
         <th className="table__cell">Time</th>
       </tr>
@@ -22,7 +22,7 @@ const Desktop = ({ data, modificataion = '' }) => (
               <a className="link_theme_none">{shrinkString(item.txs, 14)}</a>
             </Link>
           </th>
-          <th className="table__cell">{shrinkString(item.addressIn, 14)}</th>
+          <th className="table__cell" dangerouslySetInnerHTML={{__html: shrinkString(item.addressIn, 14)}}></th>
           <th className="table__cell">{shrinkString(item.addressOut, 14)}</th>
           <th className="table__cell">{convertDate(item.time)}</th>
         </tr>

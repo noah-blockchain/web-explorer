@@ -18,8 +18,6 @@ export default class Container extends React.Component {
       confirmations: 5,
       prevBlockHash: item.prevBlockHash
     }))
-    console.log('DATA', data)
-
     const pagination = {
       setPage: this.setPage,
       activePage: this.state.page,

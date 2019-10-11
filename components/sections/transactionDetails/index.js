@@ -53,7 +53,7 @@ export default ({ data }) => {
                 key={i}
               >
                 <p className="section__field-name">{item.name}</p>
-                <p className="section__field-value">{item.value}</p>
+                <p className="section__field-value" dangerouslySetInnerHTML={{__html: item.value}}></p>
               </div>
             ))}
           </div>

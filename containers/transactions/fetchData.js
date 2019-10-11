@@ -5,7 +5,7 @@ if (typeof fetch === 'undefined') {
 }
 
 async function fetchData() {
-  const response = await fetch(`${config.api}extTransactionsFind`)
+  const response = await fetch(`${config.api}transactions`)
 
   const status = response.status
   const body = await response.json()
