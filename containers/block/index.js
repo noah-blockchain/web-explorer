@@ -1,14 +1,17 @@
 import React from 'react'
 
 export default ({ children, rawData = [] }) => {
-  const data = !rawData[0]
+  console.log(rawData)
+  const data = !rawData.data
     ? null
     : {
-        txs: rawData[0]._id,
-        height: rawData[0].height,
-        time: rawData[0].createdAt,
-        confirmations: rawData[0].confirmations,
-        prevBlockHash: rawData[0].prevBlockHash
+      height: rawData.data.height,
+      txs: rawData.data.hash,
+      size: rawData.data.size,
+      txCount: rawData.data.txCount,
+      reward: rawData.data.reward,
+      time: rawData.data.timestamp,
+      validators: rawData.data.validators.length
       }
 
   const child = React.Children.map(children, child =>

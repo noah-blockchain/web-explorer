@@ -5,7 +5,7 @@ if (typeof fetch === 'undefined') {
 }
 
 async function fetchData(id) {
-  const response = await fetch(`${config.api}extBlocksFind/${id}`)
+  const response = await fetch(`${config.api}blocks/${id}`)
 
   const status = response.status
   const body = await response.json()
