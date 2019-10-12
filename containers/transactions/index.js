@@ -1,4 +1,5 @@
 import React from 'react'
+import { txTypeFilter } from '../../utils/types'
 
 export default class Container extends React.Component {
   state = {
@@ -13,23 +14,23 @@ export default class Container extends React.Component {
     const { children, rawData = [] } = this.props
 
     const data = rawData.data.map(item => {
-      let  addressIn = '-';
-      if(item.data.to !== undefined) {
-        addressIn = item.data.to
-      } else if(item.data.pub_key !== undefined) {
-        addressIn = item.data.pub_key
-      } else if(item.data.list !== undefined) {
-        addressIn =  item.data.list.map((data)=> data.to)
-        addressIn = addressIn.join("<br/>")
-      } else if(item.data.coin_to_buy) {
-        addressIn = 'BUY'
-      }
-      return ({
+      console.log({
         txs: item.hash,
-        addressIn: addressIn,
+        block: item.block,
         addressOut: item.from,
         time: item.timestamp,
-        _asset: item._asset
+        _asset: item._asset,
+        type: txTypeFilter(item.type)
+
+      })
+      return ({
+        txs: item.hash,
+        block: item.block,
+        addressOut: item.from,
+        time: item.timestamp,
+        _asset: item._asset,
+        type: txTypeFilter(item.type)
+
       })
     })
 

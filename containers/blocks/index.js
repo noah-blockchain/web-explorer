@@ -16,7 +16,7 @@ export default class Container extends React.Component {
       txs: item.hash,
       time: item.timestamp,
       confirmations: 5,
-      prevBlockHash: item.prevBlockHash
+      prevBlockHash: item.prevBlockHash,
     }))
     const pagination = {
       setPage: this.setPage,

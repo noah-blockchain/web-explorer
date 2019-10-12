@@ -9,9 +9,11 @@ const Desktop = ({ data, modificataion = '' }) => (
     <thead className="table__header">
       <tr>
         <th className="table__cell">TxHash</th>
-        <th className="table__cell">Address In 1</th>
-        <th className="table__cell">Address Out</th>
+        <th className="table__cell">Block</th>
         <th className="table__cell">Time</th>
+        <th className="table__cell">From</th>
+        <th className="table__cell">Type</th>
+        <th className="table__cell">Amount</th>
       </tr>
     </thead>
     <tbody className="table__body">
@@ -22,8 +24,10 @@ const Desktop = ({ data, modificataion = '' }) => (
               <a className="link_theme_none">{shrinkString(item.txs, 14)}</a>
             </Link>
           </th>
-          <th className="table__cell" dangerouslySetInnerHTML={{__html: shrinkString(item.addressIn, 14)}}></th>
+          <th className="table__cell">{item.block}</th>
+          <th className="table__cell">{convertDate(item.time)}</th>
           <th className="table__cell">{shrinkString(item.addressOut, 14)}</th>
+          <th className="table__cell">{item.type}</th>
           <th className="table__cell">{convertDate(item.time)}</th>
         </tr>
       ))}
@@ -53,7 +57,7 @@ const Mobile = ({ data, modificataion = '' }) => (
           </th>
           <th className="table__cell">
             <span className="table__cell-item">
-              {shrinkString(item.addressIn, 14)}
+              {shrinkString(item.addressOut, 14)}
             </span>
             <span className="table__cell-item">
               {shrinkString(item.addressOut, 14)}

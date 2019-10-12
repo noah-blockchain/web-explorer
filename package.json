@@ -13,6 +13,7 @@
     "less": "^3.10.3",
     "next": "^9.0.6",
     "next-images": "^1.2.0",
+    "noahjs-tx": "^6.1.1",
     "node-fetch": "^2.6.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
