@@ -28,7 +28,7 @@ const Desktop = ({ data, modificataion = '' }) => (
           <th className="table__cell">{convertDate(item.time)}</th>
           <th className="table__cell">{shrinkString(item.addressOut, 14)}</th>
           <th className="table__cell">{item.type}</th>
-          <th className="table__cell">{convertDate(item.time)}</th>
+          <th className="table__cell">{item.amount}</th>
         </tr>
       ))}
     </tbody>

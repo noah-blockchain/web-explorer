@@ -1,5 +1,5 @@
 import React from 'react'
-import { txTypeFilter } from '../../utils/types'
+import { getAmountWithCoin, txTypeFilter } from '../../utils/tx'
 
 export default class Container extends React.Component {
   state = {
@@ -29,8 +29,8 @@ export default class Container extends React.Component {
         addressOut: item.from,
         time: item.timestamp,
         _asset: item._asset,
-        type: txTypeFilter(item.type)
-
+        type: txTypeFilter(item.type),
+        amount: getAmountWithCoin(item)
       })
     })
 
