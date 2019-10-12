@@ -27,12 +27,20 @@ export default ({ data }) => {
       modification: 'link'
     },
     {
-      name: 'Confirmations',
-      value: data.confirmations
+      name: 'Validators',
+      value: data.validators
     },
     {
-      name: 'Previous Block Hash',
-      value: data.prevBlockHash
+      name: 'Tx count',
+      value: data.txCount
+    },
+    {
+      name: "Size",
+      value: data.size
+    },
+    {
+      name: "Reward",
+      value: data.reward
     },
     {
       name: 'Time',

@@ -14,9 +14,11 @@ export default class Container extends React.Component {
     const data = rawData.map(item => ({
       height: item.height,
       txs: item.hash,
+      size: item.size,
+      txCount: item.txCount,
+      reward: item.reward,
       time: item.timestamp,
-      confirmations: 5,
-      prevBlockHash: item.prevBlockHash,
+      validators: item.validators.length
     }))
     const pagination = {
       setPage: this.setPage,
