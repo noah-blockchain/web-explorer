@@ -40,6 +40,7 @@ Page.getInitialProps = async (context) => {
 	const { transaction } = context.query
 
 	const data = await fetchTransactionDetails(transaction).catch(() => ({}))
+	console.log("DATA", data);
 	return { transaction: data }
 }
 

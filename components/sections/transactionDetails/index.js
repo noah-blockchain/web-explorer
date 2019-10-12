@@ -22,22 +22,30 @@ export default ({ data }) => {
       modification: 'translucent'
     },
     {
-      name: 'Address In',
-      value: data.addressIn
+      name: 'Type',
+      value: data.type,
+      modification: 'translucent'
     },
     {
-      name: 'Address Out',
-      value: data.addressOut
+      name: 'Block',
+      value: data.block,
+      modification: 'translucent'
     },
     {
-      name: 'Asset',
-      value: data._asset
+      name: 'From',
+      value: data.addressOut,
+      modification: 'translucent'
     },
     {
       name: 'Time',
       value: convertDate(data.time),
       modification: 'translucent'
-    }
+    },
+    {
+      name: 'Amount',
+      value: data.amount,
+      modification: 'translucent'
+    },
   ]
 
   return (
@@ -53,7 +61,7 @@ export default ({ data }) => {
                 key={i}
               >
                 <p className="section__field-name">{item.name}</p>
-                <p className="section__field-value" dangerouslySetInnerHTML={{__html: item.value}}></p>
+                <p className="section__field-value">{item.value}</p>
               </div>
             ))}
           </div>
