@@ -41,8 +41,10 @@ const Mobile = ({ data, modificataion = '' }) => (
       <tr>
         <th className="table__cell">TxHash</th>
         <th className="table__cell">
-          <span className="table__cell-item">Adr. In</span>
+          <span className="table__cell-item">Block</span>
           <span className="table__cell-item">Adr. Out</span>
+          <span className="table__cell-item">Type</span>
+          <span className="table__cell-item">Amount</span>
         </th>
         <th className="table__cell">Time</th>
       </tr>
@@ -57,10 +59,16 @@ const Mobile = ({ data, modificataion = '' }) => (
           </th>
           <th className="table__cell">
             <span className="table__cell-item">
-              {shrinkString(item.addressOut, 14)}
+              {item.block}
             </span>
             <span className="table__cell-item">
               {shrinkString(item.addressOut, 14)}
+            </span>
+            <span className="table__cell-item">
+              {item.type}
+            </span>
+            <span className="table__cell-item">
+              {item.amount}
             </span>
           </th>
           <th className="table__cell">{convertDate(item.time)}</th>
