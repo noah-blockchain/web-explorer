@@ -6,17 +6,22 @@ import NavbarMiddle from '~/components/sections/navbar/middle'
 import fetchTransactions from '~/containers/transactions/fetchData'
 import TransactionDetailsComponent from '~/components/sections/transactionDetails'
 import TransactionDetailsContainer from '~/containers/transactions'
+import Pagination from '~/components/pagination'
+
 import '~/common.blocks/page/page_transactions.less'
 
-const List = ({ data = {} }) => {
-  return data.map((item, i) => (
-    <TransactionDetailsComponent data={item} key={i} />
-  ))
+const List = ({ data = {}, pagination ={} }) => {
+
+  return (
+    <div>
+      <Pagination {...pagination}/>
+      {data.map((item, i) => (<TransactionDetailsComponent data={item} key={i}/>))}
+      <Pagination {...pagination}/>
+    </div>)
 }
 
 const Page = ({ transactions }) => {
   const language = 'en'
-
   return (
     <Layout
       pageTitle="NOAH Blockchain Explorer"
@@ -25,8 +30,8 @@ const Page = ({ transactions }) => {
       locales={config.languages}
     >
       <main className="page_transactions">
-        <NavbarTop />
-        <NavbarMiddle current="transactions" />
+        <NavbarTop/>
+        <NavbarMiddle current="transactions"/>
         <div className="section">
           <div className="wrapper_section-content">
             <h1 className="page__title">Transactions</h1>
@@ -34,7 +39,7 @@ const Page = ({ transactions }) => {
         </div>
         <div className="page__list">
           <TransactionDetailsContainer rawData={transactions}>
-            <List />
+            <List/>
           </TransactionDetailsContainer>
         </div>
       </main>
@@ -44,7 +49,6 @@ const Page = ({ transactions }) => {
 
 Page.getInitialProps = async () => {
   const transactions = await fetchTransactions().catch(() => [])
-
   return { transactions }
 }
 

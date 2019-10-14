@@ -20,7 +20,7 @@ export default ({ data = [] }) => {
           {data.slice(0, 10).map((item, i) => (
             <tr className="table__row" key={i}>
               <td className="table__cell table__link">
-                <Link href={`/blocks/${item.txs}`}>
+                <Link href={`/blocks/${item.height}`}>
                   <a className="link_theme_none">{item.height}</a>
                 </Link>
               </td>

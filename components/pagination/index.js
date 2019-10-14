@@ -29,7 +29,7 @@ export default props => {
       : createPages(pagesCount, startPage - 1)
 
   return (
-    <div className="pagination">
+    <div className="pagination section">
       <div
         className={
           activePage === 1

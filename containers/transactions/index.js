@@ -14,15 +14,6 @@ export default class Container extends React.Component {
     const { children, rawData = [] } = this.props
 
     const data = rawData.data.map(item => {
-      console.log({
-        txs: item.hash,
-        block: item.block,
-        addressOut: item.from,
-        time: item.timestamp,
-        _asset: item._asset,
-        type: txTypeFilter(item.type)
-
-      })
       return ({
         txs: item.hash,
         block: item.block,
@@ -33,15 +24,16 @@ export default class Container extends React.Component {
         amount: getAmountWithCoin(item)
       })
     })
+    console.log(rawData)
 
     const pagination = {
       setPage: this.setPage,
       activePage: this.state.page,
-      lastPage: 15,
+      lastPage: rawData.meta.last_page,
       startPage:
         this.state.page < 3
           ? 1
-          : this.state.page < 12
+          : this.state.page < rawData.meta.per_page
           ? this.state.page - 2
           : 11
     }

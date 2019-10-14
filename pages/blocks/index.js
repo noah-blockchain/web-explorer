@@ -7,9 +7,16 @@ import fetchBlocks from '~/containers/blocks/fetchData'
 import BlockDetailsComponent from '~/components/sections/blockDetails'
 import BlockDetailsContainer from '~/containers/blocks'
 import '~/common.blocks/page/page_blocks.less'
+import Pagination from '~/components/pagination'
 
-const List = ({ data = {} }) => {
-  return data.map((item, i) => <BlockDetailsComponent data={item} key={i} />)
+const List = ({ data = {}, pagination = {} }) => {
+  return (
+    <div>
+      <Pagination {...pagination}/>
+      {data.map((item, i) => <BlockDetailsComponent data={item} key={i}/>)}
+      <Pagination {...pagination}/>
+    </div>
+  )
 }
 
 const Page = ({ blocks }) => {
@@ -23,8 +30,8 @@ const Page = ({ blocks }) => {
       locales={config.languages}
     >
       <main className="page_blocks">
-        <NavbarTop />
-        <NavbarMiddle current="blocks" />
+        <NavbarTop/>
+        <NavbarMiddle current="blocks"/>
         <div className="section">
           <div className="wrapper_section-content">
             <h1 className="page__title">Blocks</h1>
@@ -32,7 +39,7 @@ const Page = ({ blocks }) => {
         </div>
         <div className="page__list">
           <BlockDetailsContainer rawData={blocks}>
-            <List />
+            <List/>
           </BlockDetailsContainer>
         </div>
       </main>

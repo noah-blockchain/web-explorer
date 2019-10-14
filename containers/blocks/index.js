@@ -20,6 +20,7 @@ export default class Container extends React.Component {
       time: item.timestamp,
       validators: item.validators.length
     }))
+    console.log(this.state.page)
     const pagination = {
       setPage: this.setPage,
       activePage: this.state.page,
