@@ -78,7 +78,7 @@ const Mobile = ({ data, modificataion = '' }) => (
   </table>
 )
 
-export default ({ data = [], pagination }) => {
+export default ({ data = [] }) => {
   return (
     <div className="transactions table_theme_simple">
       <h4 className="table__title">Transactions</h4>

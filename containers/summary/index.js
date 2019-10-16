@@ -1,13 +1,15 @@
 import React from 'react'
 
 export default ({ children, rawData = {} }) => {
+  console.info(rawData, "RAW")
+  rawData = rawData.data
   const data = {
     uptime: `${rawData.uptime} %`,
     emission: `${rawData.emission} NOAH`,
-    noahPrice: `$${rawData.priceLow} ~ $${rawData.priceHigh} million total`,
+    noahPrice: `$${rawData.bipPriceUsd} million total`,
     averageCommission: `${rawData.avrgCommission} NOAH`,
-    lastBlock: rawData.lastBlock,
-    // transactions: '1876689 0.20 TPS for days',
+    lastBlock: rawData.latestBlockHeight,
+    transactions: rawData.totalTransactions,
     validators: rawData.validators,
     coins: `${rawData.coinsLow} ~ ${rawData.coinsHigh} NOAH only`
   }

@@ -4,8 +4,8 @@ if (typeof fetch === 'undefined') {
   var fetch = require('node-fetch')
 }
 
-async function fetchData() {
-  const response = await fetch(`${config.api}transactions`)
+async function fetchData(page = 1) {
+  const response = await fetch(`${config.api}transactions?page=${page}`)
 
   const status = response.status
   const body = await response.json()

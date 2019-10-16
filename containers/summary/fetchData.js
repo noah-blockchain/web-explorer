@@ -5,11 +5,11 @@ if (typeof fetch === 'undefined') {
 }
 
 async function fetchData() {
-  const response = await fetch(`${config.api}api/extGetLastStats`)
+  const response = await fetch(`${config.api}status`)
 
   const status = response.status
   const body = await response.json()
-
+  console.log(body, "BODY")
   if (status == 200) {
     return body
   }

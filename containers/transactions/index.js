@@ -1,17 +1,36 @@
 import React from 'react'
 import { getAmountWithCoin, txTypeFilter } from '../../utils/tx'
+import fetchTransactions from '~/containers/transactions/fetchData'
 
 export default class Container extends React.Component {
   state = {
-    page: 1
+    page: 1,
+    rawData: {
+      data: [],
+      meta: {
+        per_page: 0,
+        last_page: 0
+      }
+    }
   }
 
-  setPage = page => {
-    return this.setState({ page })
+  setPage = async page => {
+    if(page !== this.state.page) {
+      const rawData = await fetchTransactions(page).catch(() => [])
+      return this.setState({ page, rawData })
+    }
+  }
+
+  componentDidMount() {
+    console.log(this.props.rawData, "RAW")
+    this.setState({
+      rawData: this.props.rawData
+    })
   }
 
   render() {
-    const { children, rawData = [] } = this.props
+    const { children } = this.props
+    const { rawData = [] } = this.state
 
     const data = rawData.data.map(item => {
       return ({
@@ -24,8 +43,6 @@ export default class Container extends React.Component {
         amount: getAmountWithCoin(item)
       })
     })
-    console.log(rawData)
-
     const pagination = {
       setPage: this.setPage,
       activePage: this.state.page,

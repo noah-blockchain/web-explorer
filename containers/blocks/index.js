@@ -1,16 +1,29 @@
 import React from 'react'
+import fetchBlocks from '~/containers/blocks/fetchData'
 
 export default class Container extends React.Component {
   state = {
-    page: 1
+    page: 1,
+    rawData: []
   }
 
-  setPage = page => {
-    return this.setState({ page })
+  setPage = async page => {
+    if(page !== this.state.page) {
+      const rawData = await fetchBlocks(page).catch(() => [])
+      return this.setState({ page, rawData })
+    }
+  }
+
+  componentDidMount() {
+    this.setState({
+      rawData: this.props.rawData
+    })
   }
 
   render() {
-    const { children, rawData = [] } = this.props
+    const { children } = this.props
+    const { rawData = [] } = this.state
+
     const data = rawData.map(item => ({
       height: item.height,
       txs: item.hash,
@@ -20,7 +33,6 @@ export default class Container extends React.Component {
       time: item.timestamp,
       validators: item.validators.length
     }))
-    console.log(this.state.page)
     const pagination = {
       setPage: this.setPage,
       activePage: this.state.page,
