@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  next:
+    build: ./app/
+    container_name: next
+    restart: always
+    ports:
+      - "3000:3000"
+    command:
+      "npm run start"
+
+  nginx:
+    image: nginx:1.17
+    container_name: ngxe
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+    depends_on:
+      - next

@@ -1,0 +1,28 @@
+@import '../node_modules/reset-css/less/reset.less';
+
+@import 'button/button';
+@import 'card/card';
+@import 'section/section';
+@import 'text-wrap/text-wrap';
+@import 'wrapper/wrapper_section-content';
+@import 'table/table';
+@import 'link/link';
+@import 'tooltip/tooltip';
+
+html {
+  font-size: 10px;
+  background: #e5e5e5;
+
+  @media @under-lg {
+    font-size: 8px;
+  }
+}
+
+body {
+  font-family: sans-serif;
+  font-weight: 400;
+}
+
+button {
+  all: unset;
+}
