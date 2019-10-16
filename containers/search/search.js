@@ -1,4 +1,5 @@
 import config from '~/config'
+import { isNumeric } from '../../utils/validators'
 
 const fetchUrl = async url => {
   const response = await fetch(url)
@@ -9,23 +10,22 @@ const fetchUrl = async url => {
 }
 
 const search = async (value = '') => {
-  const wallet = 'nhwlt'
-  const transaction = 'nhtrn'
-  const block = 'nhblk'
+  const wallet = 'Mx'
+  const transaction = 'Mt'
 
   if (value.startsWith(wallet)) {
-    const result = await fetchUrl(`${config.api}walletsGetInfo/${value}`)
-    return { type: 'wallet', result }
+    const result = await fetchUrl(`${config.api}addresses/${value}`)
+    return { type: 'wallet',result : result.data }
   }
 
   if (value.startsWith(transaction)) {
-    const result = await fetchUrl(`${config.api}/extTransactionsFind/${value}`)
-    return { type: 'transaction', result: result[0] }
+    const result = await fetchUrl(`${config.api}transactions/${value}`)
+    return { type: 'transaction', result: result.data }
   }
 
-  if (value.startsWith(block)) {
-    const result = await fetchUrl(`${config.api}/api/extBlocksFind/${value}`)
-    return { type: 'block', result: result[0] }
+  if (isNumeric(value)) {
+    const result = await fetchUrl(`${config.api}blocks/${value}`)
+    return { type: 'block', result: result.data }
   }
 
   throw new Error()

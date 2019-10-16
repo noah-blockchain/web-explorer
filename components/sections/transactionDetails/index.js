@@ -1,6 +1,7 @@
 import React from 'react'
 import './section_transaction-details.less'
 import convertDate from '~/utils/convertDate'
+import Link from 'next/link'
 
 export default ({ data }) => {
   if (data === null) {
@@ -19,7 +20,8 @@ export default ({ data }) => {
     {
       name: 'TxHash',
       value: data.txs,
-      modification: 'translucent'
+      modification: 'translucent',
+      href: '/transactions/' + data.txs
     },
     {
       name: 'Type',
@@ -34,7 +36,8 @@ export default ({ data }) => {
     {
       name: 'From',
       value: data.addressOut,
-      modification: 'translucent'
+      modification: 'translucent',
+      href: '/wallets/' + data.addressOut
     },
     {
       name: 'Time',
@@ -45,7 +48,7 @@ export default ({ data }) => {
       name: 'Amount',
       value: data.amount,
       modification: 'translucent'
-    },
+    }
   ]
 
   return (
@@ -57,11 +60,16 @@ export default ({ data }) => {
             {fields.map((item, i) => (
               <div
                 className={`section__field section__field--${item.modification ||
-                  'default'}`}
+                'default'}`}
                 key={i}
               >
+
                 <p className="section__field-name">{item.name}</p>
-                <p className="section__field-value">{item.value}</p>
+                {item.href ? (
+                    <Link href={item.href}>
+                      <a className="section__field-value link">{item.value}</a>
+                    </Link>
+                ) : <p className="section__field-value">{item.value}</p>}
               </div>
             ))}
           </div>

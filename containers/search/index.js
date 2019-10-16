@@ -15,10 +15,10 @@ export default ({ children }) => {
     try {
       if (!res) Router.push('/blocks/404')
 
-      if (res.type === 'wallet') Router.push(`/wallets/${res.result._id}`)
+      if (res.type === 'wallet') Router.push(`/wallets/${res.result.address}`)
       if (res.type === 'transaction')
-        Router.push(`/transactions/${res.result._id}`)
-      if (res.type === 'block') Router.push(`/blocks/${res.result._id}`)
+        Router.push(`/transactions/${res.result.hash}`)
+      if (res.type === 'block') Router.push(`/blocks/${res.result.height}`)
     } catch (e) {}
   }
 

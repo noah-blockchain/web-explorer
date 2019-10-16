@@ -38,9 +38,7 @@ const Page = ({ block }) => {
 
 Page.getInitialProps = async (context) => {
 	const { block } = context.query
-
 	const data = await fetchBlockDetails(block).catch(() => ({}))
-	console.log(data, "DATA")
 	return { block: data }
 }
 
