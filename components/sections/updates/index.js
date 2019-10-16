@@ -38,7 +38,7 @@ export default ({ data = {} }) => {
     {
       name: 'Transactions per second',
       value: data.transactionsPerSecond,
-      icon: require('./images/diamond.svg')
+      icon: require('./images/speed.svg')
     }
   ]
 
