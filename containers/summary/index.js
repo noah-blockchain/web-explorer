@@ -11,7 +11,8 @@ export default ({ children, rawData = {} }) => {
     lastBlock: rawData.latestBlockHeight,
     transactions: rawData.totalTransactions,
     validators: rawData.validators,
-    coins: `${rawData.coinsLow} ~ ${rawData.coinsHigh} NOAH only`
+    coins: `${rawData.coinsLow} ~ ${rawData.coinsHigh} NOAH only`,
+    transactionsPerSecond: rawData.transactionsPerSecond
   }
 
   const child = React.Children.map(children, child =>

@@ -5,8 +5,8 @@ if (typeof fetch === 'undefined') {
 }
 
 async function fetchData(id) {
-  const response = await fetch(`${config.api}/walletsGetInfo/${id}`)
-
+  const response = await fetch(`${config.api}addresses/${id}`)
+  console.log(`${config.api}/addresses/${id}`, response)
   const status = response.status
   const body = await response.json()
 

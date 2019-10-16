@@ -38,8 +38,9 @@ const Page = ({ wallet }) => {
 
 Page.getInitialProps = async (context) => {
 	const { wallet } = context.query
-
+	console.log(wallet)
 	const data = await fetchWalletDetails(wallet).catch(() => ({}))
+	console.log(data, "WALLET")
 	return { wallet: data }
 }
 

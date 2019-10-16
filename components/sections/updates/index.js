@@ -3,26 +3,26 @@ import './section_updates.less'
 
 export default ({ data = {} }) => {
   const cards = [
-    {
-      name: 'Uptime in days',
-      value: data.uptime,
-      icon: require('./images/shield.svg')
-    },
-    {
-      name: 'Emission',
-      value: data.emission,
-      icon: require('./images/diamond.svg')
-    },
-    {
-      name: 'Price NOAH',
-      value: data.noahPrice,
-      icon: require('./images/coin.svg')
-    },
-    {
-      name: 'Average Commission per day',
-      value: data.averageCommission,
-      icon: require('./images/pie-graph-split.svg')
-    },
+    // {
+    //   name: 'Uptime in days',
+    //   value: data.uptime,
+    //   icon: require('./images/shield.svg')
+    // },
+    // {
+    //   name: 'Emission',
+    //   value: data.emission,
+    //   icon: require('./images/diamond.svg')
+    // },
+    // {
+    //   name: 'Price NOAH',
+    //   value: data.noahPrice,
+    //   icon: require('./images/coin.svg')
+    // },
+    // {
+    //   name: 'Average Commission per day',
+    //   value: data.averageCommission,
+    //   icon: require('./images/pie-graph-split.svg')
+    // },
     {
       name: 'Last block',
       value: data.lastBlock,
@@ -36,9 +36,9 @@ export default ({ data = {} }) => {
       link: '/transactions'
     },
     {
-      name: 'Coins',
-      value: data.coins,
-      icon: require('./images/coin.svg')
+      name: 'Transactions per second',
+      value: data.transactionsPerSecond,
+      icon: require('./images/diamond.svg')
     }
   ]
 

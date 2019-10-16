@@ -15,17 +15,7 @@ export default ({ data }) => {
     )
   }
 
-  const fields = [
-    {
-      name: 'id',
-      value: data._id
-    },
-    {
-      name: 'Assets',
-      value: data.assets
-    }
-  ]
-
+  console.log(data, "DATA")
   return (
     <section className="section section_wallet-details">
       <div className="wrapper_section-content">
@@ -33,15 +23,15 @@ export default ({ data }) => {
           <h2 className="section__title">Information</h2>
           <div className="section__body">
             <div className={`section__field section__field--default`}>
-              <p className="section__field-name">id</p>
-              <p className="section__field-values">{data._id}</p>
+              <p className="section__field-name">Address</p>
+              <p className="section__field-values">{data.address}</p>
             </div>
             <div className={`section__field section__field--default`}>
               <p className="section__field-name">Assets</p>
               <p className="section__field-values">
-                {Object.keys(data.assets).map(key => (
+                {Object.keys(data.balances).map(key => (
                   <span className="section__field-value" key={key}>
-                    {key} balance: {data.assets[key].balance}
+                    {data.balances[key].coin} balance: {data.balances[key].amount}
                   </span>
                 ))}
               </p>
