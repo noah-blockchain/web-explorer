@@ -10,8 +10,8 @@ const fetchUrl = async url => {
 }
 
 const search = async (value = '') => {
-  const wallet = 'Mx'
-  const transaction = 'Mt'
+  const wallet = 'NOAHx'
+  const transaction = 'Nt'
 
   if (value.startsWith(wallet)) {
     const result = await fetchUrl(`${config.api}addresses/${value}`)
