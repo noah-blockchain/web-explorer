@@ -16,7 +16,10 @@ export default class Container extends React.Component {
 
   setPage = async page => {
     if (page !== this.state.page) {
-      const rawData = await fetchTransactionsAddress(page).catch(() => [])
+      const rawData = await fetchTransactionsAddress(
+        page,
+        this.props.address
+      ).catch(() => [])
       return this.setState({ page, rawData })
     }
   }
@@ -50,7 +53,7 @@ export default class Container extends React.Component {
         this.state.page < 3
           ? 1
           : this.state.page < rawData.meta.per_page
-          ? this.state.page - 2
+          ? this.state.page - 1
           : 11
     }
 
