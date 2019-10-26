@@ -22,6 +22,12 @@ export default ({ current = 'dashboard' }) => {
       name: 'Transactions',
       icon: require('./images/satellite.svg'),
       link: '/transactions'
+    },
+    {
+      id: 'coins',
+      name: 'Coins',
+      icon: require('./images/coins.svg'),
+      link: '/coins'
     }
   ]
 

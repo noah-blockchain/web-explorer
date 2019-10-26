@@ -6,7 +6,7 @@
     "dev": "next -p 3001",
     "build": "next build ",
     "postinstall": "next build",
-    "start": "next start -p 3000"
+    "start": "next start -p $PORT"
   },
   "dependencies": {
     "@zeit/next-less": "^1.0.1",
