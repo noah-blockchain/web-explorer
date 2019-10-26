@@ -1,6 +1,6 @@
 import React from 'react'
 import { getAmountWithCoin, txTypeFilter } from '../../utils/tx'
-import fetchTransactionsAddress from '~/containers/transactions_address/fetchData'
+import fetchTransactionsAddress from '~/containers/transactions/fetchData'
 
 export default class Container extends React.Component {
   state = {
