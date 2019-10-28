@@ -5,13 +5,14 @@ export default ({ children, rawData = [] }) => {
   const data = !rawData.data
     ? null
     : {
-        txs: rawData.data.hash,
-        block: rawData.data.block,
-        addressOut: rawData.data.from,
-        time: rawData.data.timestamp,
-        type: txTypeFilter(rawData.data.type),
-        amount: getAmountWithCoin(rawData.data)
-      }
+      txs: rawData.data.hash,
+      block: rawData.data.block,
+      addressOut: rawData.data.from,
+      time: rawData.data.timestamp,
+      payload: rawData.data.payload,
+      type: txTypeFilter(rawData.data.type),
+      amount: getAmountWithCoin(rawData.data)
+    }
   console.log(data)
 
   const child = React.Children.map(children, child =>

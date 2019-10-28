@@ -48,7 +48,12 @@ export default ({ data }) => {
       name: 'Amount',
       value: data.amount,
       modification: 'translucent'
-    }
+    },
+    {
+      name: 'Message',
+      value: data.payload.length > 0 ? atob(data.payload) : "-",
+      modification: 'translucent'
+    },
   ]
 
   return (

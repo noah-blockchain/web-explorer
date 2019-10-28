@@ -8,6 +8,7 @@ async function fetchData(page = 1) {
   const response = await fetch(`${config.api}transactions?page=${page}`)
 
   const status = response.status
+
   const body = await response.json()
 
   if (status == 200) {
