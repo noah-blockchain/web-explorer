@@ -7,15 +7,6 @@ import fetchCoins from '~/containers/coins/fetchData'
 import CoinsDetailsComponent from '~/components/sections/coinsDetails'
 import CoinsDetailsContainer from '~/containers/coins'
 
-const List = ({ data = {} }) => {
-  return (
-    <div>
-      {data.map((item, i) => (
-        <CoinsDetailsComponent data={item} key={i} />
-      ))}
-    </div>
-  )
-}
 
 const Page = ({ coins }) => {
   const language = 'en'
@@ -36,7 +27,7 @@ const Page = ({ coins }) => {
         </div>
         <div className="page__list">
           <CoinsDetailsContainer rawData={coins}>
-            <List />
+            <CoinsDetailsComponent />
           </CoinsDetailsContainer>
         </div>
       </main>
