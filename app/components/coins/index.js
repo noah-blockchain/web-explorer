@@ -147,7 +147,6 @@ export default (props) => {
   return (
     <div className="coins-container">
       <div className="transactions coins-tx table_theme_simple">
-        <h4 className="table__title">Coins</h4>
         <Desktop modificataion="desktop" {...props}/>
         <Mobile modificataion="mobile" {...props}/>
       </div>

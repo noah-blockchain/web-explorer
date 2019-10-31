@@ -21,11 +21,11 @@ export default class Container extends React.Component {
     })
   }
 
-  getFilterString(filter, order_by) {
+  getFilterString(filter, order_by, page = 1) {
     if (filter !== null && filter.length > 0) {
-      return `?filter=${filter}&order_by=${order_by}&page=${this.state.page}`
+      return `?filter=${filter}&order_by=${order_by}&page=${page}`
     }
-    return `?page=${this.state.page}`
+    return `?page=${page}`
   }
 
   getOrder(filter) {
@@ -37,13 +37,13 @@ export default class Container extends React.Component {
 
   setFilter = async (filter) => {
     const order_by = this.getOrder(filter)
-    const rawData = await fetchCoins(this.getFilterString(filter, order_by)).catch(() => [])
+    const rawData = await fetchCoins(this.getFilterString(filter, order_by, this.state.page)).catch(() => [])
     return this.setState({ filter, order_by, rawData })
   }
 
   setPage = async page => {
     if (page !== this.state.page) {
-      const rawData = await fetchCoins(this.getFilterString(this.state.filter, this.state.order_by)).catch(() => [])
+      const rawData = await fetchCoins(this.getFilterString(this.state.filter, this.state.order_by, page)).catch(() => [])
       return this.setState({ page, rawData })
     }
   }
