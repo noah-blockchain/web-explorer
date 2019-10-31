@@ -4,7 +4,7 @@ import Layout from '~/components/layout'
 import NavbarTop from '~/components/sections/navbar/top'
 import NavbarMiddle from '~/components/sections/navbar/middle'
 import fetchCoins from '~/containers/coins/fetchData'
-import CoinsDetailsComponent from '~/components/sections/coinsDetails'
+import CoinsDetailsComponent from '~/components/coins'
 import CoinsDetailsContainer from '~/containers/coins'
 
 
