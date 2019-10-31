@@ -4,7 +4,7 @@ import convertDate from '../../utils/convertDate'
 import shrinkString from '../../utils/shrinkString'
 import Link from 'next/link'
 import Pagination from '../pagination'
-
+import web3 from 'web3'
 
 const Default = () => (
   <img className="sort-icon" src={require('./images/default.svg')} alt="default"/>
@@ -95,7 +95,7 @@ const Desktop = (props) => {
           <th className="table__cell">{Number(item.reserveBalance).toFixed(2)}</th>
           <th className="table__cell">{item.name}</th>
           <th className="table__cell">{item.symbol}</th>
-          <th className="table__cell">{Number(item.price).toFixed(2)}</th>
+          <th className="table__cell">{Number(web3.utils.fromWei(item.price)).toFixed(2)}</th>
           <th className="table__cell">{item.delegated}</th>
           <th className="table__cell">{convertDate(item.timestamp)}</th>
           <th className="table__cell table__link">

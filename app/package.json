@@ -24,6 +24,7 @@
     "react-intl": "^2.8.0",
     "react-outside-click-handler": "^1.2.4",
     "reset-css": "^4.0.1",
+    "web3": "^1.2.2",
     "yarn": "^1.15.2"
   },
   "devDependencies": {
