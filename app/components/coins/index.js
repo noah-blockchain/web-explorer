@@ -88,7 +88,7 @@ const Desktop = (props) => {
       </tr>
       </thead>
       <tbody className="table__body">
-      {data.slice(0, 10).map((item, i) => (
+      {data.map((item, i) => (
         <tr className="table__row" key={i}>
           <th className="table__cell">{item.crr}</th>
           <th className="table__cell"> {Number(item.volume).toFixed(2)}</th>
