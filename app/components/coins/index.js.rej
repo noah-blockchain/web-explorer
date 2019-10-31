@@ -1,0 +1,76 @@
+diff a/components/coins/index.js b/components/coins/index.js	(rejected hunks)
+@@ -7,7 +7,7 @@ const Desktop = ({ data, modificataion = '' }) => (
+-    <tr>
+-      <th className="table__cell">Сrr</th>
+-      <th className="table__cell">Volume</th>
+-      <th className="table__cell">Reserve Balance</th>
+-      <th className="table__cell">Name</th>
+-      <th className="table__cell">Symbol</th>
+-    </tr>
++      <tr>
++        <th className="table__cell">Сrr</th>
++        <th className="table__cell">Volume</th>
++        <th className="table__cell">Reserve Balance</th>
++        <th className="table__cell">Name</th>
++        <th className="table__cell">Symbol</th>
++      </tr>
+@@ -16,9 +16,11 @@ const Desktop = ({ data, modificataion = '' }) => (
+-    {data.slice(0, 10).map((item, i) => (
+-      <tr className="table__row" key={i}>
+-        <th className="table__cell">{item.crr}</th>
+-        <th className="table__cell"> {Number(item.volume).toFixed(6)}</th>
+-        <th className="table__cell">{Number(item.reserveBalance).toFixed(6)}</th>
+-        <th className="table__cell">{item.name}</th>
+-        <th className="table__cell">{item.symbol}</th>
+-      </tr>
+-    ))}
++      {data.slice(0, 10).map((item, i) => (
++        <tr className="table__row" key={i}>
++          <th className="table__cell">{item.crr}</th>
++          <th className="table__cell"> {Number(item.volume).toFixed(6)}</th>
++          <th className="table__cell">
++            {Number(item.reserveBalance).toFixed(6)}
++          </th>
++          <th className="table__cell">{item.name}</th>
++          <th className="table__cell">{item.symbol}</th>
++        </tr>
++      ))}
+@@ -32,11 +34,22 @@ const Mobile = ({ data, modificataion = '' }) => (
+-    {data.slice(0, 10).map((item, i) => (
+-      <tr className="table__row" key={i}>
+-        <th className="table__cell">
+-          <span className="table__cell-item"><strong>Сrr</strong> {item.crr}</span>
+-          <span className="table__cell-item"><strong>Volume</strong> {Number(item.volume).toFixed(6)}</span>
+-          <span className="table__cell-item"><strong>Reserve Balance</strong> {Number(item.reserveBalance).toFixed(6)}</span>
+-          <span className="table__cell-item"><strong>Name</strong> {item.name}</span>
+-          <span className="table__cell-item"><strong>Symbol</strong> {item.symbol}</span>
+-        </th>
+-      </tr>
+-    ))}
++      {data.slice(0, 10).map((item, i) => (
++        <tr className="table__row" key={i}>
++          <th className="table__cell">
++            <span className="table__cell-item">
++              <strong>Сrr</strong> {item.crr}
++            </span>
++            <span className="table__cell-item">
++              <strong>Volume</strong> {Number(item.volume).toFixed(6)}
++            </span>
++            <span className="table__cell-item">
++              <strong>Reserve Balance</strong>{' '}
++              {Number(item.reserveBalance).toFixed(6)}
++            </span>
++            <span className="table__cell-item">
++              <strong>Name</strong> {item.name}
++            </span>
++            <span className="table__cell-item">
++              <strong>Symbol</strong> {item.symbol}
++            </span>
++          </th>
++        </tr>
++      ))}
+@@ -52,2 +65,2 @@ export default ({ data = [] }) => {
+-        <Desktop modificataion="desktop" data={data}/>
+-        <Mobile modificataion="mobile" data={data}/>
++        <Desktop modificataion="desktop" data={data} />
++        <Mobile modificataion="mobile" data={data} />

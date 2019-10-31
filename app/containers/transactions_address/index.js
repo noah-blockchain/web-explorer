@@ -40,7 +40,7 @@ export default class Container extends React.Component {
         block: item.block,
         addressOut: item.from,
         time: item.timestamp,
-        _asset: item._asset,
+        payload: item.payload,
         type: txTypeFilter(item.type),
         amount: getAmountWithCoin(item)
       }

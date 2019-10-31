@@ -56,6 +56,7 @@ export default ({ data }) => {
     },
   ]
 
+  console.log(data)
   return (
     <section className="section section_transaction-details">
       <div className="wrapper_section-content">
