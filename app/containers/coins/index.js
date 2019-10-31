@@ -5,7 +5,11 @@ export default class Container extends React.Component {
   state = {
     page: 1,
     rawData: {
-      data: []
+      data: [],
+      meta: {
+        per_page: 0,
+        last_page: 0
+      }
     },
     filter: null,
     order_by: null
@@ -19,9 +23,9 @@ export default class Container extends React.Component {
 
   getFilterString(filter, order_by) {
     if (filter !== null && filter.length > 0) {
-      return `?filter=${filter}&order_by=${order_by}`
+      return `?filter=${filter}&order_by=${order_by}&page=${this.state.page}`
     }
-    return ''
+    return `?page=${this.state.page}`
   }
 
   getOrder(filter) {
@@ -33,9 +37,15 @@ export default class Container extends React.Component {
 
   setFilter = async (filter) => {
     const order_by = this.getOrder(filter)
-    console.log('ORDER BY', order_by);
     const rawData = await fetchCoins(this.getFilterString(filter, order_by)).catch(() => [])
     return this.setState({ filter, order_by, rawData })
+  }
+
+  setPage = async page => {
+    if (page !== this.state.page) {
+      const rawData = await fetchCoins(this.getFilterString(this.state.filter, this.state.order_by)).catch(() => [])
+      return this.setState({ page, rawData })
+    }
   }
 
   render() {
@@ -47,7 +57,7 @@ export default class Container extends React.Component {
       order_by: this.state.order_by,
       setFilter: this.setFilter
     }
-
+    console.log(rawData, "RAWS")
     rawData.data.forEach(item => {
       if (item.symbol !== 'NOAH') {
         data.push({
@@ -55,13 +65,30 @@ export default class Container extends React.Component {
           volume: item.volume,
           reserveBalance: item.reserveBalance,
           name: item.name,
-          symbol: item.symbol
+          symbol: item.symbol,
+
+          timestamp: item.timestamp,
+          creator: item.creator,
+          delegated: item.delegated,
+          price: item.price
         })
       }
     })
 
+    const pagination = {
+      setPage: this.setPage,
+      activePage: this.state.page,
+      lastPage: rawData.meta.last_page,
+      startPage:
+        this.state.page < 3
+          ? 1
+          : this.state.page < rawData.meta.per_page
+          ? this.state.page - 2
+          : 11
+    }
+
     const child = React.Children.map(children, child =>
-      React.cloneElement(child, { data, filter })
+      React.cloneElement(child, { data, filter, pagination })
     )
 
     return <>{child}</>

@@ -1,5 +1,10 @@
 import React from 'react'
 import './section_coins-details.less'
+import convertDate from '../../utils/convertDate'
+import shrinkString from '../../utils/shrinkString'
+import Link from 'next/link'
+import Pagination from '../pagination'
+
 
 const Default = () => (
   <img className="sort-icon" src={require('./images/default.svg')} alt="default"/>
@@ -68,16 +73,38 @@ const Desktop = (props) => {
             order_by={filter.order_by}
           />
         </th>
+        <th className="table__cell" >
+          <span>Price</span>
+        </th>
+        <th className="table__cell">
+          <span>Delegated</span>
+        </th>
+        <th className="table__cell">
+          <span>Date</span>
+        </th>
+        <th className="table__cell">
+          <span>Creator</span>
+        </th>
       </tr>
       </thead>
       <tbody className="table__body">
       {data.slice(0, 10).map((item, i) => (
         <tr className="table__row" key={i}>
           <th className="table__cell">{item.crr}</th>
-          <th className="table__cell"> {Number(item.volume).toFixed(6)}</th>
-          <th className="table__cell">{Number(item.reserveBalance).toFixed(6)}</th>
+          <th className="table__cell"> {Number(item.volume).toFixed(2)}</th>
+          <th className="table__cell">{Number(item.reserveBalance).toFixed(2)}</th>
           <th className="table__cell">{item.name}</th>
           <th className="table__cell">{item.symbol}</th>
+          <th className="table__cell">{Number(item.price).toFixed(2)}</th>
+          <th className="table__cell">{item.delegated}</th>
+          <th className="table__cell">{convertDate(item.timestamp)}</th>
+          <th className="table__cell table__link">
+            <Link href={`/wallets/${item.creator}`}>
+              <a className="link_theme_none">
+                {shrinkString(item.creator, 14) }
+              </a>
+            </Link>
+            </th>
         </tr>
       ))}
       </tbody>
@@ -97,6 +124,17 @@ const Mobile = ({ data, modificataion = '' }) => (
             className="table__cell-item"><strong>Reserve Balance</strong> {Number(item.reserveBalance).toFixed(6)}</span>
           <span className="table__cell-item"><strong>Name</strong> {item.name}</span>
           <span className="table__cell-item"><strong>Symbol</strong> {item.symbol}</span>
+
+          <span className="table__cell-item"><strong>Price</strong> {item.price}</span>
+          <span className="table__cell-item"><strong>Delegated</strong> {item.delegated}</span>
+          <span className="table__cell-item"><strong>Date</strong> {convertDate(item.timestamp)}</span>
+          <span className="table__cell-item"><strong>Creator</strong> {' '}
+            <Link className="table__link" href={`/wallets/${item.creator}`}>
+              <a className="link_theme_none">
+                {shrinkString(item.creator, 14) }
+              </a>
+            </Link>
+          </span>
         </th>
       </tr>
     ))}
@@ -105,7 +143,7 @@ const Mobile = ({ data, modificataion = '' }) => (
 )
 
 export default (props) => {
-  console.log(props)
+  const {pagination} = props;
   return (
     <div className="coins-container">
       <div className="transactions coins-tx table_theme_simple">
@@ -113,6 +151,7 @@ export default (props) => {
         <Desktop modificataion="desktop" {...props}/>
         <Mobile modificataion="mobile" {...props}/>
       </div>
+      <Pagination {...pagination} />
     </div>
   )
 }
