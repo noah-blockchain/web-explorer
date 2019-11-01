@@ -73,8 +73,13 @@ const Desktop = (props) => {
             order_by={filter.order_by}
           />
         </th>
-        <th className="table__cell" >
+        <th className="table__cell" onClick={() => filter.setFilter('price')}>
           <span>Price</span>
+          <Icons
+            name="price"
+            filter={filter.filter}
+            order_by={filter.order_by}
+          />
         </th>
         <th className="table__cell">
           <span>Delegated</span>
