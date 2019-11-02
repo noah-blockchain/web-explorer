@@ -40,7 +40,7 @@ export default () => (
             alt="app store"
           />
         </a>
-        <a className="section__link" tooltip="coming soon">
+        <a className="section__link" target="_blank" href="http://ark-wallet.testnet.noah-blockchain.com/">
           <img
             className="section__link-image"
             src={require('./images/web-wallet.svg')}
