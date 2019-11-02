@@ -24,21 +24,45 @@ export default ({ data = {} }) => {
     //   icon: require('./images/pie-graph-split.svg')
     // },
     {
-      name: 'Last block',
-      value: data.lastBlock,
-      icon: require('./images/blockchain.svg'),
-      link: '/blocks'
-    },
-    {
       name: 'Transactions',
-      value: data.transactions,
+      value: data.txTotalCount,
       icon: require('./images/transaction.svg'),
       link: '/transactions'
     },
     {
       name: 'Transactions per second',
-      value: data.transactionsPerSecond,
+      value: data.txPerSecond,
       icon: require('./images/speed.svg')
+    },
+    {
+      name: 'Active validators',
+      value: data.activeValidators,
+      icon: require('./images/validators.svg')
+    },
+    {
+      name: 'Free float',
+      value: Number(data.freeFloatNoah).toFixed(2),
+      icon: require('./images/diamond.svg'),
+    },
+    {
+      name: 'Emission',
+      value: data.noahEmission,
+      icon: require('./images/coin.svg')
+    },
+    {
+      name: 'Total Delegated',
+      value: data.noahEmission,
+      icon: require('./images/emission.svg')
+    },
+    {
+      name: 'Uptime',
+      value: data.uptime,
+      icon: require('./images/uptime.svg')
+    },
+    {
+      name: 'Status',
+      value: data.status,
+      icon: require('./images/status.svg')
     }
   ]
 

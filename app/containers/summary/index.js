@@ -4,15 +4,14 @@ export default ({ children, rawData = {} }) => {
   console.info(rawData, 'RAW')
   rawData = rawData.data
   const data = {
-    uptime: `${rawData.uptime} %`,
-    emission: `${rawData.emission} NOAH`,
-    noahPrice: `$${rawData.bipPriceUsd} million total`,
-    averageCommission: `${rawData.avrgCommission} NOAH`,
-    lastBlock: rawData.latestBlockHeight,
-    transactions: rawData.totalTransactions,
-    validators: rawData.validators,
-    coins: `${rawData.coinsLow} ~ ${rawData.coinsHigh} NOAH only`,
-    transactionsPerSecond: rawData.transactionsPerSecond
+    freeFloatNoah: rawData.freeFloatNoah,
+    txTotalCount: rawData.txTotalCount,
+    txPerSecond: rawData.txPerSecond,
+    activeValidators: rawData.activeValidators,
+    noahEmission: rawData.noahEmission,
+    totalDelegatedNoah: rawData.totalDelegatedNoah,
+    uptime: rawData.uptime,
+    status: rawData.status
   }
 
   const child = React.Children.map(children, child =>

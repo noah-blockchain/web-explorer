@@ -5,7 +5,7 @@ if (typeof fetch === 'undefined') {
 }
 
 async function fetchData() {
-  const response = await fetch(`${config.api}status`)
+  const response = await fetch(`${config.status}`)
 
   const status = response.status
   const body = await response.json()
