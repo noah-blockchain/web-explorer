@@ -1,5 +1,6 @@
 import React from 'react'
 import './section_updates.less'
+import { numberWithCommas } from '../../../utils/numbers'
 
 export default ({ data = {} }) => {
   const cards = [
@@ -41,17 +42,17 @@ export default ({ data = {} }) => {
     },
     {
       name: 'Free float',
-      value: Number(data.freeFloatNoah).toFixed(2),
+      value: numberWithCommas(Number(data.freeFloatNoah).toFixed(2)),
       icon: require('./images/diamond.svg'),
     },
     {
       name: 'Emission',
-      value: data.noahEmission,
+      value: numberWithCommas(Number(data.noahEmission)),
       icon: require('./images/coin.svg')
     },
     {
       name: 'Total Delegated',
-      value: data.noahEmission,
+      value: numberWithCommas(Number(data.totalDelegatedNoah).toFixed(2)),
       icon: require('./images/emission.svg')
     },
     {
