@@ -3,7 +3,6 @@ function numberWithCommas(x) {
 }
 
 const divisibility = (i, div = 6) => {
-
   if (i !== 0 && div !== 0) {
     const mult = Math.pow(10, div);
     return i / mult;

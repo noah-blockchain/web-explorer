@@ -57,7 +57,6 @@ export default class Container extends React.Component {
       order_by: this.state.order_by,
       setFilter: this.setFilter
     }
-    console.log(rawData, "RAWS")
     rawData.data.forEach(item => {
       if (item.symbol !== 'NOAH') {
         data.push({

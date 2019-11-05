@@ -4,8 +4,8 @@ import convertDate from '../../utils/convertDate'
 import shrinkString from '../../utils/shrinkString'
 import Link from 'next/link'
 import Pagination from '../pagination'
-import web3 from 'web3'
-import { divisibility, nFormatter } from '../../utils/numbers'
+const BigNumber = require('bignumber.js');
+console.log(new BigNumber('1111222233334444555566').toFixed(2) , "DDSADSAD")
 
 const Default = () => (
   <img className="sort-icon" src={require('./images/default.svg')} alt="default"/>
@@ -85,8 +85,13 @@ const Desktop = (props) => {
         <th className="table__cell">
           <span>Delegated</span>
         </th>
-        <th className="table__cell">
+        <th className="table__cell" onClick={() => filter.setFilter('capitalization')}>
           <span>Capitalization</span>
+          <Icons
+            name="capitalization"
+            filter={filter.filter}
+            order_by={filter.order_by}
+          />
         </th>
         <th className="table__cell">
           <span>Date</span>
@@ -100,14 +105,13 @@ const Desktop = (props) => {
       {data.map((item, i) => (
         <tr className="table__row" key={i}>
           <th className="table__cell">{item.crr}</th>
-          <th className="table__cell"> {Number(item.volume).toFixed(2)}</th>
-          <th className="table__cell">{Number(item.reserveBalance).toFixed(2)}</th>
+          <th className="table__cell"> {new BigNumber(item.volume).toFormat(2) }</th>
+          <th className="table__cell"> {new BigNumber(item.reserveBalance).toFormat(2) }</th>
           <th className="table__cell">{item.name}</th>
           <th className="table__cell">{item.symbol}</th>
-          <th className="table__cell">{Number(web3.utils.fromWei(item.price)).toFixed(2)}</th>
-          <th className="table__cell">{item.delegated}</th>
-          <th className="table__cell">{divisibility(item.capitalization, 36).toFixed(2)}</th>
-
+          <th className="table__cell">{new BigNumber(item.price).toFormat(2)}</th>
+          <th className="table__cell">{new BigNumber(item.delegated).toFormat(2)}</th>
+          <th className="table__cell">{new BigNumber(item.volume * item.price).toFormat(2)}</th>
           <th className="table__cell">{convertDate(item.timestamp)}</th>
           <th className="table__cell table__link">
             <Link href={`/wallets/${item.creator}`}>
