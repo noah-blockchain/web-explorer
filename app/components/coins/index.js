@@ -5,6 +5,7 @@ import shrinkString from '../../utils/shrinkString'
 import Link from 'next/link'
 import Pagination from '../pagination'
 import web3 from 'web3'
+import { divisibility, nFormatter } from '../../utils/numbers'
 
 const Default = () => (
   <img className="sort-icon" src={require('./images/default.svg')} alt="default"/>
@@ -85,6 +86,9 @@ const Desktop = (props) => {
           <span>Delegated</span>
         </th>
         <th className="table__cell">
+          <span>Capitalization</span>
+        </th>
+        <th className="table__cell">
           <span>Date</span>
         </th>
         <th className="table__cell">
@@ -102,6 +106,8 @@ const Desktop = (props) => {
           <th className="table__cell">{item.symbol}</th>
           <th className="table__cell">{Number(web3.utils.fromWei(item.price)).toFixed(2)}</th>
           <th className="table__cell">{item.delegated}</th>
+          <th className="table__cell">{divisibility(item.capitalization, 36).toFixed(2)}</th>
+
           <th className="table__cell">{convertDate(item.timestamp)}</th>
           <th className="table__cell table__link">
             <Link href={`/wallets/${item.creator}`}>
@@ -132,6 +138,8 @@ const Mobile = ({ data, modificataion = '' }) => (
 
           <span className="table__cell-item"><strong>Price</strong> {item.price}</span>
           <span className="table__cell-item"><strong>Delegated</strong> {item.delegated}</span>
+          <span className="table__cell-item"><strong>Capitalization</strong> {item.capitalization}</span>
+
           <span className="table__cell-item"><strong>Date</strong> {convertDate(item.timestamp)}</span>
           <span className="table__cell-item"><strong>Creator</strong> {' '}
             <Link className="table__link" href={`/wallets/${item.creator}`}>

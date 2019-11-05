@@ -70,7 +70,8 @@ export default class Container extends React.Component {
           timestamp: item.timestamp,
           creator: item.creator,
           delegated: item.delegated,
-          price: item.price
+          price: item.price,
+          capitalization: item.capitalization
         })
       }
     })
