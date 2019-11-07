@@ -4,8 +4,7 @@ import convertDate from '../../utils/convertDate'
 import shrinkString from '../../utils/shrinkString'
 import Link from 'next/link'
 import Pagination from '../pagination'
-const BigNumber = require('bignumber.js');
-console.log(new BigNumber('1111222233334444555566').toFixed(2) , "DDSADSAD")
+import BigNumber from 'bignumber.js';
 
 const Default = () => (
   <img className="sort-icon" src={require('./images/default.svg')} alt="default"/>
