@@ -110,7 +110,7 @@ const Desktop = (props) => {
           <th className="table__cell">{item.symbol}</th>
           <th className="table__cell">{new BigNumber(item.price).toFormat(2)}</th>
           <th className="table__cell">{new BigNumber(item.delegated).toFormat(2)}</th>
-          <th className="table__cell">{new BigNumber(item.volume * item.price).toFormat(2)}</th>
+          <th className="table__cell">{new BigNumber(item.volume * item.price).toFormat(2)} NOAH</th>
           <th className="table__cell">{convertDate(item.timestamp)}</th>
           <th className="table__cell table__link">
             <Link href={`/wallets/${item.creator}`}>

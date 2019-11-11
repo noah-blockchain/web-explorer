@@ -57,7 +57,7 @@ export default ({ data = {} }) => {
     },
     {
       name: 'Uptime',
-      value: data.uptime,
+      value: data.uptime + '%',
       icon: require('./images/uptime.svg')
     },
     {
