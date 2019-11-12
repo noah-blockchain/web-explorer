@@ -2,6 +2,7 @@ import React from 'react'
 import './section_transaction-details.less'
 import convertDate from '~/utils/convertDate'
 import Link from 'next/link'
+import Base64 from './../../../utils/base64';
 
 export default ({ data }) => {
   if (data === null) {
@@ -15,7 +16,7 @@ export default ({ data }) => {
       </section>
     )
   }
-
+  console.log(data.payload, "PAYLOAD")
   const fields = [
     {
       name: 'TxHash',
@@ -51,7 +52,7 @@ export default ({ data }) => {
     },
     {
       name: 'Message',
-      value: data.payload.length > 0 ? atob(data.payload) : "-",
+      value: data.payload.length > 0 ? Base64.decode(data.payload) : "-",
       modification: 'translucent'
     },
   ]
