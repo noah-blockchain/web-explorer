@@ -38,7 +38,7 @@ export default class Container extends React.Component {
         addressOut: item.from,
         time: item.timestamp,
         payload: item.payload,
-
+        to: item.to,
         type: txTypeFilter(item.type),
         amount: getAmountWithCoin(item)
       }

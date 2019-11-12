@@ -15,7 +15,7 @@ const List = ({ data = {}, pagination = {} }) => {
     <div>
       <Pagination {...pagination} />
       {data.map((item, i) => (
-        <TransactionDetailsComponent data={item} key={i} />
+        <TransactionDetailsComponent data={item} key={i} type={'transactions'}/>
       ))}
       <Pagination {...pagination} />
     </div>
