@@ -61,9 +61,9 @@ export default ({ data = {} }) => {
       icon: require('./images/uptime.svg')
     },
     {
-      name: 'Status',
-      value: data.status,
-      icon: require('./images/status.svg')
+      name: 'Custom coins count',
+      value: data.customCoinsCount,
+      icon: require('./images/cryptocurrency.svg')
     }
   ]
 

@@ -11,7 +11,7 @@ export default ({ children, rawData = {} }) => {
     noahEmission: rawData.noahEmission,
     totalDelegatedNoah: rawData.totalDelegatedNoah,
     uptime: rawData.uptime,
-    status: rawData.status
+    customCoinsCount: rawData.customCoinsCount
   }
 
   const child = React.Children.map(children, child =>
