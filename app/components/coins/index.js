@@ -107,7 +107,7 @@ const Desktop = (props) => {
           <th className="table__cell"> {new BigNumber(item.volume).toFormat(2) }</th>
           <th className="table__cell"> {new BigNumber(item.reserveBalance).toFormat(2) }</th>
           <th className="table__cell table__link">
-            <Link href={`/coins/${name}`}>
+            <Link href={`/coins/${item.symbol}`}>
               <a className="link_theme_none">
                 {item.name}
               </a>
