@@ -106,8 +106,20 @@ const Desktop = (props) => {
           <th className="table__cell">{item.crr}</th>
           <th className="table__cell"> {new BigNumber(item.volume).toFormat(2) }</th>
           <th className="table__cell"> {new BigNumber(item.reserveBalance).toFormat(2) }</th>
-          <th className="table__cell">{item.name}</th>
-          <th className="table__cell">{item.symbol}</th>
+          <th className="table__cell table__link">
+            <Link href={`/coins/${name}`}>
+              <a className="link_theme_none">
+                {item.name}
+              </a>
+            </Link>
+          </th>
+          <th className="table__cell table__link">
+            <Link href={`/coins/${item.symbol}`}>
+              <a className="link_theme_none">
+                {item.symbol}
+              </a>
+            </Link>
+          </th>
           <th className="table__cell">{new BigNumber(item.price).toFormat(2)}</th>
           <th className="table__cell">{new BigNumber(item.delegated).toFormat(2)}</th>
           <th className="table__cell">{new BigNumber(item.volume * item.price).toFormat(2)} NOAH</th>
@@ -118,7 +130,7 @@ const Desktop = (props) => {
                 {shrinkString(item.creator, 14) }
               </a>
             </Link>
-            </th>
+          </th>
         </tr>
       ))}
       </tbody>

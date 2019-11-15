@@ -17,7 +17,7 @@ export default ({ data = {} }) => {
     // {
     //   name: 'Price NOAH',
     //   value: data.noahPrice,
-    //   icon: require('./images/coin.svg')
+    //   icon: require('./images/coinDetails.svg')
     // },
     // {
     //   name: 'Average Commission per day',

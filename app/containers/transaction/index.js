@@ -2,7 +2,6 @@ import React from 'react'
 import { getAmountWithCoin, txTypeFilter } from '../../utils/tx'
 
 export default ({ children, rawData = [] }) => {
-  console.log(rawData, "DATA")
   const data = !rawData.data
     ? null
     : {

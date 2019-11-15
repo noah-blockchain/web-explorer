@@ -1,7 +1,6 @@
 import React from 'react'
 
 export default ({ children, rawData = {} }) => {
-  console.info(rawData, 'RAW')
   rawData = rawData.data
   const data = {
     freeFloatNoah: rawData.freeFloatNoah,

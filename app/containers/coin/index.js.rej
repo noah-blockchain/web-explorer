@@ -1,0 +1,14 @@
+diff a/containers/coin/index.js b/containers/coin/index.js	(rejected hunks)
+@@ -38 +38 @@ export default class Container extends React.Component {
+-  setFilter = async (filter) => {
++  setFilter = async filter => {
+@@ -40 +40,3 @@ export default class Container extends React.Component {
+-    const rawData = await fetchCoins(this.getFilterString(filter, order_by, this.state.page)).catch(() => [])
++    const rawData = await fetchCoins(
++      this.getFilterString(filter, order_by, this.state.page)
++    ).catch(() => [])
+@@ -46 +48,3 @@ export default class Container extends React.Component {
+-      const rawData = await fetchCoins(this.getFilterString(this.state.filter, this.state.order_by, page)).catch(() => [])
++      const rawData = await fetchCoins(
++        this.getFilterString(this.state.filter, this.state.order_by, page)
++      ).catch(() => [])
