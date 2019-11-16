@@ -15,7 +15,6 @@ export default ({ data }) => {
     )
   }
 
-  console.log(data, 'DATA')
   return (
     <section className="section section_wallet-details">
       <div className="wrapper_section-content">

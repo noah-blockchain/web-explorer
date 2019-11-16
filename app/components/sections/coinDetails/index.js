@@ -14,7 +14,6 @@ export default ({ data }) => {
       </section>
     )
   }
-  console.log(data)
 
   const fields = [
     {

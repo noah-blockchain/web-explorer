@@ -8,7 +8,6 @@ async function fetchData(page = 1, address) {
   const response = await fetch(
     `${config.api}addresses/${address}/transactions?page=${page}`
   )
-  console.log(`${config.api}addresses/${address}/transactions?page=${page}`)
   const status = response.status
   const body = await response.json()
 

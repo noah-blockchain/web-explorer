@@ -20,7 +20,6 @@ export default ({ children, rawData = [] }) => {
       to: rawData.data.to
 
     }
-  console.log(data)
 
   const child = React.Children.map(children, child =>
     React.cloneElement(child, { data })

@@ -22,7 +22,6 @@ const Asc = () => (
 )
 
 const Icons = ({ order_by, filter, name }) => {
-  console.log(name, filter, order_by)
   if (name === filter) {
     if (order_by === 'DESC') return <Desc />
     if (order_by === 'ASC') return <Asc />
@@ -32,7 +31,6 @@ const Icons = ({ order_by, filter, name }) => {
 
 const Desktop = props => {
   const { data, modificataion = '', filter } = props
-  console.log(filter)
   return (
     <table className={`table__table table__table--${modificataion}`}>
       <thead className="table__header">
