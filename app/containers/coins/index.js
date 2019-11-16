@@ -62,11 +62,11 @@ export default class Container extends React.Component {
         data.push({
           crr: item.crr,
           volume: item.volume,
-          reserveBalance: item.reserveBalance,
+
           name: item.name,
           symbol: item.symbol,
-
-          timestamp: item.timestamp,
+          reserveBalance: item.reserve_balance,
+          timestamp: item.created_at,
           creator: item.creator,
           delegated: item.delegated,
           price: item.price,

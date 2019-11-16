@@ -21,7 +21,7 @@ const Page = ({ coins }) => {
 	  >
 	    <main className="page_transaction">
 		    <NavbarTop />
-		    <NavbarMiddle current='transactions' />
+		    <NavbarMiddle current='coins' />
 		    <div className='section section_transaction-details-title'>
 			    <div className='wrapper_section-content'>
 				    <h1 className='section__title'>
