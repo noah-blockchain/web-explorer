@@ -36,7 +36,7 @@ export default class Container extends React.Component {
         txs: item.hash,
         block: item.block,
         addressOut: item.from,
-        time: item.timestamp,
+        time: item.created_at,
         payload: item.payload,
         to: item.to,
         type: txTypeFilter(item.type),

@@ -56,14 +56,14 @@ export default ({ data, type }) => {
       name: 'Amount',
       value: data.amount,
       modification: 'translucent'
-    },
+    }
   ]
 
-  if(type !== 'transactions') {
+  if (type !== 'transactions') {
     fields.push(
       {
         name: 'Commision',
-        value: "NOAH " + Number(data.fee).toFixed(2) ,
+        value: 'NOAH ' + Number(data.fee).toFixed(2),
         modification: 'translucent'
       },
       {
@@ -97,17 +97,25 @@ export default ({ data, type }) => {
             {fields.map((item, i) => (
               <div>
                 {item.value !== null ? (
-                  <div className={`section__field section__field--${item.modification || 'default'}`} key={i}>
+                  <div
+                    className={`section__field section__field--${item.modification ||
+                      'default'}`}
+                    key={i}
+                  >
                     <p className="section__field-name">{item.name}</p>
                     {item.href ? (
                       <Link href={item.href}>
-                        <a className="section__field-value link">{item.value}</a>
+                        <a className="section__field-value link">
+                          {item.value}
+                        </a>
                       </Link>
                     ) : (
                       <p className="section__field-value">{item.value}</p>
                     )}
                   </div>
-                ) : <div/>}
+                ) : (
+                  <div />
+                )}
               </div>
             ))}
           </div>

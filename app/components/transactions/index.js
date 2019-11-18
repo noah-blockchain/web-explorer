@@ -4,11 +4,11 @@ import './transactions.less'
 import convertDate from '~/utils/convertDate'
 import shrinkString from '~/utils/shrinkString'
 
-const Desktop = ({ data, modificataion = '' }) => (
+const Desktop = ({ data, modificataion = '', limit  }) => (
   <table className={`table__table table__table--${modificataion}`}>
     <thead className="table__header">
     <tr>
-      <th className="table__cell">TxHash</th>
+      <th className="table__cell">TxHash </th>
       <th className="table__cell">Block</th>
       <th className="table__cell">Time</th>
       <th className="table__cell">From</th>
@@ -17,7 +17,7 @@ const Desktop = ({ data, modificataion = '' }) => (
     </tr>
     </thead>
     <tbody className="table__body">
-    {data.slice(0, 10).map((item, i) => (
+    {data.slice(0, limit).map((item, i) => (
       <tr className="table__row" key={i}>
         <th className="table__cell table__link">
           <Link href={`/transactions/${item.txs}`}>
@@ -49,7 +49,7 @@ const Desktop = ({ data, modificataion = '' }) => (
   </table>
 )
 
-const Mobile = ({ data, modificataion = '' }) => (
+const Mobile = ({ data, modificataion = '', limit }) => (
   <table className={`table__table table__table--${modificataion}`}>
     <thead className="table__header">
     <tr>
@@ -64,7 +64,7 @@ const Mobile = ({ data, modificataion = '' }) => (
     </tr>
     </thead>
     <tbody className="table__body">
-    {data.slice(0, 10).map((item, i) => (
+    {data.slice(0, limit).map((item, i) => (
       <tr className="table__row" key={i}>
         <th className="table__cell table__link">
           <Link href={`/transactions/${item.txs}`}>
@@ -96,12 +96,12 @@ const Mobile = ({ data, modificataion = '' }) => (
   </table>
 )
 
-export default ({ data = [] }) => {
+export default ({ data = [], limit=10 }) => {
   return (
     <div className="transactions table_theme_simple">
       <h4 className="table__title">Transactions</h4>
-      <Desktop modificataion="desktop" data={data}/>
-      <Mobile modificataion="mobile" data={data}/>
+      <Desktop modificataion="desktop" limit={limit} data={data}/>
+      <Mobile modificataion="mobile" limit={limit} data={data}/>
       <Link href="/transactions">
         <a className="table__more">show more</a>
       </Link>

@@ -35,15 +35,19 @@ export default class Container extends React.Component {
     if (this.state.order_by === 'DEFAULT') return 'DESC'
   }
 
-  setFilter = async (filter) => {
+  setFilter = async filter => {
     const order_by = this.getOrder(filter)
-    const rawData = await fetchCoins(this.getFilterString(filter, order_by, this.state.page)).catch(() => [])
+    const rawData = await fetchCoins(
+      this.getFilterString(filter, order_by, this.state.page)
+    ).catch(() => [])
     return this.setState({ filter, order_by, rawData })
   }
 
   setPage = async page => {
     if (page !== this.state.page) {
-      const rawData = await fetchCoins(this.getFilterString(this.state.filter, this.state.order_by, page)).catch(() => [])
+      const rawData = await fetchCoins(
+        this.getFilterString(this.state.filter, this.state.order_by, page)
+      ).catch(() => [])
       return this.setState({ page, rawData })
     }
   }

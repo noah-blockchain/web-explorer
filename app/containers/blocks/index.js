@@ -30,7 +30,7 @@ export default class Container extends React.Component {
       size: item.size,
       txCount: item.txCount,
       reward: item.reward,
-      time: item.timestamp,
+      time: item.created_at,
       validators: item.validators.length
     }))
     const pagination = {

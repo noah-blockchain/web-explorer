@@ -9,9 +9,10 @@ import UpdatesContainer from '~/containers/summary'
 import fetchSummary from '~/containers/summary/fetchData'
 import BlocksComponent from '~/components/blocks'
 import BlocksContainer from '~/containers/blocks'
+import TransactionsContainer from '~/containers/transactions'
 import fetchBlocks from '~/containers/blocks/fetchData'
 import TransactionsComponent from '~/components/transactions'
-import TransactionsContainer from '~/containers/transactions'
+
 import fetchTransactions from '~/containers/transactions/fetchData'
 import '~/common.blocks/page/page_home.less'
 

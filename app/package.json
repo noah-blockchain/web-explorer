@@ -13,6 +13,8 @@
     "big.js": "^5.2.2",
     "bignumber.js": "^9.0.0",
     "entity-decode": "^2.0.2",
+    "gravatar-url": "^3.1.0",
+    "identicon.js": "^2.3.3",
     "less": "^3.10.3",
     "next": "^9.0.6",
     "next-images": "^1.2.0",

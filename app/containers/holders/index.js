@@ -1,6 +1,5 @@
 import React from 'react'
-import { getAmountWithCoin, txTypeFilter } from '../../utils/tx'
-import fetchTransactionsAddress from '~/containers/transactions_address/fetchData'
+import fetchHoldersAddress from '~/containers/holders/fetchData'
 
 export default class Container extends React.Component {
   state = {
@@ -16,15 +15,12 @@ export default class Container extends React.Component {
 
   setPage = async page => {
     if (page !== this.state.page) {
-      const rawData = await fetchTransactionsAddress(
-        page,
-        this.props.address
-      ).catch(() => [])
+      const rawData = await fetchHoldersAddress(page).catch(() => [])
       return this.setState({ page, rawData })
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.setState({
       rawData: this.props.rawData
     })
@@ -32,19 +28,24 @@ export default class Container extends React.Component {
 
   render() {
     const { children } = this.props
-    const { rawData = [] } = this.state
-
-    const data = rawData.data.map(item => {
-      return {
-        txs: item.hash,
-        block: item.block,
-        addressOut: item.from,
-        time: item.created_at,
-        payload: item.payload,
-        type: txTypeFilter(item.type),
-        amount: getAmountWithCoin(item)
+    let { rawData = [] } = this.state
+    let data = []
+    try {
+      data = rawData.data.map(item => {
+        return {
+          amount: item.amount,
+          address: item.coin
+        }
+      })
+    } catch (e) {
+      rawData = {
+        data: [],
+        meta: {
+          per_page: 0,
+          last_page: 0
+        }
       }
-    })
+    }
     const pagination = {
       setPage: this.setPage,
       activePage: this.state.page,
@@ -53,7 +54,7 @@ export default class Container extends React.Component {
         this.state.page < 3
           ? 1
           : this.state.page < rawData.meta.per_page
-          ? this.state.page - 1
+          ? this.state.page - 2
           : 11
     }
 

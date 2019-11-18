@@ -16,10 +16,9 @@ export default class Container extends React.Component {
 
   setPage = async page => {
     if (page !== this.state.page) {
-      const rawData = await fetchTransactionsCoins(
-        page,
-        this.props.coin
-      ).catch(() => [])
+      const rawData = await fetchTransactionsCoins(page, this.props.coin).catch(
+        () => []
+      )
       return this.setState({ page, rawData })
     }
   }
@@ -34,21 +33,18 @@ export default class Container extends React.Component {
     const { children } = this.props
     const { rawData = [] } = this.state
     let data = []
-    console.log(this.props.rawData, "hello")
 
-    if(rawData.data.length > 1) {
-      data = rawData.data.map(item => {
-        return {
-          txs: item.hash,
-          block: item.block,
-          addressOut: item.from,
-          time: item.timestamp,
-          payload: item.payload,
-          type: txTypeFilter(item.type),
-          // amount: getAmountWithCoin(item)
-        }
-      })
-    }
+    data = rawData.data.map(item => {
+      return {
+        txs: item.hash,
+        block: item.block,
+        addressOut: item.from,
+        time: item.created_at,
+        payload: item.payload,
+        type: txTypeFilter(item.type),
+        amount: getAmountWithCoin(item)
+      }
+    })
 
     const pagination = {
       setPage: this.setPage,
@@ -63,7 +59,7 @@ export default class Container extends React.Component {
     }
 
     const child = React.Children.map(children, child =>
-      React.cloneElement(child, { data, pagination })
+      React.cloneElement(child, { data, pagination, limit: 14 })
     )
 
     return <>{child}</>

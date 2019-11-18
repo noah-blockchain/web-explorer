@@ -5,30 +5,23 @@ import NavbarTop from '~/components/sections/navbar/top'
 import NavbarMiddle from '~/components/sections/navbar/middle'
 import CoinsDetailsComponent from '~/components/sections/coinDetails'
 import CoinsDetailsContainer from '~/containers/coin'
-import TransactionDetailsComponent from '~/components/sections/transactionDetails'
 import TransactionDetailsContainer from '~/containers/transactions_coins'
-import Pagination from '~/components/pagination'
 import fetchCoinDetails from '~/containers/coin/fetchData'
 import fetchTransactionsCoins from '~/containers/transactions_coins/fetchData'
 import ChartsDetailComponent from '~/components/sections/charts'
 import '~/common.blocks/page/page_coins.less'
+import TransactionsComponent from '~/components/transactions'
+// -- Validators
 
+import fetchValidators from '~/containers/validators/fetchData'
+import ValidatorsContainer from '~/containers/validators'
+import ValidatorsComponent from '~/components/sections/validators'
 
-const List = ({ data = {}, pagination = {} }) => {
-  return (
-    <div>
-      <Pagination {...pagination} />
-      {data.map((item, i) => (
-        <div className="wallet-tx">
-          <TransactionDetailsComponent data={item} key={i} type={'transactions'}/>
-        </div>
-      ))}
-      <Pagination {...pagination} />
-    </div>
-  )
-}
+import fetchHolders from '~/containers/holders/fetchData'
+import HoldersContainer from '~/containers/holders'
+import HoldersComponent from '~/components/sections/holders'
 
-const Page = ({ coins, coin, transactions }) => {
+const Page = ({ coins, coin, transactions, validators, holders }) => {
   const language = 'en'
 
   return (
@@ -38,7 +31,7 @@ const Page = ({ coins, coin, transactions }) => {
       language={language}
       locales={config.languages}
     >
-      <main className="page_transaction">
+      <main className="page_coins">
         <NavbarTop/>
         <NavbarMiddle current='coins'/>
         <div className='section section_transaction-details-title'>
@@ -48,15 +41,40 @@ const Page = ({ coins, coin, transactions }) => {
             </h1>
           </div>
         </div>
-        <div className="section_coins_main-details">
-          <CoinsDetailsContainer rawData={coins}>
-            <CoinsDetailsComponent/>
-          </CoinsDetailsContainer>
-          <ChartsDetailComponent/>
+        <div className="section bottom-section">
+          <div className="wrapper_section-content">
+            <div className="page__tables">
+              <div className="left">
+                <CoinsDetailsContainer rawData={coins}>
+                  <CoinsDetailsComponent/>
+                </CoinsDetailsContainer>
+              </div>
+              <div className="right">
+                <ChartsDetailComponent/>
+              </div>
+            </div>
+          </div>
         </div>
-        <TransactionDetailsContainer coin={coin} rawData={transactions}>
-          <List/>
-        </TransactionDetailsContainer>
+        <div className="section bottom-section">
+          <div className="wrapper_section-content">
+            <div className="page__tables">
+              <div className="left">
+                <ValidatorsContainer rawData={validators}>
+                  <ValidatorsComponent/>
+                </ValidatorsContainer>
+                <div className="bottom-divider"></div>
+                <HoldersContainer rawData={holders}>
+                  <HoldersComponent/>
+                </HoldersContainer>
+              </div>
+              <div className="right">
+                <TransactionDetailsContainer coin={coin} rawData={transactions}>
+                  <TransactionsComponent  />
+                </TransactionDetailsContainer>
+              </div>
+            </div>
+          </div>
+        </div>
       </main>
     </Layout>
   )
@@ -64,10 +82,22 @@ const Page = ({ coins, coin, transactions }) => {
 
 Page.getInitialProps = async (context) => {
   const { coin } = context.query
-  const coins = await fetchCoinDetails(coin).catch(() => ({}))
-  const transactions = await fetchTransactionsCoins(1, coin).catch(() => ({}))
-  console.log(transactions, 'D')
-  return { coins: coins, coin, transactions }
+  // const coins = await fetchCoinDetails(coin).catch(() => ({}))
+  // const transactions = await fetchTransactionsCoins(1, coin).catch(() => ({}))
+
+  const coinsPromise = fetchCoinDetails(coin).catch(() => ({}))
+  const validatorsPromise = fetchValidators(1, coin).catch(() => [])
+  const holdersPromise = fetchHolders(1, coin).catch(() => [])
+  const transactionsPromise = fetchTransactionsCoins(1, coin).catch(() => [])
+
+  const [coins, validators, holders, transactions] = await Promise.all([
+    coinsPromise,
+    validatorsPromise,
+    holdersPromise,
+    transactionsPromise
+  ])
+
+  return { coins: coins, coin, transactions, validators: validators, holders }
 }
 
 export default Page
