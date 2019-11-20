@@ -20,11 +20,15 @@ import fetchValidators from '~/containers/validators/fetchData'
 import ValidatorsContainer from '~/containers/validators'
 import ValidatorsComponent from '~/components/sections/validators'
 
+import fetchDelegators from '~/containers/delegators/fetchData'
+import DelegatorsContainer from '~/containers/delegators'
+import DelegatorsComponent from '~/components/sections/delegators';
+
 import fetchHolders from '~/containers/holders/fetchData'
 import HoldersContainer from '~/containers/holders'
 import HoldersComponent from '~/components/sections/holders'
 
-const Page = ({ coins, coin, transactions, validators, holders }) => {
+const Page = ({ coins, coin, transactions, validators, holders, delegators }) => {
   const language = 'en'
 
   return (
@@ -44,13 +48,17 @@ const Page = ({ coins, coin, transactions, validators, holders }) => {
             </h1>
           </div>
         </div>
+        <CoinsDetailsContainer rawData={coins}>
+          <CoinsDetailsComponent/>
+        </CoinsDetailsContainer>
         <div className="section bottom-section">
+
           <div className="wrapper_section-content">
             <div className="page__tables">
               <div className="left">
-                <CoinsDetailsContainer rawData={coins}>
-                  <CoinsDetailsComponent/>
-                </CoinsDetailsContainer>
+                <DelegatorsContainer rawData={delegators}>
+                  <DelegatorsComponent/>
+                </DelegatorsContainer>
               </div>
               <div className="right">
                 <ChartsDetailComponent/>
@@ -71,8 +79,7 @@ const Page = ({ coins, coin, transactions, validators, holders }) => {
                 </HoldersContainer>
               </div>
               <div className="right">
-                <TransactionDetailsContainer coin={coin} rawData={transactions}
-                                             showMore={'/coins/' + coin + '/transactions'}>
+                <TransactionDetailsContainer coin={coin} rawData={transactions} showMore={'/coins/' + coin + '/transactions'}>
                   <TransactionsComponent/>
                 </TransactionDetailsContainer>
               </div>
@@ -91,17 +98,20 @@ Page.getInitialProps = async (context) => {
 
   const coinsPromise = fetchCoinDetails(coin).catch(() => ({}))
   const validatorsPromise = fetchValidators(1, coin).catch(() => [])
+  const delegatorsPromise = fetchDelegators(1, coin).catch(() => [])
+
   const holdersPromise = fetchHolders(1, coin).catch(() => [])
   const transactionsPromise = fetchTransactionsCoins(1, coin).catch(() => [])
 
-  const [coins, validators, holders, transactions] = await Promise.all([
+  const [coins, validators, holders, transactions, delegators] = await Promise.all([
     coinsPromise,
     validatorsPromise,
     holdersPromise,
-    transactionsPromise
+    transactionsPromise,
+    delegatorsPromise
   ])
 
-  return { coins: coins, coin, transactions, validators: validators, holders }
+  return { coins: coins, coin, transactions, validators: validators, holders, delegators }
 }
 
 export default Page

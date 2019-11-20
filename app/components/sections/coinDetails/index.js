@@ -60,6 +60,22 @@ export default ({ data }) => {
       name: 'Time',
       value: convertDate(data.timestamp),
       modification: 'translucent'
+    },
+
+    {
+      name: 'Start price',
+      value: data.start_price,
+      modification: 'translucent',
+    },
+    {
+      name: 'Start volume',
+      value: data.start_volume,
+      modification: 'translucent'
+    },
+    {
+      name: 'Start reserve balance',
+      value: data.start_reserve_balance,
+      modification: 'translucent',
     }
   ]
 
