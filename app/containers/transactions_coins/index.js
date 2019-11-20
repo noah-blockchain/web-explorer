@@ -59,7 +59,7 @@ export default class Container extends React.Component {
     }
 
     const child = React.Children.map(children, child =>
-      React.cloneElement(child, { data, pagination, limit: 14 })
+      React.cloneElement(child, { data, pagination, limit: 14, showMore: this.props.showMore })
     )
 
     return <>{child}</>

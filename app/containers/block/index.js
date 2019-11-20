@@ -1,6 +1,7 @@
 import React from 'react'
 
 export default ({ children, rawData = [] }) => {
+
   const data = !rawData.data
     ? null
     : {
@@ -9,7 +10,7 @@ export default ({ children, rawData = [] }) => {
         size: rawData.data.size,
         txCount: rawData.data.txCount,
         reward: rawData.data.reward,
-        time: rawData.data.timestamp,
+        time: rawData.data.created_at,
         validators: rawData.data.validators.length
       }
 

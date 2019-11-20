@@ -5,12 +5,15 @@ import NavbarTop from '~/components/sections/navbar/top'
 import NavbarMiddle from '~/components/sections/navbar/middle'
 import CoinsDetailsComponent from '~/components/sections/coinDetails'
 import CoinsDetailsContainer from '~/containers/coin'
+
 import TransactionDetailsContainer from '~/containers/transactions_coins'
-import fetchCoinDetails from '~/containers/coin/fetchData'
 import fetchTransactionsCoins from '~/containers/transactions_coins/fetchData'
+import TransactionsComponent from '~/components/transactions'
+
+
+import fetchCoinDetails from '~/containers/coin/fetchData'
 import ChartsDetailComponent from '~/components/sections/charts'
 import '~/common.blocks/page/page_coins.less'
-import TransactionsComponent from '~/components/transactions'
 // -- Validators
 
 import fetchValidators from '~/containers/validators/fetchData'
@@ -68,8 +71,9 @@ const Page = ({ coins, coin, transactions, validators, holders }) => {
                 </HoldersContainer>
               </div>
               <div className="right">
-                <TransactionDetailsContainer coin={coin} rawData={transactions}>
-                  <TransactionsComponent  />
+                <TransactionDetailsContainer coin={coin} rawData={transactions}
+                                             showMore={'/coins/' + coin + '/transactions'}>
+                  <TransactionsComponent/>
                 </TransactionDetailsContainer>
               </div>
             </div>
