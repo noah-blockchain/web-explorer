@@ -10,6 +10,7 @@ async function fetchData(filter = '') {
   const body = await response.json()
 
   if (status == 200) {
+    console.log('body', body)
     return body
   }
 
