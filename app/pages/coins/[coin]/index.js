@@ -48,7 +48,7 @@ const Page = ({ coins, coin, transactions, validators, holders, delegators }) =>
             </h1>
           </div>
         </div>
-        <CoinsDetailsContainer rawData={coins}>
+        <CoinsDetailsContainer coin={coin} rawData={coins}>
           <CoinsDetailsComponent/>
         </CoinsDetailsContainer>
         <div className="section bottom-section">
@@ -56,7 +56,7 @@ const Page = ({ coins, coin, transactions, validators, holders, delegators }) =>
           <div className="wrapper_section-content">
             <div className="page__tables">
               <div className="left">
-                <DelegatorsContainer rawData={delegators}>
+                <DelegatorsContainer  coin={coin} rawData={delegators}>
                   <DelegatorsComponent/>
                 </DelegatorsContainer>
               </div>
@@ -70,11 +70,11 @@ const Page = ({ coins, coin, transactions, validators, holders, delegators }) =>
           <div className="wrapper_section-content">
             <div className="page__tables">
               <div className="left">
-                <ValidatorsContainer rawData={validators}>
+                <ValidatorsContainer coin={coin} rawData={validators}>
                   <ValidatorsComponent/>
                 </ValidatorsContainer>
                 <div className="bottom-divider"></div>
-                <HoldersContainer rawData={holders}>
+                <HoldersContainer coin={coin} rawData={holders}>
                   <HoldersComponent/>
                 </HoldersContainer>
               </div>

@@ -15,7 +15,7 @@ export default class Container extends React.Component {
 
   setPage = async page => {
     if (page !== this.state.page) {
-      const rawData = await fetchHoldersAddress(page).catch(() => [])
+      const rawData = await fetchHoldersAddress(page, this.props.coin).catch(() => [])
       return this.setState({ page, rawData })
     }
   }
