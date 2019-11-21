@@ -5,12 +5,11 @@ if (typeof fetch === 'undefined') {
 }
 
 async function fetchData(filter = '') {
-  const response = await fetch(`${config.api}coins${filter}`)
+  const response = await fetch(`${config.api}validators${filter}`)
   const status = response.status
   const body = await response.json()
 
   if (status == 200) {
-    console.log('body', body)
     return body
   }
 
