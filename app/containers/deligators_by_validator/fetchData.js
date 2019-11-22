@@ -4,8 +4,8 @@ if (typeof fetch === 'undefined') {
   var fetch = require('node-fetch')
 }
 
-async function fetchData(page = 1, coin) {
-  const response = await fetch(`${config.domainApi}validators/${public_key}`)
+async function fetchData(public_key = '') {
+  const response = await fetch(`${config.api}validators/${public_key}/delegators`)
   const status = response.status
 
   const body = await response.json()

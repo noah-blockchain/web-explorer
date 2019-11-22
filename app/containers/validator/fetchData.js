@@ -5,7 +5,7 @@ if (typeof fetch === 'undefined') {
 }
 
 async function fetchData(public_key = '') {
-  const response = await fetch(`${config.domainApi}validators/${public_key}`)
+  const response = await fetch(`${config.api}validators/${public_key}`)
   const status = response.status
   const body = await response.json()
 

@@ -3,7 +3,7 @@ import './section_block-details.less'
 import convertDate from '~/utils/convertDate'
 
 export default ({ data }) => {
-  console.log('data', data)
+  // console.log('data', data)
   if (data === null) {
     return (
       <section className="section section_block-details">
