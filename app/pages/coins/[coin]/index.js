@@ -3,7 +3,7 @@ import config from '~/config/index'
 import Layout from '~/components/layout'
 import NavbarTop from '~/components/sections/navbar/top'
 import NavbarMiddle from '~/components/sections/navbar/middle'
-import CoinsDetailsComponent from '~/components/sections/coinDetails'
+import CoinsDetailsComponent from '~/components/sections/coinMainDetails'
 import CoinsDetailsContainer from '~/containers/coin'
 
 import TransactionDetailsContainer from '~/containers/transactions_coins'

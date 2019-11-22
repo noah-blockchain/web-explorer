@@ -17,7 +17,9 @@ export default ({ children, rawData = [] }) => {
       creator: rawData.data.creator,
       start_price: rawData.data.start_price,
       start_volume: rawData.data.start_volume,
-      start_reserve_balance: rawData.data.start_reserve_balance
+      start_reserve_balance: rawData.data.start_reserve_balance,
+      description: rawData.data.description,
+      icon_url: rawData.data.icon_url
     }
 
   const child = React.Children.map(children, child =>

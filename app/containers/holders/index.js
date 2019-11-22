@@ -7,6 +7,7 @@ export default class Container extends React.Component {
     rawData: {
       data: [],
       meta: {
+        current_page: 1,
         per_page: 0,
         last_page: 0
       }
@@ -48,14 +49,14 @@ export default class Container extends React.Component {
     }
     const pagination = {
       setPage: this.setPage,
-      activePage: this.state.page,
+      activePage: rawData.meta.current_page,
       lastPage: rawData.meta.last_page,
       startPage:
-        this.state.page < 3
+        rawData.meta.current_page < 3
           ? 1
-          : this.state.page < rawData.meta.per_page
-          ? this.state.page - 2
-          : 11
+          : rawData.meta.current_page < rawData.meta.per_page
+          ? rawData.meta.current_page - 2
+          : 10
     }
 
     const child = React.Children.map(children, child =>

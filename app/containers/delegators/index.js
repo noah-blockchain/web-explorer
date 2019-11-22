@@ -1,5 +1,4 @@
 import React from 'react'
-import { getAmountWithCoin, txTypeFilter } from '../../utils/tx'
 import fetchDelegatorsAddress from '~/containers/delegators/fetchData'
 
 export default class Container extends React.Component {
@@ -59,7 +58,7 @@ export default class Container extends React.Component {
           ? 1
           : this.state.page < rawData.meta.per_page
           ? this.state.page - 2
-          : 11
+          : 4
     }
 
     const child = React.Children.map(children, child =>

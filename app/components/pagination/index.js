@@ -2,6 +2,7 @@ import React from 'react'
 import './pagination.less'
 
 const createPages = (count, start) => {
+
   console.log(count, start);
   return Array(Math.abs(count))
     .fill(null)

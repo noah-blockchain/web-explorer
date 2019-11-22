@@ -6,6 +6,15 @@ import { generate_avatar } from '../../../utils/generation'
 import Pagination from '~/components/pagination'
 
 export default ({ data = [], pagination }) => {
+  if(data.length < 1) return (
+    <div className="blocks table_theme_simple">
+      <h4 className="table__title">Coin validators</h4>
+
+      <div className="not-found">
+        <h4>Validators not found</h4>
+      </div>
+    </div>
+  )
   return (
     <div className="blocks table_theme_simple">
       <h4 className="table__title">Coin validators</h4>
