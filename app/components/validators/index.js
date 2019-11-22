@@ -83,11 +83,11 @@ const Desktop = props => {
             onClick={() => filter.setFilter('capitalization')}
           >
             <span>Part</span>
-            <Icons
+            {/* <Icons
               name="capitalization"
               filter={filter.filter}
               order_by={filter.order_by}
-            />
+            /> */}
           </th>
         </tr>
       </thead>
