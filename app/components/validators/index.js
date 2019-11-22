@@ -142,16 +142,20 @@ const Mobile = ({ data, modificataion = '' }) => (
       {data.slice(0, 10).map((item, i) => (
         <tr className="table__row" key={i}>
           <th className="table__cell">
+          <Link href={`/validators/${item.public_key}`}>
+                <a className="link_theme_none">
+                  <div className="table__val__title">
+                    <div className="table__val__name">
             <span className="table__cell-item">
               <strong>Name</strong> {item.meta.name}
             </span>
             <span className="table__cell-item">
               <strong>Description</strong>{' '}
-              {Number(item.meta.description).toFixed(6)}
+              {(item.meta.description)}
             </span>
-            <span className="table__cell-item">
-              <strong>Icon</strong> {Number(item.meta.icon_url).toFixed(6)}
-            </span>
+            {/* <span className="table__cell-item">
+              <strong>Icon</strong> {(item.meta.icon_url)}
+            </span> */}
             <span className="table__cell-item">
               <strong>Site</strong> {item.meta.site_url}
             </span>
@@ -176,6 +180,10 @@ const Mobile = ({ data, modificataion = '' }) => (
             <span className="table__cell-item">
               <strong>Part</strong> {item.part}
             </span>
+            </div>
+                  </div>
+                </a>
+              </Link>
           </th>
         </tr>
       ))}
