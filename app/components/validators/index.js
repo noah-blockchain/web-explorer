@@ -127,7 +127,7 @@ const Desktop = props => {
             </th>
             <th className="table__cell">{convertDate(item.created_at)}</th>
             <th className="table__cell">
-              {item.part ? new BigNumber(item.part).toFormat(2) : ''}
+              {item.part ? new BigNumber(item.part).toFormat(2)+"% NOAH" : ''}
             </th>
           </tr>
         ))}
@@ -156,7 +156,7 @@ const Mobile = ({ data, modificataion = '' }) => (
               <strong>Site</strong> {item.meta.site_url}
             </span>
             <span className="table__cell-item">
-              <strong>Public key</strong> {item.public_key}
+              <strong>Public key</strong> {shrinkString(item.public_key, 10)}
             </span>
             <span className="table__cell-item">
               <strong>Fee</strong> {item.commission}
@@ -168,7 +168,7 @@ const Mobile = ({ data, modificataion = '' }) => (
               <strong>Stake</strong> {item.stake}
             </span>
             <span className="table__cell-item">
-              <strong>Status</strong> {item.status}
+              <strong>Status</strong> {item.status === 1 ? 'offline' : 'online'}
             </span>
             <span className="table__cell-item">
               <strong>Age</strong> {convertDate(item.created_at)}
