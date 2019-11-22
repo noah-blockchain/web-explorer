@@ -3,9 +3,9 @@ import config from '~/config/index'
 import Layout from '~/components/layout'
 import NavbarTop from '~/components/sections/navbar/top'
 import NavbarMiddle from '~/components/sections/navbar/middle'
-import fetchValidators from '~/containers/validators/fetchData'
+import fetchValidators from '~/containers/validators_all/fetchData'
 import CoinsDetailsComponent from '~/components/validators'
-import CoinsDetailsContainer from '~/containers/validators'
+import CoinsDetailsContainer from '~/containers/validators_all'
 
 const Page = ({ validators }) => {
   const language = 'en'
@@ -35,10 +35,9 @@ const Page = ({ validators }) => {
   )
 }
 
-Page.getInitialProps = async () => {
-  console.log('getInitialProps initiated')
+Page.getInitialProps = async context => {
+  console.log('context', context)
   const validators = await fetchValidators().catch(() => [])
-  console.log('validators', validators)
   return { validators }
 }
 

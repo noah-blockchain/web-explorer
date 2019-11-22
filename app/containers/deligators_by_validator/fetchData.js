@@ -5,10 +5,7 @@ if (typeof fetch === 'undefined') {
 }
 
 async function fetchData(page = 1, coin) {
-  const response = await fetch(
-    `${config.api}coins/${coin}/validators?page=${page}`
-  )
-  console.log(`${config.api}coins/${coin}/validators?page=${page}`)
+  const response = await fetch(`${config.domainApi}validators/${public_key}`)
   const status = response.status
 
   const body = await response.json()

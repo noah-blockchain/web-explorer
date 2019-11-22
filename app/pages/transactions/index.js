@@ -15,7 +15,11 @@ const List = ({ data = {}, pagination = {} }) => {
     <div>
       <Pagination {...pagination} />
       {data.map((item, i) => (
-        <TransactionDetailsComponent data={item} key={i} type={'transactions'}/>
+        <TransactionDetailsComponent
+          data={item}
+          key={i}
+          type={'transactions'}
+        />
       ))}
       <Pagination {...pagination} />
     </div>
@@ -49,7 +53,8 @@ const Page = ({ transactions }) => {
   )
 }
 
-Page.getInitialProps = async () => {
+Page.getInitialProps = async context => {
+  console.log('context transactions', context)
   const transactions = await fetchTransactions().catch(() => [])
   return { transactions }
 }

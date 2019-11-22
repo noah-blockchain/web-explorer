@@ -32,20 +32,12 @@ const Icons = ({ order_by, filter, name }) => {
 
 const Desktop = props => {
   const { data, modificataion = '', filter } = props
-  // console.log("data", data)
-  // console.log("modificataion", modificataion)
-  // console.log("filter", filter)
   return (
     <table className={`table__table table__table--${modificataion}`}>
       <thead className="table__header">
         <tr>
           <th className="table__cell" onClick={() => filter.setFilter('title')}>
             <span className="clickable">Title</span>
-            {/* <Icons
-            name="crr"
-            filter={filter.filter}
-            order_by={filter.order_by}
-          /> */}
           </th>
           <th
             className="table__cell"
@@ -69,17 +61,6 @@ const Desktop = props => {
               order_by={filter.order_by}
             />
           </th>
-          {/* <th className="table__cell">
-          <span className="clickable">Site</span>
-        </th> */}
-          {/* <th className="table__cell" onClick={() => filter.setFilter('symbol')}>
-          <span className="clickable">Public key</span>
-          <Icons
-            name="symbol"
-            filter={filter.filter}
-            order_by={filter.order_by}
-          />
-        </th> */}
           <th
             className="table__cell"
             onClick={() => filter.setFilter('total_stake')}
@@ -94,6 +75,9 @@ const Desktop = props => {
           <th className="table__cell">
             <span>Status</span>
           </th>
+          <th className="table__cell">
+            <span>Age</span>
+          </th>
           <th
             className="table__cell"
             onClick={() => filter.setFilter('capitalization')}
@@ -105,12 +89,6 @@ const Desktop = props => {
               order_by={filter.order_by}
             />
           </th>
-          {/* <th className="table__cell">
-          <span>Date</span>
-        </th>
-        <th className="table__cell">
-          <span>Creator</span>
-        </th> */}
         </tr>
       </thead>
       <tbody className="table__body">
@@ -126,31 +104,12 @@ const Desktop = props => {
                 </a>
               </Link>
             </th>
-
-            {/* <Link href={`/validators/${item.creator}`}>
-          <a className="link_theme_none">
-          <th className="table__cell">
-            <div className="table__val__title">
-            <div className="table__val__name">
-            {item.meta.name}
-            </div>
-            </div>
-            <span>
-            {item.public_key}
-            </span>
-          </th>
-          </a>
-            </Link> */}
             <th className="table__cell">
-              {' '}
               {new BigNumber(item.commission).toFormat(2)}
             </th>
             <th className="table__cell">
-              {' '}
               {new BigNumber(item.uptime).toFormat(2)}
             </th>
-            {/* <th className="table__cell">{item.meta.site_url}</th> */}
-            {/* <th className="table__cell">{item.public_key}</th> */}
             <th className="table__cell">
               {new BigNumber(item.stake).toFormat(2)}
             </th>
@@ -166,17 +125,10 @@ const Desktop = props => {
                 />
               </svg>
             </th>
+            <th className="table__cell">{convertDate(item.created_at)}</th>
             <th className="table__cell">
               {item.part ? new BigNumber(item.part).toFormat(2) : ''}
             </th>
-            {/* <th className="table__cell">{convertDate(item.timestamp)}</th>
-          <th className="table__cell table__link">
-            <Link href={`/wallets/${item.creator}`}>
-              <a className="link_theme_none">
-                {shrinkString(item.creator, 14) }
-              </a>
-            </Link>
-            </th> */}
           </tr>
         ))}
       </tbody>
@@ -219,17 +171,11 @@ const Mobile = ({ data, modificataion = '' }) => (
               <strong>Status</strong> {item.status}
             </span>
             <span className="table__cell-item">
+              <strong>Age</strong> {convertDate(item.created_at)}
+            </span>
+            <span className="table__cell-item">
               <strong>Part</strong> {item.part}
             </span>
-
-            {/* <span className="table__cell-item"><strong>Date</strong> {convertDate(item.timestamp)}</span>
-          <span className="table__cell-item"><strong>Creator</strong> {' '}
-            <Link className="table__link" href={`/wallets/${item.creator}`}>
-              <a className="link_theme_none">
-                {shrinkString(item.creator, 14) }
-              </a>
-            </Link>
-          </span> */}
           </th>
         </tr>
       ))}

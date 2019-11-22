@@ -30,14 +30,14 @@ export default class Container extends React.Component {
   render() {
     const { children } = this.props
     let { rawData = [] } = this.state
+    console.log('rawData deligator >>>>>>', rawData)
     let data = []
     try {
-      data = rawData.data.map(item => {
+      data = rawData.data.delegator_list.map(item => {
         return {
-          coin: item.coin,
+          value: item.value,
           public_key: item.public_key,
-          name: item.name,
-          icon_url: item.icon_url
+          noah_value: item.noah_value
         }
       })
     } catch (e) {
@@ -49,20 +49,21 @@ export default class Container extends React.Component {
         }
       }
     }
-    const pagination = {
-      setPage: this.setPage,
-      activePage: this.state.page,
-      lastPage: rawData.meta.last_page,
-      startPage:
-        this.state.page < 3
-          ? 1
-          : this.state.page < rawData.meta.per_page
-          ? this.state.page - 2
-          : 11
-    }
+    console.log('data!', data)
+    // const pagination = {
+    //   setPage: this.setPage,
+    //   activePage: this.state.page,
+    //   lastPage: rawData.meta.last_page,
+    //   startPage:
+    //     this.state.page < 3
+    //       ? 1
+    //       : this.state.page < rawData.meta.per_page
+    //       ? this.state.page - 2
+    //       : 11
+    // }
 
     const child = React.Children.map(children, child =>
-      React.cloneElement(child, { data, pagination })
+      React.cloneElement(child, { data })
     )
 
     return <>{child}</>
