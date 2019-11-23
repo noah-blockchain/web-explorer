@@ -97,6 +97,15 @@ const Mobile = ({ data, modificataion = '', limit }) => (
 )
 
 export default ({ data = [], limit=10, showMore = '/transactions'  }) => {
+  if(data.length < 1) return (
+    <div className="transactions table_theme_simple width-100">
+      <h4 className="table__title">Transactions</h4>
+
+      <div className="not-found">
+        <h4>Transactions not found</h4>
+      </div>
+    </div>
+  )
   return (
     <div className="transactions table_theme_simple">
       <h4 className="table__title">Transactions</h4>

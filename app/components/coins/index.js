@@ -172,20 +172,24 @@ const Mobile = ({ data, modificataion = '' }) => (
               {Number(item.reserveBalance).toFixed(6)}
             </span>
             <span className="table__cell-item">
-              <strong>Name</strong> {item.name}
+               <Link href={`/coins/${item.symbol}`}>
+                <a className="link_theme_none"><strong>Name</strong> {item.name}</a>
+              </Link>
             </span>
             <span className="table__cell-item">
-              <strong>Symbol</strong> {item.symbol}
+              <Link href={`/coins/${item.symbol}`}>
+                <a className="link_theme_none"><strong>Symbol</strong> {item.symbol}</a>
+              </Link>
             </span>
 
             <span className="table__cell-item">
-              <strong>Price</strong> {item.price}
+              <strong>Price</strong> {new BigNumber(item.price).toFormat(2)}
             </span>
             <span className="table__cell-item">
               <strong>Delegated</strong> {item.delegated}
             </span>
             <span className="table__cell-item">
-              <strong>Capitalization</strong> {item.capitalization}
+              <strong>Capitalization</strong> {new BigNumber(item.capitalization).toFormat(2)}
             </span>
 
             <span className="table__cell-item">

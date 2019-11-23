@@ -3,7 +3,7 @@ import './section_block-details.less'
 import convertDate from '~/utils/convertDate'
 import { generate_avatar } from '../../../utils/generation'
 
-export default ({ data }) => {
+const Details = ({ data, modificataion = 'desktop' }) => {
   if (data === null) {
     return (
       <section className="section section_block-details">
@@ -81,14 +81,15 @@ export default ({ data }) => {
   ]
 
   return (
-    <section className="section section_block-main-details">
+    <section className={`section section_block-main-details--${modificataion}`}>
       <div className="wrapper_section-content">
         <div className="section__card">
           <h2 className="section__title">Information</h2>
           <div className="section__body">
             <div className="coin-info">
               {data.icon_url.length > 0 ? <img className="coin-avatar" src={data.icon_url}/>
-                :<img className="coin-avatar" src={generate_avatar(data.symbol + data.creator  + data.crr + data.start_reserve_balance)}/>}
+                : <img className="coin-avatar"
+                       src={generate_avatar(data.symbol + data.creator + data.crr + data.start_reserve_balance)}/>}
               <div className="coin-description">
                 <span>{data.description}</span>
               </div>
@@ -121,5 +122,14 @@ export default ({ data }) => {
         </div>
       </div>
     </section>
+  )
+}
+
+export default ({ data }) => {
+  return (
+    <div>
+      <Details data={data} modificataion={'desktop'}/>
+      <Details data={data} modificataion={'mobile'}/>
+    </div>
   )
 }
