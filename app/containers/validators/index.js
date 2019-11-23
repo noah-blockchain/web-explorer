@@ -1,5 +1,4 @@
 import React from 'react'
-import { getAmountWithCoin, txTypeFilter } from '../../utils/tx'
 import fetchValidatorsAddress from '~/containers/validators/fetchData'
 
 export default class Container extends React.Component {
@@ -16,7 +15,7 @@ export default class Container extends React.Component {
 
   setPage = async page => {
     if (page !== this.state.page) {
-      const rawData = await fetchValidatorsAddress(page).catch(() => [])
+      const rawData = await fetchValidatorsAddress(page, this.props.coin).catch(() => [])
       return this.setState({ page, rawData })
     }
   }
@@ -58,7 +57,7 @@ export default class Container extends React.Component {
           ? 1
           : this.state.page < rawData.meta.per_page
           ? this.state.page - 2
-          : 11
+          : 5
     }
 
     const child = React.Children.map(children, child =>

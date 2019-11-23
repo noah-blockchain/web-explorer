@@ -1,11 +1,10 @@
 import React from 'react'
 import Link from 'next/link'
 import './delegators.less'
-import convertDate from '~/utils/convertDate'
 import shrinkString from '~/utils/shrinkString'
-import { generate_avatar } from '../../../utils/generation'
+import Pagination from '~/components/pagination'
 
-export default ({ data = [] }) => {
+export default ({ data = [], pagination }) => {
   return (
     <div className="blocks table_theme_simple">
       <h4 className="table__title">Coin delegators</h4>
@@ -28,9 +27,8 @@ export default ({ data = [] }) => {
           ))}
         </tbody>
       </table>
-      <Link href="/blocks">
-        <a className="table__more">show more</a>
-      </Link>
+      <Pagination {...pagination} />
+
     </div>
   )
 }
