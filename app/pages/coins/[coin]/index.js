@@ -22,7 +22,7 @@ import ValidatorsComponent from '~/components/sections/validators'
 
 import fetchDelegators from '~/containers/delegators/fetchData'
 import DelegatorsContainer from '~/containers/delegators'
-import DelegatorsComponent from '~/components/sections/delegators';
+import DelegatorsComponent from '~/components/sections/delegators'
 
 import fetchHolders from '~/containers/holders/fetchData'
 import HoldersContainer from '~/containers/holders'
@@ -51,12 +51,12 @@ const Page = ({ coins, coin, transactions, validators, holders, delegators }) =>
         <CoinsDetailsContainer coin={coin} rawData={coins}>
           <CoinsDetailsComponent/>
         </CoinsDetailsContainer>
-        <div className="section bottom-section">
+        <div className="section bottom-section-desktop">
 
           <div className="wrapper_section-content">
             <div className="page__tables">
               <div className="left">
-                <DelegatorsContainer  coin={coin} rawData={delegators}>
+                <DelegatorsContainer coin={coin} rawData={delegators}>
                   <DelegatorsComponent/>
                 </DelegatorsContainer>
               </div>
@@ -66,7 +66,19 @@ const Page = ({ coins, coin, transactions, validators, holders, delegators }) =>
             </div>
           </div>
         </div>
-        <div className="section bottom-section">
+
+        <div className="bottom-section-mobile">
+          <ChartsDetailComponent/>
+        </div>
+        <div className="bottom-section-mobile">
+          <div className="wrapper_section-content">
+            <DelegatorsContainer coin={coin} rawData={delegators}>
+              <DelegatorsComponent/>
+            </DelegatorsContainer>
+          </div>
+        </div>
+
+        <div className="section bottom-section-desktop">
           <div className="wrapper_section-content">
             <div className="page__tables">
               <div className="left">
@@ -79,11 +91,36 @@ const Page = ({ coins, coin, transactions, validators, holders, delegators }) =>
                 </HoldersContainer>
               </div>
               <div className="right">
-                <TransactionDetailsContainer coin={coin} rawData={transactions} showMore={'/coins/' + coin + '/transactions'}>
+                <TransactionDetailsContainer coin={coin} rawData={transactions}
+                                             showMore={'/coins/' + coin + '/transactions'}>
                   <TransactionsComponent/>
                 </TransactionDetailsContainer>
               </div>
             </div>
+          </div>
+        </div>
+
+
+        <div className="bottom-section-mobile">
+          <div className="wrapper_section-content">
+            <ValidatorsContainer coin={coin} rawData={validators}>
+              <ValidatorsComponent/>
+            </ValidatorsContainer>
+          </div>
+        </div>
+        <div className="bottom-section-mobile">
+          <div className="wrapper_section-content">
+            <HoldersContainer coin={coin} rawData={holders}>
+              <HoldersComponent/>
+            </HoldersContainer>
+          </div>
+        </div>
+        <div className="bottom-section-mobile">
+          <div className="wrapper_section-content">
+            <TransactionDetailsContainer coin={coin} rawData={transactions}
+                                         showMore={'/coins/' + coin + '/transactions'}>
+              <TransactionsComponent/>
+            </TransactionDetailsContainer>
           </div>
         </div>
       </main>

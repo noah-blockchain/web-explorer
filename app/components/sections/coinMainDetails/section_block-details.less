@@ -1,4 +1,5 @@
-.section_block-main-details {
+.section_block-main-details--desktop, .section_block-main-details--mobile {
+
   .section__card {
     padding: 3em 2em;
     width: 100%;
@@ -87,3 +88,40 @@
   }
 
 }
+.section_block-main-details--mobile {
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100%;
+  flex: 1;
+  align-items: center;
+  flex-direction: column;
+  .section__body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+  }
+  .section__field {
+    width: 100%;
+    display: flex;
+  }
+  .coin-info, .left-info, .right-info {
+    width: 100%;
+  }
+  .coin-description {
+    margin-bottom: 30px;
+  }
+}
+
+
+@media (max-width: 992px) {
+  .section_block-main-details--desktop {
+    display: none;
+  }
+}
+@media (min-width: 992px) {
+  .section_block-main-details--mobile {
+    display: none;
+  }
+}
+
