@@ -83,11 +83,6 @@ const Desktop = props => {
             onClick={() => filter.setFilter('capitalization')}
           >
             <span>Part</span>
-            {/* <Icons
-              name="capitalization"
-              filter={filter.filter}
-              order_by={filter.order_by}
-            /> */}
           </th>
         </tr>
       </thead>
@@ -108,7 +103,7 @@ const Desktop = props => {
               {new BigNumber(item.commission).toFormat(2)}
             </th>
             <th className="table__cell">
-              {new BigNumber(item.uptime).toFormat(2)}
+              {Math.floor(item.uptime) + "%"}
             </th>
             <th className="table__cell">
               {new BigNumber(item.stake).toFormat(2)}
@@ -153,9 +148,6 @@ const Mobile = ({ data, modificataion = '' }) => (
               <strong>Description</strong>{' '}
               {(item.meta.description)}
             </span>
-            {/* <span className="table__cell-item">
-              <strong>Icon</strong> {(item.meta.icon_url)}
-            </span> */}
             <span className="table__cell-item">
               <strong>Site</strong> {item.meta.site_url}
             </span>
@@ -193,6 +185,7 @@ const Mobile = ({ data, modificataion = '' }) => (
 
 export default props => {
   const { pagination } = props
+  console.log("props",props)
   return (
     <div className="coins-container">
       <div className="transactions coins-tx table_theme_simple">

@@ -4,8 +4,8 @@ import Layout from '~/components/layout'
 import NavbarTop from '~/components/sections/navbar/top'
 import NavbarMiddle from '~/components/sections/navbar/middle'
 import fetchValidators from '~/containers/validators_all/fetchData'
-import CoinsDetailsComponent from '~/components/validators'
-import CoinsDetailsContainer from '~/containers/validators_all'
+import ValidatorsDetailsComponent from '~/components/validators'
+import ValidatorsDetailsContainer from '~/containers/validators_all'
 
 const Page = ({ validators }) => {
   const language = 'en'
@@ -26,9 +26,9 @@ const Page = ({ validators }) => {
           </div>
         </div>
         <div className="page__list">
-          <CoinsDetailsContainer rawData={validators}>
-            <CoinsDetailsComponent />
-          </CoinsDetailsContainer>
+          <ValidatorsDetailsContainer rawData={validators}>
+            <ValidatorsDetailsComponent />
+          </ValidatorsDetailsContainer>
         </div>
       </main>
     </Layout>

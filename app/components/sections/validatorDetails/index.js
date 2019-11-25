@@ -45,40 +45,8 @@ export default ({ data }) => {
     },
     {
       name: 'Uptime',
-      value: data?.uptime
+      value: Math.floor(data?.uptime) + "%"
     }
-    // ,
-    // {
-    //   name: 'Delegated',
-    //   value: data.delegated
-    // },
-    // {
-    //   name: 'creator',
-    //   value: data.creator,
-    //   modification: 'translucent',
-    //   href: '/wallets/' + data.creator
-    // },
-    // {
-    //   name: 'Time',
-    //   value: convertDate(data.timestamp),
-    //   modification: 'translucent'
-    // },
-
-    // {
-    //   name: 'Start price',
-    //   value: data.start_price,
-    //   modification: 'translucent',
-    // },
-    // {
-    //   name: 'Start volume',
-    //   value: data.start_volume,
-    //   modification: 'translucent'
-    // },
-    // {
-    //   name: 'Start reserve balance',
-    //   value: data.start_reserve_balance,
-    //   modification: 'translucent',
-    // }
   ]
 
   return (
@@ -88,7 +56,6 @@ export default ({ data }) => {
           <h2 className="section__title">Information</h2>
           <div className="section__body">
             {fields.map((item, i) => (
-              // <img src={item.icon_url}></img>
               <div
                 className={`section__field section__field--${item.modification ||
                   'default'}`}
