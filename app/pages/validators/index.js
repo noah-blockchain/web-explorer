@@ -3,13 +3,13 @@ import config from '~/config/index'
 import Layout from '~/components/layout'
 import NavbarTop from '~/components/sections/navbar/top'
 import NavbarMiddle from '~/components/sections/navbar/middle'
-import fetchCoins from '~/containers/coins/fetchData'
-import CoinsDetailsComponent from '~/components/coins'
-import CoinsDetailsContainer from '~/containers/coins'
+import fetchValidators from '~/containers/validators_all/fetchData'
+import ValidatorsDetailsComponent from '~/components/validators'
+import ValidatorsDetailsContainer from '~/containers/validators_all'
 
-const Page = ({ coins }) => {
-  console.log('coins', coins)
+const Page = ({ validators }) => {
   const language = 'en'
+  console.log('validators', validators)
   return (
     <Layout
       pageTitle="NOAH Blockchain Explorer"
@@ -19,25 +19,26 @@ const Page = ({ coins }) => {
     >
       <main className="page_transactions">
         <NavbarTop />
-        <NavbarMiddle current="coins" />
+        <NavbarMiddle current="validators" />
         <div className="section">
           <div className="wrapper_section-content">
-            <h1 className="page__title">Coins</h1>
+            <h1 className="page__title">Validators</h1>
           </div>
         </div>
         <div className="page__list">
-          <CoinsDetailsContainer rawData={coins}>
-            <CoinsDetailsComponent />
-          </CoinsDetailsContainer>
+          <ValidatorsDetailsContainer rawData={validators}>
+            <ValidatorsDetailsComponent />
+          </ValidatorsDetailsContainer>
         </div>
       </main>
     </Layout>
   )
 }
 
-Page.getInitialProps = async () => {
-  const coins = await fetchCoins().catch(() => [])
-  return { coins }
+Page.getInitialProps = async context => {
+  console.log('context', context)
+  const validators = await fetchValidators().catch(() => [])
+  return { validators }
 }
 
 export default Page

@@ -1,5 +1,6 @@
 import React from 'react'
-import fetchCoins from '~/containers/coins/fetchData'
+import { getAmountWithCoin, txTypeFilter } from '../../utils/tx'
+import fetchValidatorsAddress from '~/containers/validator_deligators/fetchData'
 
 export default class Container extends React.Component {
   state = {
@@ -37,7 +38,7 @@ export default class Container extends React.Component {
 
   setFilter = async filter => {
     const order_by = this.getOrder(filter)
-    const rawData = await fetchCoins(
+    const rawData = await fetchValidatorsAddress(
       this.getFilterString(filter, order_by, this.state.page)
     ).catch(() => [])
     return this.setState({ filter, order_by, rawData })
@@ -45,7 +46,7 @@ export default class Container extends React.Component {
 
   setPage = async page => {
     if (page !== this.state.page) {
-      const rawData = await fetchCoins(
+      const rawData = await fetchData(
         this.getFilterString(this.state.filter, this.state.order_by, page)
       ).catch(() => [])
       return this.setState({ page, rawData })
@@ -55,45 +56,32 @@ export default class Container extends React.Component {
   render() {
     const { children } = this.props
     const { rawData = [] } = this.state
-    //console.log('rawData', rawData)
-    const data = []
+    console.log('rawData', rawData)
+    let data = []
     const filter = {
       filter: this.state.filter,
       order_by: this.state.order_by,
       setFilter: this.setFilter
     }
-    rawData.data.forEach(item => {
-      if (item.symbol !== 'NOAH') {
-        data.push({
-          crr: item.crr,
-          volume: item.volume,
-
-          name: item.name,
-          symbol: item.symbol,
-          reserveBalance: item.reserve_balance,
-          timestamp: item.created_at,
-          creator: item.creator,
-          delegated: item.delegated,
-          price: item.price,
-          capitalization: item.capitalization
-        })
+    data = rawData.data.map(item => {
+      return {
+        meta: {
+          name: item.meta.name,
+          description: item.meta.description,
+          icon_url: item.meta.icon_url,
+          site_url: item.meta.site_url
+        },
+        public_key: item.public_key,
+        stake: item.stake,
+        status: item.status,
+        part: item.part,
+        commission: item.commission,
+        uptime: item.uptime
       }
     })
 
-    const pagination = {
-      setPage: this.setPage,
-      activePage: this.state.page,
-      lastPage: rawData.meta.last_page,
-      startPage:
-        this.state.page < 3
-          ? 1
-          : this.state.page < rawData.meta.per_page
-          ? this.state.page - 2
-          : 11
-    }
-
     const child = React.Children.map(children, child =>
-      React.cloneElement(child, { data, filter, pagination })
+      React.cloneElement(child, { data, filter })
     )
 
     return <>{child}</>

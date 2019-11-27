@@ -1,7 +1,7 @@
 import React from 'react'
 
 export default ({ children, rawData = [] }) => {
-  console.log(rawData.data)
+  //console.log(rawData.data)
   const data = !rawData.data
     ? null
     : {
