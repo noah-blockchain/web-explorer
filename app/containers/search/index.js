@@ -13,7 +13,7 @@ export default ({ children }) => {
     const res = await search(value).catch(() => null)
 
     try {
-      if (!res) Router.push('/blocks/404')
+      if (!res) Router.push('/404')
 
       if (res.type === 'wallet') Router.push(`/wallets/${res.result.address}`)
       if (res.type === 'transaction')

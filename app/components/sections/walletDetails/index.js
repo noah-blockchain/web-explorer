@@ -1,6 +1,7 @@
 import React from 'react'
 import './section_wallet-details.less'
 import convertDate from '~/utils/convertDate'
+import Link from 'next/link'
 
 export default ({ data }) => {
   if (data === null) {
@@ -30,8 +31,14 @@ export default ({ data }) => {
               <p className="section__field-values">
                 {Object.keys(data.balances).map(key => (
                   <span className="section__field-value" key={key}>
-                    {data.balances[key].coin} balance:{' '}
-                    {data.balances[key].amount}
+                         <Link href={`/coins/${data.balances[key].coin}`}>
+                          <a className="link_theme_none">
+                            <span className="link">{data.balances[key].coin} </span> balance:{' '}
+                            {data.balances[key].amount}
+                          </a>
+                        </Link>
+
+
                   </span>
                 ))}
               </p>

@@ -4,11 +4,11 @@ import './transactions.less'
 import convertDate from '~/utils/convertDate'
 import shrinkString from '~/utils/shrinkString'
 
-const Desktop = ({ data, modificataion = '', limit  }) => (
+const Desktop = ({ data, modificataion = '', limit }) => (
   <table className={`table__table table__table--${modificataion}`}>
     <thead className="table__header">
     <tr>
-      <th className="table__cell">TxHash </th>
+      <th className="table__cell">TxHash</th>
       <th className="table__cell">Block</th>
       <th className="table__cell">Time</th>
       <th className="table__cell">From</th>
@@ -87,7 +87,11 @@ const Mobile = ({ data, modificataion = '', limit }) => (
             </Link>
           </div>
           <span className="table__cell-item">{item.type}</span>
-          <span className="table__cell-item">{item.amount}</span>
+          <span className="table__cell-item">
+               <Link href={`/coins/${item.coin}`}>
+                  <a className="link_theme_none">{item.amount}</a>
+                </Link>
+          </span>
         </th>
         <th className="table__cell">{convertDate(item.time)}</th>
       </tr>
@@ -96,8 +100,8 @@ const Mobile = ({ data, modificataion = '', limit }) => (
   </table>
 )
 
-export default ({ data = [], limit=10, showMore = '/transactions'  }) => {
-  if(data.length < 1) return (
+export default ({ data = [], limit = 10, showMore = '/transactions' }) => {
+  if (data.length < 1) return (
     <div className="transactions table_theme_simple width-100">
       <h4 className="table__title">Transactions</h4>
 

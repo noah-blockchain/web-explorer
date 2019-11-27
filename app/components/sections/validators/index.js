@@ -35,7 +35,13 @@ export default ({ data = [], pagination }) => {
                 :<img className="tab-avatar" src={generate_avatar(item.public_key)}/>}
               </td>
 
-              <td className="table__cell">Np{shrinkString(item.public_key, 8)}</td>
+              <td className="table__cell table__link">
+                <Link href={`/validators/${item.public_key}`}>
+                  <a className="link_theme_none">
+                Np{shrinkString(item.public_key, 8)}
+                  </a>
+                </Link>
+              </td>
               <td className="table__cell">{item.name.length > 0 ? item.name: "-"}</td>
             </tr>
           ))}

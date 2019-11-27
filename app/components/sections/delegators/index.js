@@ -29,7 +29,13 @@ export default ({ data = [], pagination }) => {
         <tbody className="table__body">
           {data.slice(0, 4).map((item, i) => (
             <tr className="table__row" key={i}>
-              <td className="table__cell">Np{shrinkString(item.public_key, 8)}</td>
+              <td className="table__cell table__link">
+                <Link href={`/delegators/${item.public_key}`}>
+                  <a className="link_theme_none">
+                    Np{shrinkString(item.public_key, 8)}
+                  </a>
+                </Link>
+              </td>
               <td className="table__cell">{Number(item.value).toFixed(2)}</td>
               <td className="table__cell">{Number(item.noah_value).toFixed(2)}</td>
             </tr>
