@@ -1,5 +1,5 @@
 import React from 'react'
-import { getAmountWithCoin, txTypeFilter } from '../../utils/tx'
+import { getAmountWithCoin, getCoin, txTypeFilter } from '../../utils/tx'
 import fetchTransactionsAddress from '~/containers/transactions_address/fetchData'
 
 export default class Container extends React.Component {
@@ -42,7 +42,9 @@ export default class Container extends React.Component {
         time: item.created_at,
         payload: item.payload,
         type: txTypeFilter(item.type),
-        amount: getAmountWithCoin(item)
+        amount: getAmountWithCoin(item),
+        coin: getCoin(item)
+
       }
     })
     const pagination = {

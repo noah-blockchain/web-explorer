@@ -55,7 +55,8 @@ export default ({ data, type }) => {
     {
       name: 'Amount',
       value: data.amount,
-      modification: 'translucent'
+      modification: 'translucent',
+      href: '/coins/' + data.coin
     }
   ]
 

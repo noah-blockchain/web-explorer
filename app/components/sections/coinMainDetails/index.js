@@ -2,6 +2,7 @@ import React from 'react'
 import './section_block-details.less'
 import convertDate from '~/utils/convertDate'
 import { generate_avatar } from '../../../utils/generation'
+import Link from 'next/link'
 
 const Details = ({ data, modificataion = 'desktop' }) => {
   if (data === null) {
@@ -20,12 +21,10 @@ const Details = ({ data, modificataion = 'desktop' }) => {
     {
       name: 'Crr',
       value: data.crr,
-      modification: 'translucent'
-    },
+     },
     {
       name: 'Volume',
       value: data.volume,
-      modification: 'link'
     },
     {
       name: 'Reserve Balance',
@@ -52,7 +51,7 @@ const Details = ({ data, modificataion = 'desktop' }) => {
       value: data.delegated
     },
     {
-      name: 'creator',
+      name: 'Creator',
       value: data.creator,
       modification: 'translucent',
       href: '/wallets/' + data.creator
@@ -60,23 +59,19 @@ const Details = ({ data, modificataion = 'desktop' }) => {
     {
       name: 'Time',
       value: convertDate(data.timestamp),
-      modification: 'translucent'
     },
 
     {
       name: 'Start price',
       value: data.start_price,
-      modification: 'translucent'
     },
     {
       name: 'Start volume',
       value: data.start_volume,
-      modification: 'translucent'
     },
     {
       name: 'Start reserve balance',
       value: data.start_reserve_balance,
-      modification: 'translucent'
     }
   ]
 
@@ -114,7 +109,15 @@ const Details = ({ data, modificataion = 'desktop' }) => {
                   key={i}
                 >
                   <p className="section__field-name">{item.name}</p>
-                  <p className="section__field-value">{item.value}</p>
+                  {item.href ? (
+                    <Link href={item.href}>
+                      <a className="section__field-value link">
+                        {item.value}
+                      </a>
+                    </Link>
+                  ) : (
+                    <p className="section__field-value">{item.value}</p>
+                  )}
                 </div>
               ))}
             </div>

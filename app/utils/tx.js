@@ -120,16 +120,20 @@ export function getAmount(tx) {
   )
 }
 
+export function getCoin(tx) {
+  return  (tx.data.coin ||
+    tx.data.symbol ||
+    getConvertCoinSymbol(tx) ||
+    (tx.data.check && tx.data.check.coin) ||
+    getMultisendCoin(tx))
+}
+
 export function getAmountWithCoin(tx) {
   if (isMultisend(tx) && isMultisendMultipleCoin(tx)) {
     return 'Multiple coins'
   } else {
     return (
-      (tx.data.coin ||
-        tx.data.symbol ||
-        getConvertCoinSymbol(tx) ||
-        (tx.data.check && tx.data.check.coin) ||
-        getMultisendCoin(tx)) +
+      getCoin(tx) +
       ' ' +
       pretty(getAmount(tx) || 0)
     )

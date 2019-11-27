@@ -1,5 +1,5 @@
 import React from 'react'
-import { getAmountWithCoin, txTypeFilter } from '../../utils/tx'
+import { getAmountWithCoin, getCoin, txTypeFilter } from '../../utils/tx'
 
 export default ({ children, rawData = [] }) => {
   const data = !rawData.data
@@ -16,7 +16,8 @@ export default ({ children, rawData = [] }) => {
         nonce: rawData.data.nonce,
         gas: rawData.data.gas,
         gasPrice: rawData.data.gas_price,
-        to: rawData.data.to
+        to: rawData.data.to,
+        coin: getCoin(rawData.data)
       }
 
   const child = React.Children.map(children, child =>
