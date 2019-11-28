@@ -16,7 +16,10 @@ export default class Container extends React.Component {
 
   setPage = async page => {
     if (page !== this.state.page) {
-      const rawData = await fetchDelegatorsAddress(page,  this.props.coin).catch(() => [])
+      const rawData = await fetchDelegatorsAddress(
+        page,
+        this.props.coin
+      ).catch(() => [])
       return this.setState({ page, rawData })
     }
   }
@@ -31,12 +34,14 @@ export default class Container extends React.Component {
     const { children } = this.props
     let { rawData = [] } = this.state
     let data = []
+    console.log('rawData', rawData)
     try {
       data = rawData.data.map(item => {
         return {
           value: item.value,
+          address: item.address,
           public_key: item.public_key,
-          noah_value: item.noah_value,
+          noah_value: item.noah_value
         }
       })
     } catch (e) {
