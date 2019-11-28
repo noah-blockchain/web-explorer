@@ -14,11 +14,11 @@ export default ({ children }) => {
 
     try {
       if (!res) Router.push('/404')
-
       if (res.type === 'wallet') Router.push(`/wallets/${res.result.address}`)
       if (res.type === 'transaction')
         Router.push(`/transactions/${res.result.hash}`)
       if (res.type === 'block') Router.push(`/blocks/${res.result.height}`)
+      if (res.type === 'coins') Router.push(`/coins/${res.result.name}`)
     } catch (e) {}
   }
 

@@ -28,6 +28,10 @@ const search = async (value = '') => {
     return { type: 'block', result: result.data }
   }
 
+  const result = await fetchUrl(`${config.api}coins/${value.toUpperCase()}`)
+  return { type: 'coins', result: result.data }
+
+
   throw new Error()
 }
 
