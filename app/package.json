@@ -16,6 +16,7 @@
     "gravatar-url": "^3.1.0",
     "identicon.js": "^2.3.3",
     "less": "^3.10.3",
+    "moment": "^2.24.0",
     "next": "^9.0.6",
     "next-images": "^1.2.0",
     "noahjs-tx": "^6.1.1",

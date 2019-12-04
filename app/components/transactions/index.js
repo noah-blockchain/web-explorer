@@ -100,7 +100,7 @@ const Mobile = ({ data, modificataion = '', limit }) => (
   </table>
 )
 
-export default ({ data = [], limit = 10, showMore = '/transactions' }) => {
+export default ({ data = [], limit = 10, showMore = '/transactions', type = 'default' }) => {
   if (data.length < 1) return (
     <div className="transactions table_theme_simple width-100">
       <h4 className="table__title">Transactions</h4>
@@ -112,12 +112,16 @@ export default ({ data = [], limit = 10, showMore = '/transactions' }) => {
   )
   return (
     <div className="transactions table_theme_simple">
-      <h4 className="table__title">Transactions</h4>
+      {type !== 'transactions' && (
+        <h4 className="table__title">Transactions</h4>
+      )}
       <Desktop modificataion="desktop" limit={limit} data={data}/>
       <Mobile modificataion="mobile" limit={limit} data={data}/>
-      <Link href={showMore}>
-        <a className="table__more">show more</a>
-      </Link>
+      {type !== 'transactions' && (
+        <Link href={showMore}>
+          <a className="table__more">show more</a>
+        </Link>
+      )}
     </div>
   )
 }

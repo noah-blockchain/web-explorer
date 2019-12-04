@@ -133,9 +133,10 @@ export function getAmountWithCoin(tx) {
     return 'Multiple coins'
   } else {
     return (
-      getCoin(tx) +
-      ' ' +
+
       pretty(getAmount(tx) || 0)
+      +  ' ' +
+      getCoin(tx)
     )
   }
 }

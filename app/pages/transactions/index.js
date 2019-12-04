@@ -4,7 +4,7 @@ import Layout from '~/components/layout'
 import NavbarTop from '~/components/sections/navbar/top'
 import NavbarMiddle from '~/components/sections/navbar/middle'
 import fetchTransactions from '~/containers/transactions/fetchData'
-import TransactionDetailsComponent from '~/components/sections/transactionDetails'
+import TransactionDetailsComponent from '~/components/transactions'
 import TransactionDetailsContainer from '~/containers/transactions'
 import Pagination from '~/components/pagination'
 
@@ -14,13 +14,12 @@ const List = ({ data = {}, pagination = {} }) => {
   return (
     <div>
       <Pagination {...pagination} />
-      {data.map((item, i) => (
+      <div className="transactions-component">
         <TransactionDetailsComponent
-          data={item}
-          key={i}
+          data={data}
           type={'transactions'}
         />
-      ))}
+      </div>
       <Pagination {...pagination} />
     </div>
   )

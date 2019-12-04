@@ -30,7 +30,7 @@ export default class Container extends React.Component {
   render() {
     const { children } = this.props
     const { rawData = [] } = this.state
-
+    console.log("RAW DATA", rawData)
     const data = rawData.data.map(item => {
       return {
         txs: item.hash,
