@@ -39,7 +39,7 @@ const Page = ({ summary, blocks, transactions }) => {
               <BlocksContainer rawData={blocks}>
                 <BlocksComponent />
               </BlocksContainer>
-              <TransactionsContainer rawData={transactions}>
+              <TransactionsContainer limit={10} rawData={transactions}>
                 <TransactionsComponent />
               </TransactionsContainer>
             </div>

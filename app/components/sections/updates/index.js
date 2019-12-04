@@ -38,7 +38,8 @@ export default ({ data = {} }) => {
     {
       name: 'Active validators',
       value: data.activeValidators,
-      icon: require('./images/validators.svg')
+      icon: require('./images/validators.svg'),
+      link: '/validators'
     },
     {
       name: 'Free float',
@@ -48,12 +49,13 @@ export default ({ data = {} }) => {
     {
       name: 'Emission',
       value: numberWithCommas(Number(data.noahEmission)),
-      icon: require('./images/coin.svg')
+      icon: require('./images/coin.svg'),
+      link: '/coins/Noah'
     },
     {
       name: 'Total Delegated',
       value: numberWithCommas(Number(data.totalDelegatedNoah).toFixed(2)),
-      icon: require('./images/emission.svg')
+      icon: require('./images/emission.svg'),
     },
     {
       name: 'Uptime',
@@ -63,7 +65,8 @@ export default ({ data = {} }) => {
     {
       name: 'Custom coins count',
       value: data.customCoinsCount,
-      icon: require('./images/cryptocurrency.svg')
+      icon: require('./images/cryptocurrency.svg'),
+      link: '/coins'
     }
   ]
 
