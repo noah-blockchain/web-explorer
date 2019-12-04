@@ -171,12 +171,12 @@ const Mobile = ({ data, modificataion = '' }) => (
               <strong>Reserve Balance</strong>{' '}
               {Number(item.reserveBalance).toFixed(6)}
             </span>
-            <span className="table__cell-item">
+            <span className="table__cell-item table__link">
                <Link href={`/coins/${item.symbol}`}>
                 <a className="link_theme_none"><strong>Name</strong> {item.name}</a>
               </Link>
             </span>
-            <span className="table__cell-item">
+            <span className="table__cell-item table__link">
               <Link href={`/coins/${item.symbol}`}>
                 <a className="link_theme_none"><strong>Symbol</strong> {item.symbol}</a>
               </Link>
@@ -195,7 +195,7 @@ const Mobile = ({ data, modificataion = '' }) => (
             <span className="table__cell-item">
               <strong>Date</strong> {convertDate(item.timestamp)}
             </span>
-            <span className="table__cell-item">
+            <span className="table__cell-item table__link">
               <strong>Creator</strong>{' '}
               <Link className="table__link" href={`/wallets/${item.creator}`}>
                 <a className="link_theme_none">

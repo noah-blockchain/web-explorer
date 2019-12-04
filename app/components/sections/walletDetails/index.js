@@ -2,6 +2,7 @@ import React from 'react'
 import './section_wallet-details.less'
 import convertDate from '~/utils/convertDate'
 import Link from 'next/link'
+import { numberWithCommas } from '../../../utils/numbers'
 
 export default ({ data }) => {
   if (data === null) {
@@ -34,7 +35,7 @@ export default ({ data }) => {
                          <Link href={`/coins/${data.balances[key].coin}`}>
                           <a className="link_theme_none">
                             <span className="link">{data.balances[key].coin} </span> balance:{' '}
-                            {data.balances[key].amount}
+                            { numberWithCommas(Number(data.balances[key].amount).toFixed(2))}
                           </a>
                         </Link>
 

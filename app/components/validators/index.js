@@ -95,7 +95,7 @@ const Desktop = props => {
                   <div className="table__val__title">
                     <div className="table__val__name">{item.meta.name}</div>
                   </div>
-                  <span>{item.public_key}</span>
+                  <a className="link"> {item.public_key}</a>
                 </a>
               </Link>
             </th>
@@ -151,7 +151,7 @@ const Mobile = ({ data, modificataion = '' }) => (
             <span className="table__cell-item">
               <strong>Site</strong> {item.meta.site_url}
             </span>
-            <span className="table__cell-item">
+            <span className="table__cell-item table__link">
               <strong>Public key</strong> {shrinkString(item.public_key, 10)}
             </span>
             <span className="table__cell-item">
