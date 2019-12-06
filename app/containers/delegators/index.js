@@ -63,7 +63,7 @@ export default class Container extends React.Component {
           ? 1
           : this.state.page < rawData.meta.per_page
           ? this.state.page - 2
-          : 4
+          : this.state.page - 2
     }
 
     const child = React.Children.map(children, child =>

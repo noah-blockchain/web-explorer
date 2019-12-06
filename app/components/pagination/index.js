@@ -25,11 +25,14 @@ export default props => {
     setPage(activePage + 1)
   }
 
-  const pages =
-    pagesCount > visibleMaximum
+  console.log(startPage, 'START PAGE')
+
+  const pages = pagesCount > visibleMaximum
       ? createPages(visibleMaximum, startPage - 1)
       : createPages(pagesCount, startPage - 1)
 
+
+  console.log(pages, "PAGE", visibleMaximum)
   return (
     <div className="pagination section">
       <div

@@ -56,7 +56,7 @@ export default class Container extends React.Component {
           ? 1
           : rawData.meta.current_page < rawData.meta.per_page
           ? rawData.meta.current_page - 2
-          : 10
+          : rawData.meta.current_page - 2
     }
 
     const child = React.Children.map(children, child =>

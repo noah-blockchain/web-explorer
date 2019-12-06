@@ -42,7 +42,7 @@ export default class Container extends React.Component {
           ? 1
           : this.state.page < 12
           ? this.state.page - 2
-          : 11
+          : this.state.page - 2
     }
 
     const child = React.Children.map(children, child =>
