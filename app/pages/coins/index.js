@@ -22,7 +22,6 @@ const Page = ({ coins }) => {
         <NavbarMiddle current="coins" />
         <div className="section">
           <div className="wrapper_section-content">
-            <h1 className="page__title">Coins</h1>
           </div>
         </div>
         <div className="page__list">

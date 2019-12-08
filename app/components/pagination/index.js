@@ -24,15 +24,11 @@ export default props => {
     if (activePage === lastPage) return null
     setPage(activePage + 1)
   }
-
-  console.log(startPage, 'START PAGE')
-
   const pages = pagesCount > visibleMaximum
       ? createPages(visibleMaximum, startPage - 1)
       : createPages(pagesCount, startPage - 1)
 
 
-  console.log(pages, "PAGE", visibleMaximum)
   return (
     <div className="pagination section">
       <div
@@ -47,7 +43,7 @@ export default props => {
           className="pagination__arrow-icon"
           src={require('./images/arrow-left.svg')}
           alt="previous page"
-        />
+        /> {' '} previous
       </div>
       <div className="pagination__pages">
         {pages.map(page => (
@@ -87,7 +83,7 @@ export default props => {
         }
         onClick={handleNext}
       >
-        <img
+        next {' '} <img
           className="pagination__arrow-icon"
           src={require('./images/arrow-right.svg')}
           alt="next page"

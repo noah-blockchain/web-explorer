@@ -68,7 +68,9 @@
 .table_theme_simple .table__cell:last-child {
   text-align: left;
 }
-
+.table_theme_simple {
+  margin-top: 40px;
+}
 .table__cell-item {
   strong {
     font-weight: bold;
@@ -90,4 +92,63 @@
   cursor: pointer;
 }
 
+.table-col {
+  margin-bottom: 4px;
+  display: flex;
+  flex-direction: column;
+  .coins-label {
+    font-size: 12px;
+  }
+  .coins-value {
+    font-weight: bold;
+  }
+  .coins-link {
+    color: #6978ff;
+    text-decoration: none;
+  }
+}
+.avatar-coins-table {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  position: relative;
+  top: 70px;
+}
+
+.table__cell-avatar {
+  padding-left: 30px;
+  display: flex;
+  align-items: flex-start;
+}
+
+.filters-container {
+  min-height: 30px;
+  margin-bottom: 10px;
+  flex-wrap: wrap;
+
+  h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .filter-block {
+      display: flex;
+    flex-wrap: wrap;
+  }
+
+  .filter {
+    cursor: pointer;
+    padding: 10px;
+    background: rgba(229, 229, 229, 0.6);
+    margin: 0 10px 10px 0;
+    border-radius: 8px;
+    .clickable {
+      color: #1d1d1d;
+      opacity: 0.8;
+      font-size: 16px;
+    }
+  }
+}
 
