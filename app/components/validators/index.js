@@ -3,7 +3,6 @@ import './section_validators-details.less'
 import convertDate from '../../utils/convertDate'
 import shrinkString from '../../utils/shrinkString'
 import Link from 'next/link'
-import Pagination from '../pagination'
 import BigNumber from 'bignumber.js'
 
 const Default = () => (
@@ -33,108 +32,118 @@ const Icons = ({ order_by, filter, name }) => {
 const Desktop = props => {
   const { data, modificataion = '', filter } = props
   return (
-    <table className={`table__table table__table--${modificataion}`}>
-      <thead className="table__header">
-        <tr>
-          <th className="table__cell" onClick={() => filter.setFilter('title')}>
-            <span className="clickable">Title</span>
-          </th>
-          <th
-            className="table__cell"
-            onClick={() => filter.setFilter('commission')}
-          >
+    <div>
+      <div className="filters-container">
+        <div>
+          <h4>Validators </h4>
+        </div>
+        <div className="filter-block">
+          <div className="filter" onClick={() => filter.setFilter('commission')}>
             <span className="clickable">Fee</span>
             <Icons
               name="commission"
               filter={filter.filter}
               order_by={filter.order_by}
             />
-          </th>
-          <th
-            className="table__cell"
-            onClick={() => filter.setFilter('Uptime')}
-          >
+          </div>
+
+
+          <div className="filter" onClick={() => filter.setFilter('Uptime')}>
             <span className="clickable">Uptime</span>
             <Icons
-              name="uptime"
+              name="Uptime"
               filter={filter.filter}
               order_by={filter.order_by}
             />
-          </th>
-          <th
-            className="table__cell"
-            onClick={() => filter.setFilter('total_stake')}
-          >
-            <span>Stake</span>
+          </div>
+
+
+          <div className="filter" onClick={() => filter.setFilter('total_stake')}>
+            <span className="clickable">Stake</span>
             <Icons
-              name="Stake"
+              name="total_stake"
               filter={filter.filter}
               order_by={filter.order_by}
             />
-          </th>
-          <th className="table__cell">
-            <span>Status</span>
-          </th>
-          <th className="table__cell">
-            <span>Age</span>
-          </th>
-          <th
-            className="table__cell"
-            onClick={() => filter.setFilter('capitalization')}
-          >
-            <span>Part</span>
-          </th>
-        </tr>
-      </thead>
+          </div>
+
+
+          <div className="filter" onClick={() => filter.setFilter('capitalization')}>
+            <span className="clickable">Part</span>
+            <Icons
+              name="capitalization"
+              filter={filter.filter}
+              order_by={filter.order_by}
+            />
+          </div>
+
+        </div>
+      </div>
+    <table className={`table__table table__table--${modificataion}`}>
       <tbody className="table__body">
         {data.map((item, i) => (
           <tr className="table__row" key={i}>
-            <th className="table__cell table__link">
-              <Link href={`/validators/${item.public_key}`}>
-                <a className="link_theme_none">
-                  <div className="table__val__title">
-                    <div className="table__val__name">{item.meta.name}</div>
-                  </div>
-                  <a className="link"> {item.public_key}</a>
-                </a>
-              </Link>
-            </th>
             <th className="table__cell">
-              {new BigNumber(item.commission).toFormat(2)}
-            </th>
-            <th className="table__cell">
-              {Math.floor(item.uptime) + "%"}
-            </th>
-            <th className="table__cell">
-              {new BigNumber(item.stake).toFormat(2)}
-            </th>
-            <th className="table__cell">
-              <svg height="15" width="15">
+              <svg height="18" width="18" style={{top: '40px', position: 'relative'}}>
                 <circle
                   cx="7"
                   cy="7"
                   r="5"
-                  stroke="black"
-                  stroke-width="0.1"
+                  stroke={item.status === 1 ? 'red' : '#4CAF50'}
+                  stroke-width="4"
                   fill={item.status === 1 ? 'red' : '#4CAF50'}
                 />
               </svg>
             </th>
-            <th className="table__cell">{convertDate(item.created_at)}</th>
             <th className="table__cell">
-              {item.part ? new BigNumber(item.part).toFormat(2)+"% NOAH" : ''}
+              <div className="table-col">
+                <span className="coins-label">Public key</span>
+                <Link href={`/validators/${item.public_key}`}>
+                  <a className="coins-link">{item.public_key}</a>
+                </Link>
+              </div>
+              <div className="table-col">
+                <span className="coins-label">Fee</span>
+                <span className="coins-value">{new BigNumber(item.commission).toFormat(2)} </span>
+              </div>
+
             </th>
+            <th className="table__cell">
+              <div className="table-col">
+                <span className="coins-label">Uptime</span>
+                <span className="coins-value">  {Math.floor(item.uptime) + "%"}</span>
+              </div>
+              <div className="table-col">
+                <span className="coins-label">Stake</span>
+                <span className="coins-value">   {new BigNumber(item.stake).toFormat(2)} </span>
+              </div>
+            </th>
+
+
+            <th className="table__cell">
+              <div className="table-col">
+                <span className="coins-label">Date</span>
+                <span className="coins-value"> {convertDate(item.created_at)}</span>
+              </div>
+              <div className="table-col">
+                <span className="coins-label">Part</span>
+                <span className="coins-value">{item.part ? new BigNumber(item.part).toFormat(2)+"% NOAH" : '0% NOAH'} </span>
+              </div>
+            </th>
+
+
           </tr>
         ))}
       </tbody>
     </table>
+    </div>
   )
 }
 
 const Mobile = ({ data, modificataion = '' }) => (
   <table className={`table__table table__table--${modificataion}`}>
     <tbody className="table__body">
-      {data.slice(0, 10).map((item, i) => (
+      {data.map((item, i) => (
         <tr className="table__row" key={i}>
           <th className="table__cell">
           <Link href={`/validators/${item.public_key}`}>
@@ -192,7 +201,6 @@ export default props => {
         <Desktop modificataion="desktop" {...props} />
         <Mobile modificataion="mobile" {...props} />
       </div>
-      {/* <Pagination {...pagination} /> */}
     </div>
   )
 }

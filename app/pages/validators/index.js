@@ -22,7 +22,6 @@ const Page = ({ validators }) => {
         <NavbarMiddle current="validators" />
         <div className="section">
           <div className="wrapper_section-content">
-            <h1 className="page__title">Validators</h1>
           </div>
         </div>
         <div className="page__list">
