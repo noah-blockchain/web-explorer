@@ -35,7 +35,7 @@ const Desktop = props => {
     <div>
       <div className="filters-container">
         <div>
-          <h4>Validators </h4>
+          <h4>Validators / {data.length}</h4>
         </div>
         <div className="filter-block">
           <div className="filter" onClick={() => filter.setFilter('commission')}>
