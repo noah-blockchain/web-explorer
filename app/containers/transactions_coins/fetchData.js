@@ -7,7 +7,7 @@ if (typeof fetch === 'undefined') {
 async function fetchData(page = 1, coin) {
   // http://176.9.44.144:9070/api/v1/coins/NOAH/transactions
   const response = await fetch(
-    `${config.api}coins/${coin}/transactions?page=${page}`
+    `${config.api}coins/${coin.toUpperCase()}/transactions?page=${page}`
   )
 
   const status = response.status

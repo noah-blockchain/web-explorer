@@ -11,7 +11,6 @@ export default ({ data = [], pagination }) => {
       <h4 className="table__title">Coin validators</h4>
 
       <div className="not-found">
-        <h4>Validators not found</h4>
       </div>
     </div>
   )

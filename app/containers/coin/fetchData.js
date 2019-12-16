@@ -5,7 +5,7 @@ if (typeof fetch === 'undefined') {
 }
 
 async function fetchData(coin) {
-  const response = await fetch(`${config.api}coins/${coin}`)
+  const response = await fetch(`${config.api}coins/${coin.toUpperCase()}`)
   const status = response.status
   const body = await response.json()
 

@@ -13,7 +13,7 @@ export default props => {
   const { setPage, activePage, lastPage, startPage = 1 } = props
 
   const pagesCount = lastPage - startPage + 1
-  const visibleMaximum = 5
+  const visibleMaximum = 4
 
   const handlePrevious = () => {
     if (activePage === 1) return null

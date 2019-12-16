@@ -3,6 +3,7 @@ import Link from 'next/link'
 import './transactions.less'
 import convertDate from '~/utils/convertDate'
 import shrinkString from '~/utils/shrinkString'
+import Pagination from '~/components/pagination'
 
 const Desktop = ({ data, modificataion = '', limit }) => (
   <table className={`table__table table__table--${modificataion}`}>
@@ -105,9 +106,9 @@ export default ({ data = [], limit = 10, showMore = '/transactions', type = 'def
     <div className="transactions table_theme_simple width-100">
       <h4 className="table__title">Transactions</h4>
 
-      <div className="not-found">
-        <h4>Transactions not found</h4>
-      </div>
+      {/*<div className="not-found">*/}
+      {/*  <h4>Transactions not found</h4>*/}
+      {/*</div>*/}
     </div>
   )
   return (

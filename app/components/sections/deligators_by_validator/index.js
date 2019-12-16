@@ -44,12 +44,12 @@ const Mobile = ({ data, modificataion = '' }) => (
        <div className="blocks table_theme_simple table_theme_simple_mob_div">
       <tr className="table__row table__row_del_mob" key={i}>
         <th className="table__cell">
-          <span className="table__cell-item"> 
+          <span className="table__cell-item">
             <strong>Name</strong> {item.symbol}
           </span>
           <span className="table__cell-item">
             <strong>Public key</strong>{' '}
-            {shrinkString(item.address, 10)} 
+            {shrinkString(item.address, 10)}
           </span>
           <span className="table__cell-item">
             <strong>Value</strong> {Number(item.value).toFixed(2)}
@@ -72,9 +72,6 @@ export default props => {
       <div className="transactions coins-tx table_theme_simple">
         <Desktop modificataion="desktop" {...props} />
         <Mobile modificataion="mobile" {...props} />
-        <Link href="/blocks">
-          <a className="table__more">show more</a>
-        </Link>
       </div>
     </div>
   )

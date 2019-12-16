@@ -5,7 +5,7 @@ if (typeof fetch === 'undefined') {
 }
 
 async function fetchData(page = 1, coin, limit=5) {
-  const response = await fetch(`${config.api}coins/${coin}/validators?page=${page}&limit=${limit}`)
+  const response = await fetch(`${config.api}coins/${coin.toUpperCase()}/validators?page=${page}&limit=${limit}`)
   const status = response.status
   const body = await response.json()
 

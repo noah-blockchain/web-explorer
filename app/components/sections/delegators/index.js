@@ -12,7 +12,6 @@ export default ({ data = [], pagination }) => {
         <h4 className="table__title">Coin delegators</h4>
 
         <div className="not-found-delegators">
-          <h4>Delegators not found</h4>
         </div>
       </div>
     )
