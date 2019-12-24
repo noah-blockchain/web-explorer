@@ -9,7 +9,8 @@ WORKDIR ${APP_ROOT}
 ADD . ${APP_ROOT}
 
 RUN set -x \
-    && echo -e "API=$API\nSTATUS=$STATUS" \
+    && export API \
+    && export PATH \
     && npm install \
     && npm run build
 
