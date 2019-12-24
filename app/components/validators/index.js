@@ -194,7 +194,6 @@ const Mobile = ({ data, modificataion = '' }) => (
 
 export default props => {
   const { pagination } = props
-  console.log("props",props)
   return (
     <div className="coins-container">
       <div className="transactions coins-tx table_theme_simple">

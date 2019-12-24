@@ -2,6 +2,7 @@ import React from 'react'
 
 export default ({ children, rawData = {} }) => {
   rawData = rawData.data
+  console.log(rawData)
   const data = {
     freeFloatNoah: rawData.freeFloatNoah,
     txTotalCount: rawData.txTotalCount,

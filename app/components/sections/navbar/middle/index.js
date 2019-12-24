@@ -34,6 +34,12 @@ export default ({ current = 'dashboard' }) => {
       name: 'Validators',
       icon: require('./images/handshake.svg'),
       link: '/validators'
+    },
+    {
+      id: 'wallets',
+      name: 'Wallets',
+      icon: require('./images/wallets.svg'),
+      link: '/wallets'
     }
   ]
 
