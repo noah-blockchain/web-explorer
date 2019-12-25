@@ -35,12 +35,12 @@ export default ({ current = 'dashboard' }) => {
       icon: require('./images/handshake.svg'),
       link: '/validators'
     },
-    {
-      id: 'wallets',
-      name: 'Wallets',
-      icon: require('./images/wallets.svg'),
-      link: '/wallets'
-    }
+    // {
+    //   id: 'wallets',
+    //   name: 'Wallets',
+    //   icon: require('./images/wallets.svg'),
+    //   link: '/wallets'
+    // }
   ]
 
   let activeLink = {}

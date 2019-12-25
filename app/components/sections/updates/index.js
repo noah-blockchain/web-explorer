@@ -41,27 +41,27 @@ export default ({ data = {} }) => {
       icon: require('./images/validators.svg'),
       link: '/validators'
     },
-    {
-      name: 'Free float',
-      value: numberWithCommas(Number(data.freeFloatNoah).toFixed(2)),
-      icon: require('./images/diamond.svg'),
-    },
-    {
-      name: 'Emission',
-      value: numberWithCommas(Number(data.noahEmission)),
-      icon: require('./images/coin.svg'),
-      link: '/coins/Noah'
-    },
+    // {
+    //   name: 'Free float',
+    //   value: numberWithCommas(Number(data.freeFloatNoah).toFixed(2)),
+    //   icon: require('./images/diamond.svg'),
+    // },
+    // {
+    //   name: 'Emission',
+    //   value: numberWithCommas(Number(data.noahEmission)),
+    //   icon: require('./images/coin.svg'),
+    //   link: '/coins/Noah'
+    // },
     {
       name: 'Total Delegated',
       value: numberWithCommas(Number(data.totalDelegatedNoah).toFixed(2)),
       icon: require('./images/emission.svg'),
     },
-    {
-      name: 'Uptime',
-      value: data.uptime + '%',
-      icon: require('./images/uptime.svg')
-    },
+    // {
+    //   name: 'Uptime',
+    //   value: data.uptime + '%',
+    //   icon: require('./images/uptime.svg')
+    // },
     {
       name: 'Custom coins count',
       value: data.customCoinsCount,
