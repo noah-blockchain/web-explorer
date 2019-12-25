@@ -35,7 +35,7 @@ const Desktop = props => {
     <div>
       <div className="filters-container">
         <div>
-          <h4>Coins / 1001</h4>
+          <h4>Coins</h4>
         </div>
         <div className="filter-block">
           <div className="filter" onClick={() => filter.setFilter('crr')}>
