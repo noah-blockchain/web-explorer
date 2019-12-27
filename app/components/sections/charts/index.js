@@ -11,24 +11,20 @@ import {
   ResponsiveContainer
 } from 'recharts'
 
-export default ({ data }) => {
-  const charts = [
-    { date: '01-10-2019', value: 3200 },
-    { date: '01-10-2019', value: 4400 },
-    { date: '01-10-2019', value: 4800 },
-    { date: '01-10-2019', value: 3100 },
-    { date: '01-10-2019', value: 2800 },
-    { date: '01-10-2019', value: 4000 },
-    { date: '01-10-2019', value: 4700 }
-  ]
-
+export default ({ data = [] }) => {
+  const charts = [...data].reverse()
   return (
     <section className="section section_block-details-coins">
       <div className="wrapper_section-content">
         <div className="section__card">
           <h2 className="section__title">Coin price history</h2>
           <div className="section__body">
-            <ResponsiveContainer width='94%' aspect={4.0 / 2.0}>
+            <div className="charts-filter-container">
+              <div className="charts-filter">Day</div>
+              <div className="charts-filter active">Month</div>
+              <div className="charts-filter">Year</div>
+            </div>
+            <ResponsiveContainer width='94%' aspect={5.0 / 2.0}>
               <LineChart
                 horizontal={false}
                 data={charts}

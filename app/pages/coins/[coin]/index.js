@@ -12,9 +12,14 @@ import TransactionsComponent from '~/components/transactions'
 
 
 import fetchCoinDetails from '~/containers/coin/fetchData'
+
 import ChartsDetailComponent from '~/components/sections/charts'
+import ChartsDetailContainer from '~/containers/charts'
+import fetchChart from '~/containers/charts/fetchData'
+
 import '~/common.blocks/page/page_coins.less'
 // -- Validators
+
 
 import fetchValidators from '~/containers/validators/fetchData'
 import ValidatorsContainer from '~/containers/validators'
@@ -28,7 +33,7 @@ import fetchHolders from '~/containers/holders/fetchData'
 import HoldersContainer from '~/containers/holders'
 import HoldersComponent from '~/components/sections/holders'
 
-const Page = ({ coins, coin, transactions, validators, holders, delegators }) => {
+const Page = ({ coins, coin, transactions, validators, holders, delegators, charts }) => {
   const language = 'en'
 
   return (
@@ -61,18 +66,22 @@ const Page = ({ coins, coin, transactions, validators, holders, delegators }) =>
                 </DelegatorsContainer>
               </div>
               <div className="right">
-                <ChartsDetailComponent/>
+                <ChartsDetailContainer rawData={charts}>
+                  <ChartsDetailComponent/>
+                </ChartsDetailContainer>
               </div>
             </div>
           </div>
         </div>
 
         <div className="bottom-section-mobile">
-          <ChartsDetailComponent/>
+          <ChartsDetailContainer rawData={charts}>
+            <ChartsDetailComponent/>
+          </ChartsDetailContainer>
         </div>
         <div className="bottom-section-mobile">
           <div className="wrapper_section-content">
-            <DelegatorsContainer coin={coin} rawData={delegators}>
+            <DelegatorsContainer rawData={charts}>
               <DelegatorsComponent/>
             </DelegatorsContainer>
           </div>
@@ -140,15 +149,18 @@ Page.getInitialProps = async (context) => {
   const holdersPromise = fetchHolders(1, coin).catch(() => [])
   const transactionsPromise = fetchTransactionsCoins(1, coin).catch(() => [])
 
-  const [coins, validators, holders, transactions, delegators] = await Promise.all([
+  const chartsPromise = fetchChart(coin).catch(() => [])
+
+  const [coins, validators, holders, transactions, delegators, charts] = await Promise.all([
     coinsPromise,
     validatorsPromise,
     holdersPromise,
     transactionsPromise,
-    delegatorsPromise
+    delegatorsPromise,
+    chartsPromise
   ])
-
-  return { coins: coins, coin, transactions, validators: validators, holders, delegators }
+  console.log(charts, "COINS CHARTS")
+  return { coins: coins, coin, transactions, validators: validators, holders, delegators, charts}
 }
 
 export default Page
