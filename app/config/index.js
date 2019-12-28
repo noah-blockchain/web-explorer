@@ -4,5 +4,4 @@ const config = {
   status: process.env.API !== undefined ? process.env.API + 'status-page' : 'https://explorer-api.testnet.noah-blockchain.com/api/v1/status-page',
   charts_api: process.env.API_CHARTS
 }
-
 export default config

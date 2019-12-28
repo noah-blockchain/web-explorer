@@ -7,7 +7,8 @@ module.exports = withLess(
     inlineImageLimit: 0,
     env: {
       API: process.env.API,
-      STATUS: process.env.STATUS
+      STATUS: process.env.STATUS,
+      API_CHARTS: process.env.API_CHARTS
     }
   })
 )

@@ -1,14 +1,15 @@
-import config from '~/config'
 import moment from 'moment'
+import config from '~/config'
 
 if (typeof fetch === 'undefined') {
   var fetch = require('node-fetch')
 }
 
 async function fetchData(name, period='MONTH', date =null) {
+  console.log(config.charts_api)
   if(date === null) date = moment().format("DD-MM-YYYY")
   const response = await fetch(`${config.charts_api}prices/${name.toUpperCase()}/?period=${period}&date=${date}`)
-  console.log(`${config.charts_api}prices/${name.toUpperCase()}/?period=${period}&date=${date}`)
+  console.log('KEK', `${process.env.API_CHARTS}prices/${name.toUpperCase()}/?period=${period}&date=${date}`)
   const status = response.status
   const body = await response.json()
 

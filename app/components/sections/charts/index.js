@@ -11,7 +11,8 @@ import {
   ResponsiveContainer
 } from 'recharts'
 
-export default ({ data = [] }) => {
+export default ({ data = [],filter }) => {
+  console.log("FILTER", filter)
   const charts = [...data].reverse()
   return (
     <section className="section section_block-details-coins">
@@ -20,9 +21,15 @@ export default ({ data = [] }) => {
           <h2 className="section__title">Coin price history</h2>
           <div className="section__body">
             <div className="charts-filter-container">
-              <div className="charts-filter">Day</div>
-              <div className="charts-filter active">Month</div>
-              <div className="charts-filter">Year</div>
+              <div
+                onClick={() => filter.setRange('WEEK')}
+                className={`charts-filter ${filter.range=== 'WEEK' ? 'active' : ''}`}>Week</div>
+              <div
+                onClick={() => filter.setRange('MONTH')}
+                className={`charts-filter ${filter.range === 'MONTH' ? 'active' : ''}`}>Month</div>
+              <div
+                onClick={() => filter.setRange('YEAR')}
+                className={`charts-filter ${filter.range === 'YEAR' ? 'active' : ''}`} >Year</div>
             </div>
             <ResponsiveContainer width='94%' aspect={5.0 / 2.0}>
               <LineChart

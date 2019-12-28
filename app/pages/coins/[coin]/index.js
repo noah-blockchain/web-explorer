@@ -66,7 +66,7 @@ const Page = ({ coins, coin, transactions, validators, holders, delegators, char
                 </DelegatorsContainer>
               </div>
               <div className="right">
-                <ChartsDetailContainer rawData={charts}>
+                <ChartsDetailContainer rawData={charts} coin={coin}>
                   <ChartsDetailComponent/>
                 </ChartsDetailContainer>
               </div>
@@ -75,13 +75,13 @@ const Page = ({ coins, coin, transactions, validators, holders, delegators, char
         </div>
 
         <div className="bottom-section-mobile">
-          <ChartsDetailContainer rawData={charts}>
+          <ChartsDetailContainer rawData={charts} coin={coin}>
             <ChartsDetailComponent/>
           </ChartsDetailContainer>
         </div>
         <div className="bottom-section-mobile">
           <div className="wrapper_section-content">
-            <DelegatorsContainer rawData={charts}>
+            <DelegatorsContainer rawData={charts} >
               <DelegatorsComponent/>
             </DelegatorsContainer>
           </div>
