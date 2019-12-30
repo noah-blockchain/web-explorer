@@ -21,7 +21,7 @@ const Desktop = props => {
         </tr>
       </thead>
       <tbody className="table__body">
-        {data.slice(0, 4).map((item, i) => (
+        {data.map((item, i) => (
           <tr className="table__row" key={i}>
             <td className="table__cell">{(item.symbol)}</td>
             <td className="table__cell">{(item.address)}</td>
