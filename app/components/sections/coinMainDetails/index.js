@@ -19,16 +19,16 @@ const Details = ({ data, modificataion = 'desktop' }) => {
 
   const fields = [
     {
-      name: 'Crr',
-      value: data.crr,
-     },
+      name: 'Сonstant Reserve Ratio',
+      value: data.crr + " NOAH"
+    },
     {
       name: 'Volume',
-      value: data.volume,
+      value: Number(data.volume).toFixed(3)
     },
     {
       name: 'Reserve Balance',
-      value: data.reserveBalance
+      value: Number(data.reserveBalance).toFixed(3) + " NOAH"
     },
     {
       name: 'Name',
@@ -40,40 +40,50 @@ const Details = ({ data, modificataion = 'desktop' }) => {
     },
     {
       name: 'Price',
-      value: data.price
+      value: Number(data.price).toFixed(3) + " NOAH"
     },
     {
       name: 'Capitalization',
-      value: data.capitalization
+      value: Number(data.capitalization).toFixed(3) + " NOAH"
     },
     {
       name: 'Delegated',
-      value: data.delegated
-    },
-    {
-      name: 'Creator',
-      value: data.creator,
-      modification: 'translucent',
-      href: '/wallets/' + data.creator
+      value: Number(data.delegated).toFixed(3)
     },
     {
       name: 'Time',
-      value: convertDate(data.timestamp),
+      value: convertDate(data.timestamp)
     },
 
     {
       name: 'Start price',
-      value: data.start_price,
+      value: Number(data.start_price).toFixed(3)
     },
     {
       name: 'Start volume',
-      value: data.start_volume,
+      value: Number(data.start_volume).toFixed(3)
     },
     {
       name: 'Start reserve balance',
-      value: data.start_reserve_balance,
+      value: Number(data.start_reserve_balance).toFixed(3)
     }
   ]
+
+
+  const creator = {
+    name: 'Creator',
+    value: data.creator,
+    modification: 'translucent'
+  }
+  if (data.creator !== 'NOAHx') {
+    fields.push({
+      ...creator,
+      href: '/wallets/' + data.creator
+    })
+  } else {
+    fields.push(creator);
+  }
+
 
   return (
     <section className={`section section_block-main-details--${modificataion}`}>

@@ -23,8 +23,8 @@ const Asc = () => (
 const Icons = ({ order_by, filter, name }) => {
   // console.log(name, filter, order_by)
   if (name === filter) {
-    if (order_by === 'DESC') return <Desc />
-    if (order_by === 'ASC') return <Asc />
+    if (order_by === 'ASC') return <Desc />
+    if (order_by === 'DESC') return <Asc />
   }
   return <Default />
 }
@@ -39,7 +39,7 @@ const Desktop = props => {
         </div>
         <div className="filter-block">
           <div className="filter" onClick={() => filter.setFilter('commission')}>
-            <span className="clickable">Fee</span>
+            <span className="clickable">Fee for Delegation</span>
             <Icons
               name="commission"
               filter={filter.filter}
@@ -69,7 +69,7 @@ const Desktop = props => {
 
 
           <div className="filter" onClick={() => filter.setFilter('capitalization')}>
-            <span className="clickable">Part</span>
+            <span className="clickable">Share of stake</span>
             <Icons
               name="capitalization"
               filter={filter.filter}
@@ -103,7 +103,7 @@ const Desktop = props => {
                 </Link>
               </div>
               <div className="table-col">
-                <span className="coins-label">Fee</span>
+                <span className="coins-label">Fee for Delegation</span>
                 <span className="coins-value">{new BigNumber(item.commission).toFormat(2)} </span>
               </div>
 
@@ -122,11 +122,11 @@ const Desktop = props => {
 
             <th className="table__cell">
               <div className="table-col">
-                <span className="coins-label">Date</span>
+                <span className="coins-label">Launch Date</span>
                 <span className="coins-value"> {convertDate(item.created_at)}</span>
               </div>
               <div className="table-col">
-                <span className="coins-label">Part</span>
+                <span className="coins-label">Share of stake</span>
                 <span className="coins-value">{item.part ? new BigNumber(item.part).toFormat(2)+"% NOAH" : '0% NOAH'} </span>
               </div>
             </th>
@@ -164,7 +164,7 @@ const Mobile = ({ data, modificataion = '' }) => (
               <strong>Public key</strong> {shrinkString(item.public_key, 10)}
             </span>
             <span className="table__cell-item">
-              <strong>Fee</strong> {item.commission}
+              <strong>Fee for Delegation</strong> {item.commission}
             </span>
             <span className="table__cell-item">
               <strong>Name</strong> {item.uptime}
@@ -176,10 +176,10 @@ const Mobile = ({ data, modificataion = '' }) => (
               <strong>Status</strong> {item.status === 1 ? 'offline' : 'online'}
             </span>
             <span className="table__cell-item">
-              <strong>Age</strong> {convertDate(item.created_at)}
+              <strong>Launch Date</strong> {convertDate(item.created_at)}
             </span>
             <span className="table__cell-item">
-              <strong>Part</strong> {item.part}
+              <strong>Share of stake</strong> {item.part}
             </span>
             </div>
                   </div>

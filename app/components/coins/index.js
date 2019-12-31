@@ -132,7 +132,7 @@ const Desktop = props => {
             <th className="table__cell">
               <div className="table-col">
                 <span className="coins-label">Price</span>
-                <span className="coins-value">{new BigNumber(item.price).toFormat(2)} </span>
+                <span className="coins-value">{new BigNumber(item.price).toFormat(2)} NOAH</span>
               </div>
               <div className="table-col">
                 <span className="coins-label">Volume</span>
@@ -142,7 +142,7 @@ const Desktop = props => {
             <th className="table__cell">
               <div className="table-col">
                 <span className="coins-label">Reserve Balance</span>
-                <span className="coins-value">{new BigNumber(item.reserveBalance).toFormat(2)}</span>
+                <span className="coins-value">{new BigNumber(item.reserveBalance).toFormat(2)} NOAH</span>
               </div>
               <div className="table-col">
                 <span className="coins-label">Crr</span>
@@ -156,7 +156,7 @@ const Desktop = props => {
               </div>
               <div className="table-col">
                 <span className="coins-label">Capitalization</span>
-                <span className="coins-value">{new BigNumber(item.volume * item.price).toFormat(2)}</span>
+                <span className="coins-value">{new BigNumber(item.volume * item.price).toFormat(2)} NOAH</span>
               </div>
             </th>
             <th className="table__cell ">
