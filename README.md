@@ -1,5 +1,11 @@
 # Web-explorer Noah Docker
 
+[![last commit](https://img.shields.io/github/last-commit/noah-blockchain/web-explorer.svg)]()
+[![license](https://img.shields.io/packagist/l/doctrine/orm.svg)](https://github.com/noah-blockchain/web-explorer/blob/master/LICENSE)
+[![version](https://img.shields.io/github/tag/noah-blockchain/web-explorer.svg)](https://github.com/noah-blockchain/web-explorer/releases/latest)
+[![](https://tokei.rs/b1/github/noah-blockchain/web-explorer?category=lines)](https://github.com/noah-blockchai/nweb-explorer)
+
+
 ## Getting you instance ready for Docker
 Run the following commands to install Docker and Docker Compose
 On Ubuntu
