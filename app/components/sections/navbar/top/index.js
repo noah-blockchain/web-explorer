@@ -37,7 +37,7 @@ export default ({ handleSearchSubmit }) => (
                   alt="noah logo"
                 />
                 <p className="section__switcher-header-text">
-                  NOAH Blockchain Testnet
+                  NOAH Blockchain Mainnet
                 </p>
               </>
             }
@@ -50,7 +50,7 @@ export default ({ handleSearchSubmit }) => (
                     alt="noah logo"
                   />
                   <p className="section__switcher-body-text">
-                    NOAH Blockchain Testnet
+                    NOAH Blockchain Mainnet
                   </p>
                 </div>
                 <div className="section__switcher-body-item section__switcher-body-item--unavailable">
@@ -60,7 +60,7 @@ export default ({ handleSearchSubmit }) => (
                     alt="noah logo"
                   />
                   <p className="section__switcher-body-text">
-                    NOAH Blockchain Mainnet
+                    NOAH Blockchain Testnet
                   </p>
                 </div>
               </>

@@ -14,19 +14,19 @@ const Default = () => (
 )
 
 const Desc = () => (
-  <img className="sort-icon" src={require('./images/desc.svg')} alt="desc" />
+  <img className="sort-icon" src={require('./images/desc.svg')} alt="desc"/>
 )
 const Asc = () => (
-  <img className="sort-icon" src={require('./images/asc.svg')} alt="asc" />
+  <img className="sort-icon" src={require('./images/asc.svg')} alt="asc"/>
 )
 
 const Icons = ({ order_by, filter, name }) => {
   // console.log(name, filter, order_by)
   if (name === filter) {
-    if (order_by === 'ASC') return <Desc />
-    if (order_by === 'DESC') return <Asc />
+    if (order_by === 'ASC') return <Desc/>
+    if (order_by === 'DESC') return <Asc/>
   }
-  return <Default />
+  return <Default/>
 }
 
 const Desktop = props => {
@@ -79,12 +79,12 @@ const Desktop = props => {
 
         </div>
       </div>
-    <table className={`table__table table__table--${modificataion}`}>
-      <tbody className="table__body">
+      <table className={`table__table table__table--${modificataion}`}>
+        <tbody className="table__body">
         {data.map((item, i) => (
           <tr className="table__row" key={i}>
             <th className="table__cell">
-              <svg height="18" width="18" style={{top: '40px', position: 'relative'}}>
+              <svg height="18" width="18" style={{ top: '40px', position: 'relative' }}>
                 <circle
                   cx="7"
                   cy="7"
@@ -103,19 +103,23 @@ const Desktop = props => {
                 </Link>
               </div>
               <div className="table-col">
-                <span className="coins-label">Fee for Delegation</span>
-                <span className="coins-value">{new BigNumber(item.commission).toFormat(2)} </span>
+                <span className="coins-label">Custom name</span>
+                <span className="coins-value">{item.name !== undefined ? item.name : '-'} </span>
               </div>
 
             </th>
             <th className="table__cell">
               <div className="table-col">
                 <span className="coins-label">Uptime</span>
-                <span className="coins-value">  {Math.floor(item.uptime) + "%"}</span>
+                <span className="coins-value">  {Math.floor(item.uptime) + '%'}</span>
               </div>
               <div className="table-col">
                 <span className="coins-label">Stake</span>
                 <span className="coins-value">   {new BigNumber(item.stake).toFormat(2)} </span>
+              </div>
+              <div className="table-col">
+                <span className="coins-label">Fee for Delegation</span>
+                <span className="coins-value">  {new BigNumber(item.commission).toFormat(2)} </span>
               </div>
             </th>
 
@@ -127,15 +131,20 @@ const Desktop = props => {
               </div>
               <div className="table-col">
                 <span className="coins-label">Share of stake</span>
-                <span className="coins-value">{item.part ? new BigNumber(item.part).toFormat(2)+"% NOAH" : '0% NOAH'} </span>
+                <span
+                  className="coins-value">{item.part ? new BigNumber(item.part).toFormat(2) + '% NOAH' : '0% NOAH'} </span>
+              </div>
+              <div className="table-col">
+                <span className="coins-label">Profitability</span>
+                <span className="coins-value"> 20 % </span>
               </div>
             </th>
 
 
           </tr>
         ))}
-      </tbody>
-    </table>
+        </tbody>
+      </table>
     </div>
   )
 }
@@ -143,51 +152,54 @@ const Desktop = props => {
 const Mobile = ({ data, modificataion = '' }) => (
   <table className={`table__table table__table--${modificataion}`}>
     <tbody className="table__body">
-      {data.map((item, i) => (
-        <tr className="table__row" key={i}>
-          <th className="table__cell">
+    {data.map((item, i) => (
+      <tr className="table__row" key={i}>
+        <th className="table__cell">
           <Link href={`/validators/${item.public_key}`}>
-                <a className="link_theme_none">
-                  <div className="table__val__title">
-                    <div className="table__val__name">
+            <a className="link_theme_none">
+              <div className="table__val__title">
+                <div className="table__val__name">
             <span className="table__cell-item">
               <strong>Name</strong> {item.meta.name}
             </span>
-            <span className="table__cell-item">
+                  <span className="table__cell-item">
               <strong>Description</strong>{' '}
-              {(item.meta.description)}
+                    {(item.meta.description)}
             </span>
-            <span className="table__cell-item">
+                  <span className="table__cell-item">
               <strong>Site</strong> {item.meta.site_url}
             </span>
-            <span className="table__cell-item table__link">
+                  <span className="table__cell-item table__link">
               <strong>Public key</strong> {shrinkString(item.public_key, 10)}
             </span>
-            <span className="table__cell-item">
+                  <span className="table__cell-item">
               <strong>Fee for Delegation</strong> {item.commission}
             </span>
-            <span className="table__cell-item">
-              <strong>Name</strong> {item.uptime}
+                  <span className="table__cell-item">
+              <strong>Name</strong> {item.name}
             </span>
-            <span className="table__cell-item">
+                  <span className="table__cell-item">
               <strong>Stake</strong> {item.stake}
             </span>
-            <span className="table__cell-item">
+                  <span className="table__cell-item">
               <strong>Status</strong> {item.status === 1 ? 'offline' : 'online'}
             </span>
-            <span className="table__cell-item">
+                  <span className="table__cell-item">
               <strong>Launch Date</strong> {convertDate(item.created_at)}
             </span>
-            <span className="table__cell-item">
+                  <span className="table__cell-item">
               <strong>Share of stake</strong> {item.part}
             </span>
-            </div>
-                  </div>
-                </a>
-              </Link>
-          </th>
-        </tr>
-      ))}
+                  <span className="table__cell-item">
+              <strong>Profitability</strong> 20%
+            </span>
+                </div>
+              </div>
+            </a>
+          </Link>
+        </th>
+      </tr>
+    ))}
     </tbody>
   </table>
 )

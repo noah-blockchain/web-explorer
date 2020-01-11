@@ -1,6 +1,7 @@
 import React from 'react'
 import './section_block-details.less'
 import convertDate from '~/utils/convertDate'
+import BigNumber from 'bignumber.js'
 
 export default ({ data }) => {
   // console.log('data', data)
@@ -44,8 +45,25 @@ export default ({ data }) => {
       value: data.status
     },
     {
+      name: 'Profitability',
+      value: '20%'
+    },
+    {
       name: 'Uptime',
-      value: Math.floor(data?.uptime) + "%"
+      value: Math.floor(data?.uptime) + '%'
+    },
+    {
+      name: 'Fee for Delegation',
+      value: new BigNumber(data.commission).toFormat(2)
+
+    },
+    {
+      name: 'Launch date',
+      value: data.date
+    },
+    {
+      name: 'Share of stake',
+      value: new BigNumber(data.part).toFormat(8)
     }
   ]
 
@@ -58,7 +76,7 @@ export default ({ data }) => {
             {fields.map((item, i) => (
               <div
                 className={`section__field section__field--${item.modification ||
-                  'default'}`}
+                'default'}`}
                 key={i}
               >
                 <p className="section__field-name">{item.name}</p>
