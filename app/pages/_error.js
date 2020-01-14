@@ -18,6 +18,9 @@ if (isClient) {
 
 export default class Error extends React.Component {
   static getInitialProps({ err, res, xhr }) {
+    console.log(res, "RES")
+    console.log(xhr, "XNR")
+    console.warn(err, "ERROR")
     if (isInitialClientRender) {
       // rethrow to prevent the error view from displaying on initial client render
       throw err;
