@@ -2,29 +2,13 @@ import React, { PropTypes } from 'react';
 import Head from 'next/head';
 import Router from 'next/router';
 
-// Script errors occuring during initial client render can cause the server-rendered
-// content to be hidden by an error page. Track router events to determine if the
-// error being handled happened during initial render, and throw within
-// getInitialProps to allow the server-rendered content to remain visible.
-const isClient = typeof window !== 'undefined';
-let isInitialClientRender = isClient;
-if (isClient) {
-  Router.ready(() => {
-    Router.router.once('routeChangeStart', () => {
-      isInitialClientRender = false;
-    });
-  });
-}
 
 export default class Error extends React.Component {
   static getInitialProps({ err, res, xhr }) {
     console.log(res, "RES")
     console.log(xhr, "XNR")
     console.warn(err, "ERROR")
-    if (isInitialClientRender) {
-      // rethrow to prevent the error view from displaying on initial client render
-      throw err;
-    }
+
 
     const statusCode = (res && res.statusCode) || (xhr && xhr.status) || null;
     return { statusCode };
