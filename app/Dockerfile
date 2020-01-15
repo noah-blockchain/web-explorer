@@ -1,4 +1,4 @@
-FROM node:10.15
+FROM node:lts-alpine
 
 ENV APP_ROOT /src
 ARG APP_ENV
@@ -8,7 +8,7 @@ WORKDIR ${APP_ROOT}
 COPY . ${APP_ROOT}
 
 RUN set -x \
-    && cat .env.${APP_ENV} >.env \
+    && cat .env.mainnet >.env \
     && npm install \
     && npm run build
 
