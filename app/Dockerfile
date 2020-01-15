@@ -8,7 +8,7 @@ WORKDIR ${APP_ROOT}
 COPY . ${APP_ROOT}
 
 RUN set -x \
-    && cat .env.mainnet >.env \
+   && cat .env.${APP_ENV} >.env \
     && npm install \
     && npm run build
 
