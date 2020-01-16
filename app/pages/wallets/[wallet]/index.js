@@ -49,6 +49,7 @@ Page.getInitialProps = async (context) => {
   // console.log(transactions, "TRANSACTION")
   // console.log(wallet, "address")
   // return { wallet: data, transactions, address: wallet }
+  return  {}
 }
 
 export default Page
