@@ -12,19 +12,19 @@ import TransactionDetailsContainer from '~/containers/transactions_address'
 import Pagination from '~/components/pagination'
 import '~/common.blocks/page/page_transaction.less'
 
-const List = ({ data = {}, pagination = {} }) => {
-  return (
-    <div>
-      <Pagination {...pagination} />
-      {data.map((item, i) => (
-        <div className="wallet-tx">
-          <TransactionDetailsComponent data={item} key={i}  type={'transactions'}/>
-        </div>
-      ))}
-      <Pagination {...pagination} />
-    </div>
-  )
-}
+// const List = ({ data = {}, pagination = {} }) => {
+//   return (
+//     <div>
+//       <Pagination {...pagination} />
+//       {data.map((item, i) => (
+//         <div className="wallet-tx">
+//           <TransactionDetailsComponent data={item} key={i}  type={'transactions'}/>
+//         </div>
+//       ))}
+//       <Pagination {...pagination} />
+//     </div>
+//   )
+// }
 
 const Page = ({ wallet, transactions, address }) => {
   const language = 'en'
@@ -56,9 +56,7 @@ const Page = ({ wallet, transactions, address }) => {
             </h1>
           </div>
         </div>
-        <TransactionDetailsContainer address={address} rawData={transactions}>
-          <List/>
-        </TransactionDetailsContainer>
+
       </main>
     </Layout>
   )

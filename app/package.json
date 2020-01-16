@@ -4,8 +4,8 @@
   "author": "btcnext dev team",
   "scripts": {
     "dev": "next -p 3001",
-    "build": "next build ",
-    "postinstall": "next build",
+    "build": "next build && next export",
+    "postinstall": "next build && next export",
     "start": "next start -p 3000"
   },
   "dependencies": {
