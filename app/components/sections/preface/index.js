@@ -1,6 +1,7 @@
 import React from 'react'
 import './section_preface.less'
 import Search from '~/containers/search'
+import config from '../../../config'
 
 export default () => (
   <section className="section section_preface">
@@ -40,7 +41,7 @@ export default () => (
             alt="app store"
           />
         </a>
-        <a className="section__link" target="_blank" href="https://tools.noah-blockchain.com/">
+        <a className="section__link" target="_blank" href={config.wallet_url}>
           <img
             className="section__link-image"
             src={require('./images/web-wallet.svg')}
