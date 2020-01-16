@@ -23,7 +23,7 @@ import '~/common.blocks/page/page_transaction.less'
 //   )
 // }
 
-const Page = ({ wallet, transactions, address }) => {
+const Page = () => {
   const language = 'en'
 
   return (
