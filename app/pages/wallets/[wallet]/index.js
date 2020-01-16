@@ -35,7 +35,7 @@ const Page = () => {
     >
       <main className="page_transaction">
         <NavbarTop/>
-        <NavbarMiddle current={'wallet'}/>
+        <NavbarMiddle current={'transactions'}/>
       </main>
     </Layout>
   )
