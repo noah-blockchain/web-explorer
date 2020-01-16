@@ -3,13 +3,10 @@ import config from '~/config/index'
 import Layout from '~/components/layout'
 import NavbarTop from '~/components/sections/navbar/top'
 import NavbarMiddle from '~/components/sections/navbar/middle'
-import WalletDetailsComponent from '~/components/sections/walletDetails'
-import WalletDetailsContainer from '~/containers/wallet'
+
 import fetchWalletDetails from '~/containers/wallet/fetchData'
 import fetchTransactionsAddress from '~/containers/transactions_address/fetchData'
-import TransactionDetailsComponent from '~/components/sections/transactionDetails'
-import TransactionDetailsContainer from '~/containers/transactions_address'
-import Pagination from '~/components/pagination'
+
 import '~/common.blocks/page/page_transaction.less'
 
 // const List = ({ data = {}, pagination = {} }) => {
@@ -46,9 +43,7 @@ const Page = ({ wallet, transactions, address }) => {
             </h1>
           </div>
         </div>
-        <WalletDetailsContainer rawData={wallet}>
-          <WalletDetailsComponent/>
-        </WalletDetailsContainer>
+
         <div className='section section_transaction-details-title'>
           <div className='wrapper_section-content'>
             <h1 className='section__title'>
