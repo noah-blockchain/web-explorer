@@ -36,35 +36,19 @@ const Page = ({ wallet, transactions, address }) => {
       <main className="page_transaction">
         <NavbarTop/>
         <NavbarMiddle current={'wallet'}/>
-        <div className='section section_transaction-details-title'>
-          <div className='wrapper_section-content'>
-            <h1 className='section__title'>
-              Wallet Details
-            </h1>
-          </div>
-        </div>
-
-        <div className='section section_transaction-details-title'>
-          <div className='wrapper_section-content'>
-            <h1 className='section__title'>
-              Transactions
-            </h1>
-          </div>
-        </div>
-
       </main>
     </Layout>
   )
 }
 
 Page.getInitialProps = async (context) => {
-  const { wallet } = context.query
-  const data = await fetchWalletDetails(wallet).catch(() => ({}))
-  console.log(data, "data")
-  const transactions = await fetchTransactionsAddress(1, wallet).catch(() => ({}))
-  console.log(transactions, "TRANSACTION")
-  console.log(wallet, "address")
-  return { wallet: data, transactions, address: wallet }
+  // const { wallet } = context.query
+  // const data = await fetchWalletDetails(wallet).catch(() => ({}))
+  // console.log(data, "data")
+  // const transactions = await fetchTransactionsAddress(1, wallet).catch(() => ({}))
+  // console.log(transactions, "TRANSACTION")
+  // console.log(wallet, "address")
+  // return { wallet: data, transactions, address: wallet }
 }
 
 export default Page
