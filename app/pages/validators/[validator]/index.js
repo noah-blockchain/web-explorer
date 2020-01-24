@@ -10,8 +10,21 @@ import DelegatorsComponent from '~/components/sections/deligators_by_validator'
 import fetchValidator from '~/containers/validator/fetchData'
 import fetchDeligators from '~/containers/deligators_by_validator/fetchData'
 import '~/common.blocks/page/page_validators.less'
+import Pagination from '~/components/pagination'
 
-const Page = ({ validatorData, deligatorsData }) => {
+
+const List = ({ data = {}, pagination = {} }) => {
+  return (
+    <div>
+        <div className="delegator-component">
+          <DelegatorsComponent data={data} />
+        </div>
+      <Pagination {...pagination} />
+    </div>
+  )
+}
+
+const Page = ({ validatorData, deligatorsData, validator }) => {
   const language = 'en'
   // console.log("validator >>>>>>",validatorData)
   // console.log("deligators >>>>>>",deligatorsData)
@@ -42,8 +55,8 @@ const Page = ({ validatorData, deligatorsData }) => {
               </div>
               {deligatorsData.data.length > 0 && (
                 <div className="right">
-                  <DelegatorsContainer rawData={deligatorsData}>
-                    <DelegatorsComponent/>
+                  <DelegatorsContainer address={validator}  rawData={deligatorsData}>
+                    <List/>
                   </DelegatorsContainer>
                 </div>
               )}
@@ -63,7 +76,7 @@ Page.getInitialProps = async (context) => {
     validatorPromise,
     deligatorsPromise
   ])
-  return { validatorData, deligatorsData }
+  return { validatorData, deligatorsData, validator }
 }
 
 export default Page
