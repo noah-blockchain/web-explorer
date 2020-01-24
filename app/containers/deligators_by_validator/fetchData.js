@@ -5,10 +5,12 @@ if (typeof fetch === 'undefined') {
 }
 
 async function fetchData(public_key = '', page = 1) {
-  const response = await fetch(`${config.api}validators/${public_key}/delegators?page=${page}`)
+  const response = await fetch(
+    `${config.api}validators/${public_key}/delegators?page=${page}`
+  )
   const status = response.status
   const body = await response.json()
-  console.log(body, "DELEGATORS")
+  console.log(body, 'DELEGATORS')
 
   if (status == 200) {
     return body

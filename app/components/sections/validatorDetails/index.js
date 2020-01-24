@@ -55,7 +55,6 @@ export default ({ data }) => {
     {
       name: 'Fee for Delegation',
       value: new BigNumber(data.commission).toFormat(2)
-
     },
     {
       name: 'Launch date',
@@ -76,7 +75,7 @@ export default ({ data }) => {
             {fields.map((item, i) => (
               <div
                 className={`section__field section__field--${item.modification ||
-                'default'}`}
+                  'default'}`}
                 key={i}
               >
                 <p className="section__field-name">{item.name}</p>

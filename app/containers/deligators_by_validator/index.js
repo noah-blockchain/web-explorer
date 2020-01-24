@@ -16,7 +16,9 @@ export default class Container extends React.Component {
 
   setPage = async page => {
     if (page !== this.state.page) {
-      const rawData = await fetchDelegators(this.props.address, page).catch(() => [])
+      const rawData = await fetchDelegators(this.props.address, page).catch(
+        () => []
+      )
       return this.setState({ page, rawData })
     }
   }
