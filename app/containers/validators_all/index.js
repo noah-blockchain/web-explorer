@@ -1,6 +1,5 @@
 import React from 'react'
-import { getAmountWithCoin, txTypeFilter } from '../../utils/tx'
-import fetchValidatorsAddress from '~/containers/validators_all/fetchData'
+import fetchData from '~/containers/validators_all/fetchData'
 
 export default class Container extends React.Component {
   state = {
@@ -38,7 +37,7 @@ export default class Container extends React.Component {
 
   setFilter = async filter => {
     const order_by = this.getOrder(filter)
-    const rawData = await fetchValidatorsAddress(
+    const rawData = await fetchData(
       this.getFilterString(filter, order_by, this.state.page)
     ).catch(() => [])
     return this.setState({ filter, order_by, rawData })
@@ -52,6 +51,8 @@ export default class Container extends React.Component {
       return this.setState({ page, rawData })
     }
   }
+
+
 
   render() {
     const { children } = this.props
@@ -81,8 +82,19 @@ export default class Container extends React.Component {
       }
     })
 
+    const pagination = {
+      setPage: this.setPage,
+      activePage: this.state.page,
+      lastPage: rawData.meta.last_page,
+      startPage:
+        this.state.page < 3
+          ? 1
+          : this.state.page < rawData.meta.per_page
+          ? this.state.page - 2
+          : this.state.page - 2
+    }
     const child = React.Children.map(children, child =>
-      React.cloneElement(child, { data, filter })
+      React.cloneElement(child, { data, filter, pagination })
     )
 
     return <>{child}</>

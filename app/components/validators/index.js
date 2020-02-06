@@ -4,6 +4,7 @@ import convertDate from '../../utils/convertDate'
 import shrinkString from '../../utils/shrinkString'
 import Link from 'next/link'
 import BigNumber from 'bignumber.js'
+import Pagination from '~/components/pagination'
 
 const Default = () => (
   <img
@@ -236,6 +237,7 @@ export default props => {
         <Desktop modificataion="desktop" {...props} />
         <Mobile modificataion="mobile" {...props} />
       </div>
+      <Pagination {...pagination} />
     </div>
   )
 }

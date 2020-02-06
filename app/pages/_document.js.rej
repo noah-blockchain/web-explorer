@@ -1,0 +1,7 @@
+diff a/pages/_document.js b/pages/_document.js	(rejected hunks)
+@@ -10 +10 @@ class WebExplorer extends App {
+-  componentDidMount () {
++  componentDidMount() {
+@@ -14 +14 @@ class WebExplorer extends App {
+-  render () {
++  render() {
