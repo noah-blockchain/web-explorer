@@ -57,7 +57,6 @@ export default class Container extends React.Component {
   render() {
     const { children } = this.props
     const { rawData = [] } = this.state
-    console.log('rawData', rawData)
     let data = []
     const filter = {
       filter: this.state.filter,
@@ -86,6 +85,7 @@ export default class Container extends React.Component {
       setPage: this.setPage,
       activePage: this.state.page,
       lastPage: rawData.meta.last_page,
+      total: rawData.meta.total,
       startPage:
         this.state.page < 3
           ? 1

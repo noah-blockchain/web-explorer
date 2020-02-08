@@ -20,7 +20,6 @@ export default class Container extends React.Component {
         page,
         this.props.address
       ).catch(() => [])
-      console.log('RAW DATA', rawData)
       return this.setState({ page, rawData })
     }
   }

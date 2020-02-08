@@ -56,7 +56,6 @@ export default class Container extends React.Component {
   render() {
     const { children } = this.props
     const { rawData = [] } = this.state
-    console.log('rawData', rawData)
     let data = []
     const filter = {
       filter: this.state.filter,

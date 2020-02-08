@@ -159,7 +159,6 @@ Page.getInitialProps = async (context) => {
     delegatorsPromise,
     chartsPromise
   ])
-  console.log(charts, "COINS CHARTS")
   return { coins: coins, coin, transactions, validators: validators, holders, delegators, charts}
 }
 

@@ -8,7 +8,6 @@ import CoinsDetailsComponent from '~/components/coins'
 import CoinsDetailsContainer from '~/containers/coins'
 
 const Page = ({ coins }) => {
-  console.log('coins', coins)
   const language = 'en'
   return (
     <Layout

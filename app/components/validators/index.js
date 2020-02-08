@@ -31,12 +31,12 @@ const Icons = ({ order_by, filter, name }) => {
 }
 
 const Desktop = props => {
-  const { data, modificataion = '', filter } = props
+  const { data, modificataion = '', filter, pagination} = props
   return (
     <div>
       <div className="filters-container">
         <div>
-          <h4>Validators / {data.length}</h4>
+          <h4>Validators / {pagination.total}</h4>
         </div>
         <div className="filter-block">
           <div

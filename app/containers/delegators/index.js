@@ -34,7 +34,6 @@ export default class Container extends React.Component {
     const { children } = this.props
     let { rawData = [] } = this.state
     let data = []
-    console.log('rawData', rawData)
     try {
       data = rawData.data.map(item => {
         return {

@@ -5,7 +5,6 @@ import shrinkString from '~/utils/shrinkString'
 import Pagination from '~/components/pagination'
 
 export default ({ data = [], pagination }) => {
-  console.log('data from component', data)
   if (data.length < 1)
     return (
       <div className="blocks table_theme_simple">

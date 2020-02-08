@@ -12,7 +12,6 @@ import {
 } from 'recharts'
 
 export default ({ data = [],filter }) => {
-  console.log("FILTER", filter)
   const charts = [...data].reverse()
   return (
     <section className="section section_block-details-coins">

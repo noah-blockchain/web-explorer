@@ -9,7 +9,6 @@ import ValidatorsDetailsContainer from '~/containers/validators_all'
 
 const Page = ({ validators }) => {
   const language = 'en'
-  console.log('validators', validators)
   return (
     <Layout
       pageTitle="NOAH Blockchain Explorer"
@@ -35,7 +34,6 @@ const Page = ({ validators }) => {
 }
 
 Page.getInitialProps = async context => {
-  console.log('context', context)
   const validators = await fetchValidators().catch(() => [])
   return { validators }
 }

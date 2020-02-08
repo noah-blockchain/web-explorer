@@ -15,7 +15,7 @@ const Desktop = props => {
       <thead className="table__header">
         <tr>
         <th className="table__cell">Coin</th>
-          <th className="table__cell">Public key</th>
+          <th className="table__cell">Address</th>
           <th className="table__cell">Value</th>
           <th className="table__cell">Noah value</th>
         </tr>

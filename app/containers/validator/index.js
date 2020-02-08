@@ -2,7 +2,6 @@ import React from 'react'
 import moment from 'moment'
 
 export default ({ children, rawData = [] }) => {
-  console.log(rawData, 'RAW DATA')
   const data = !rawData.data
     ? null
     : {

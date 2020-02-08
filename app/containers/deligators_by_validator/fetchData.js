@@ -10,7 +10,6 @@ async function fetchData(public_key = '', page = 1) {
   )
   const status = response.status
   const body = await response.json()
-  console.log(body, 'DELEGATORS')
 
   if (status == 200) {
     return body

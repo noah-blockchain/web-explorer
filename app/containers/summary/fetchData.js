@@ -6,7 +6,6 @@ if (typeof fetch === 'undefined') {
 
 async function fetchData() {
   const response = await fetch(`${config.status}`)
-  console.log(config.status)
   const status = response.status
   const body = await response.json()
   if (status == 200) {

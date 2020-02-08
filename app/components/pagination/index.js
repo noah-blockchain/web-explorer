@@ -3,7 +3,6 @@ import './pagination.less'
 
 const createPages = (count, start) => {
 
-  console.log(count, start);
   return Array(Math.abs(count))
     .fill(null)
     .map((item, i) => start + i + 1)
