@@ -20,7 +20,7 @@ const Details = ({ data, modificataion = 'desktop' }) => {
   const fields = [
     {
       name: 'Сonstant Reserve Ratio',
-      value: data.crr + " NOAH"
+      value: data.crr + " %"
     },
     {
       name: 'Volume',
