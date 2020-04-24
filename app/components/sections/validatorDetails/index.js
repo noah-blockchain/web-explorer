@@ -54,7 +54,7 @@ export default ({ data }) => {
     },
     {
       name: 'Fee for Delegation',
-      value: new BigNumber(data.commission).toFormat(2)
+      value: new BigNumber(data.commission).toFormat(2) + "%"
     },
     {
       name: 'Launch date',

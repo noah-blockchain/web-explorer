@@ -129,7 +129,7 @@ const Desktop = props => {
                 </Link>
               </div>
             </th>
-            <th className="table__cell">
+            <th className="table__cell">А
               <div className="table-col">
                 <span className="coins-label">Price</span>
                 <span className="coins-value">{new BigNumber(item.price).toFormat(2)} NOAH</span>

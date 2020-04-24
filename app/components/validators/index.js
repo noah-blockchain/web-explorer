@@ -138,7 +138,7 @@ const Desktop = props => {
                   <span className="coins-label">Fee for Delegation</span>
                   <span className="coins-value">
                     {' '}
-                    {new BigNumber(item.commission).toFormat(2)}{' '}
+                    {new BigNumber(item.commission).toFormat(2)}{'%'}
                   </span>
                 </div>
               </th>
@@ -196,7 +196,7 @@ const Mobile = ({ data, modificataion = '' }) => (
                       {shrinkString(item.public_key, 10)}
                     </span>
                     <span className="table__cell-item">
-                      <strong>Fee for Delegation</strong> {item.commission}
+                      <strong>Fee for Delegation</strong> {item.commission}%
                     </span>
                     <span className="table__cell-item">
                       <strong>Name</strong> {item.name}
